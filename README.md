@@ -1,0 +1,4 @@
+laivanupotus
+============
+
+Laivanupotuspeli (ohjelmoinnin harjoitustyö)
