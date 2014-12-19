@@ -13,7 +13,8 @@ Pelaaja ja avustaja
 
 Avustaja valitsee ruudukon vieressä olevasta laivalistasta laivan ja 
 asettaa sen pelialueelle, siten että sen etäisyys toisista laivoista 
-on vähintään 1 ruutu.
+on vähintään 1 ruutu. Avustaja jatkaa kunnes kaikki laivat on aseteltu
+pelialueelle.
 
 ## Pelaajan toiminnot
 
