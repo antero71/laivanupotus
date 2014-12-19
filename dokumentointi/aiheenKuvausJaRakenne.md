@@ -24,10 +24,10 @@ että ohi meni tai osui. Jos osoi, ruutuun ilmaantuu laiva/laivanosa.
 ## Laivat
 
 Laivojen pituudet ja määrät ovat
-1 lentotukialus, 4 ruutua
-2 risteilijää, 3 ruutua
-3 hävittäjää, 2 ruutua
-4 sukellusvenettä, 1 ruutu
+* 1 lentotukialus, 4 ruutua
+* 2 risteilijää, 3 ruutua
+* 3 hävittäjää, 2 ruutua
+* 4 sukellusvenettä, 1 ruutu
 
 ## Optio 1: Laivojen paikkojen arvonta
 
