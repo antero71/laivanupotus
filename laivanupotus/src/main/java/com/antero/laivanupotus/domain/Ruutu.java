@@ -58,6 +58,36 @@ public class Ruutu {
     public void setLaivanOsa(boolean laivanOsa) {
         this.laivanOsa = laivanOsa;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ruutu other = (Ruutu) obj;
+        if (this.x != other.x) {
+            return false;
+        }
+        if (this.y != other.y) {
+            return false;
+        }
+        if (this.kielletty != other.kielletty) {
+            return false;
+        }
+        if (this.laivanOsa != other.laivanOsa) {
+            return false;
+        }
+        return true;
+    }
     
     
     
