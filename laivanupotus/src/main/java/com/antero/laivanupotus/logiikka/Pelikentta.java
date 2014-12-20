@@ -37,12 +37,17 @@ public class Pelikentta {
         if(tarkistaMeneekoRuudukonUlkopuolelle(laiva)){
             return false;
         }
+        if(tarkistaOnkoKiellettyAsettaaLaivaa(laiva))
+        {
+            return false;
+        }
         Iterator <Ruutu>iter = laivanRuudut.iterator();
      
         while(iter.hasNext()){
             Ruutu r = iter.next();
             int x = r.getX();
             int y = r.getY();
+            r.setKielletty(true);
             ruudut[x][y]=r;  
         }
         return true;
@@ -87,6 +92,36 @@ public class Pelikentta {
              return true;
          }
          return false;
+    }
+
+    public boolean tarkistaOnkoKiellettyAsettaaLaivaa(Laiva laiva) {
+        // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
+        // 1 ruudun päässä
+        TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
+        Ruutu alku = laivanRuudut.first();
+        int alkux = alku.getX();
+        int alkuy = alku.getY();
+        Ruutu loppu = laivanRuudut.last();
+        int loppux = loppu.getX();
+        int loppuy = loppu.getY();
+        
+        alkux--;
+        alkuy--;
+        
+        loppux++;
+        loppuy++;
+        
+        for(int i = alkux;i < loppux;i++){
+            for(int j = alkuy; j < loppuy;j++)
+            {
+                if(ruudut[i][j].isKielletty()){
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+        
     }
     
     

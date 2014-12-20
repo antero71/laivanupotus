@@ -50,20 +50,59 @@ public class PelikenttaTest {
         assertEquals("Loppuruudun y-koordinaatti ei ole 10", 10, loppuruutu.getY());
 
     }
-    
+
     @Test
-    public void testaaLaivanAsetusJosMeneeYliRuudukon(){
+    public void testaaLaivanAsetusJosMeneeYliRuudukon() {
         Laiva laiva = new Laiva(3);
         laiva.asetaLaivanPaikka(10, 10, Suunta.PYSTY);
-        assertFalse("Laivaa ei voi asettaa yli pelialueen",pelikentta.asetaLaiva(laiva));
-    }
-    
-    @Test
-    public void testaaLaivanAsetusJosMahtuuPelialueelle(){
-        Laiva laiva = new Laiva(2);
-        laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
-        assertTrue("Laivan asetus epäonnistui",pelikentta.asetaLaiva(laiva));
+        assertFalse("Laivaa ei voi asettaa yli pelialueen", pelikentta.asetaLaiva(laiva));
     }
 
+    @Test
+    public void testaaLaivanAsetusJosMahtuuPelialueelle() {
+        Laiva laiva = new Laiva(2);
+        laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
+        pelikentta.alustaRuudukko();
+        assertTrue("Laivan asetus epäonnistui", pelikentta.asetaLaiva(laiva));
+    }
+
+    @Test
+    public void tarkistaOnkoKiellettyAsettaaLaivaaJosLaivaJoSamassaPaikassa() {
+        Laiva laiva = new Laiva(3);
+        laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
+        pelikentta.alustaRuudukko();
+        pelikentta.asetaLaiva(laiva);
+
+        laiva = new Laiva(3);
+        laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
+        assertFalse("Toista laivaa ei voi asettaa jo olemassaolevan laivan paikalle", pelikentta.asetaLaiva(laiva));
+
+    }
+
+    @Test
+    public void tarkistaOnkoKiellettyAsettaaLaivaaToisenLaivanViereen() {
+        Laiva laiva = new Laiva(3);
+        laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
+        pelikentta.alustaRuudukko();
+        pelikentta.asetaLaiva(laiva);
+
+        laiva = new Laiva(3);
+        laiva.asetaLaivanPaikka(3, 5, Suunta.VAAKA);
+        assertFalse("Toista laivaa ei voi asettaa jo olemassaolevan laivan viereen", pelikentta.asetaLaiva(laiva));
+
+    }
+    
+      @Test
+    public void tarkistaOnkoKiellettyAsettaaLaivaaToisenLaivanViereenYhdenRuudunPaahan() {
+        Laiva laiva = new Laiva(3);
+        laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
+        pelikentta.alustaRuudukko();
+        pelikentta.asetaLaiva(laiva);
+
+        laiva = new Laiva(3);
+        laiva.asetaLaivanPaikka(3, 6, Suunta.VAAKA);
+        assertTrue("Toinen laiva voi olla yhden ruudun päässä toisesta laivasta", pelikentta.asetaLaiva(laiva));
+
+    }
 
 }
