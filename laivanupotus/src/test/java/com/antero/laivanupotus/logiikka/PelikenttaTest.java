@@ -5,7 +5,9 @@
  */
 package com.antero.laivanupotus.logiikka;
 
+import com.antero.laivanupotus.domain.Laiva;
 import com.antero.laivanupotus.domain.Ruutu;
+import com.antero.laivanupotus.domain.Suunta;
 import java.util.TreeSet;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -37,14 +39,30 @@ public class PelikenttaTest {
     @Test
     public void testaaRuudukonAlustus() {
         pelikentta.alustaRuudukko();
-        TreeSet<Ruutu> ruudut = pelikentta.getRuudut();
+        Ruutu[][] ruudut = pelikentta.getRuudut();
 
-        assertEquals("Alkuruudun x-koordinaatti ei ole 1", 1, ruudut.first().getX());
-        assertEquals("Alkuruudun y-koordinaatti ei ole 1", 1, ruudut.first().getY());
+        Ruutu alkuruutu = ruudut[1][1];
+        Ruutu loppuruutu = ruudut[10][10];
+        assertEquals("Alkuruudun x-koordinaatti ei ole 1", 1, alkuruutu.getX());
+        assertEquals("Alkuruudun y-koordinaatti ei ole 1", 1, alkuruutu.getY());
 
-        assertEquals("Loppuruudun x-koordinaatti ei ole 10", 10, ruudut.last().getX());
-        assertEquals("Loppuruudun y-koordinaatti ei ole 10", 10, ruudut.last().getY());
+        assertEquals("Loppuruudun x-koordinaatti ei ole 10", 10, loppuruutu.getX());
+        assertEquals("Loppuruudun y-koordinaatti ei ole 10", 10, loppuruutu.getY());
 
+    }
+    
+    @Test
+    public void testaaLaivanAsetusJosMeneeYliRuudukon(){
+        Laiva laiva = new Laiva(3);
+        laiva.asetaLaivanPaikka(10, 10, Suunta.PYSTY);
+        assertFalse("Laivaa ei voi asettaa yli pelialueen",pelikentta.asetaLaiva(laiva));
+    }
+    
+    @Test
+    public void testaaLaivanAsetusJosMahtuuPelialueelle(){
+        Laiva laiva = new Laiva(2);
+        laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
+        assertTrue("Laivan asetus epäonnistui",pelikentta.asetaLaiva(laiva));
     }
 
 
