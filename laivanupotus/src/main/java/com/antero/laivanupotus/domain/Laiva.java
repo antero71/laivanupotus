@@ -11,6 +11,7 @@ import java.util.TreeSet;
 public class Laiva {
 
     private TreeSet<Ruutu> ruudut;
+    private Enum suunta;
 
     public Laiva(int pituus) {
         Ruutu r = null;
@@ -34,6 +35,7 @@ public class Laiva {
 
     public void asetaLaivanPaikka(int alkux, int alkuy, Enum suunta) {
 
+        this.suunta = suunta;
         Iterator<Ruutu> ruudutIter = ruudut.iterator();
 
         Ruutu r = null;
@@ -54,6 +56,40 @@ public class Laiva {
                 }
             }
 
+        }
+
+    }
+
+    public void kaannaLaiva() {
+
+        Iterator<Ruutu> iter = ruudut.iterator();
+        int alkux=0;
+        int alkuy=0;
+
+        int i = 0;
+        while (iter.hasNext()) {
+            i++;
+            Ruutu r = iter.next();
+
+            if (i == 1) {
+                alkux = r.getX();
+                alkuy = r.getY();
+                continue;
+            }
+            if (suunta.equals(Suunta.PYSTY)) {
+                r.setX(++alkux);
+                r.setY(alkuy);
+            } else {
+                r.setX(alkux);
+                r.setY(++alkuy);
+            }
+
+        }
+
+        if (suunta.equals(Suunta.PYSTY)) {
+            suunta = Suunta.VAAKA;
+        } else {
+            suunta = Suunta.PYSTY;
         }
 
     }
