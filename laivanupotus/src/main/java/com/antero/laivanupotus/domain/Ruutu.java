@@ -95,15 +95,15 @@ public class Ruutu implements Comparable<Ruutu>{
         int y = o.getY();
         
         if(this.x == x && this.y < y)
-            return -1;
+            return 1;
         
         if(this.x < x && this.y == y)
-            return -1;
+            return 1;
         
         if(this.x == x && this.y == y)
             return 0;
         
-        return 1;
+        return -1;
     }
 
     @Override

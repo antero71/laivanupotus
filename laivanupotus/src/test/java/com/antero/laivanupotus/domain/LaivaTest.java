@@ -5,6 +5,7 @@
  */
 package com.antero.laivanupotus.domain;
 
+import java.util.TreeSet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,4 +43,32 @@ public class LaivaTest {
         laiva = new Laiva(2);
         assertEquals(2, laiva.laivanPituus());
     }
+    
+    @Test
+    public void testaaLaivanPaikanAntoOnkoAlkupaaOikeassaPaikassa(){
+        laiva.asetaLaivanPaikka(2, 3, Suunta.PYSTY);
+        TreeSet<Ruutu> ruudut = laiva.annaLaivanRuudut();
+        Ruutu alku = ruudut.first();
+        assertEquals("X-arvo väärin",2, alku.getX());
+        assertEquals("Y-arvo väärin",3, alku.getY());
+        
+        
+    }
+    
+    @Test
+    public void testaaAlkupaanPaikkaKunLaivanPituus2(){
+        laiva = new Laiva(2);
+        laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
+        assertEquals("X-arvo väärin",2, laiva.annaLaivanRuudut().first().getX());
+        assertEquals("Y-arvo väärin",3, laiva.annaLaivanRuudut().first().getY());
+    }
+    
+    @Test
+    public void testaaLaivanLoppupaanPaikkaKunLaivanPituus2(){
+         laiva = new Laiva(2);
+        laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
+        assertEquals("X-arvo väärin",3, laiva.annaLaivanRuudut().last().getX());
+        assertEquals("Y-arvo väärin",3, laiva.annaLaivanRuudut().last().getY());
+    }
+   
 }
