@@ -120,4 +120,14 @@ public class LaivaTest {
 
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void konstruktoriHeittaaPoikkeuksenJosPituusLiianPieni() {
+        laiva = new Laiva(0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void konstruktoriHeittaaPoikkeuksenJosPituusLiianSuuri() {
+        laiva = new Laiva(10);
+    }
+
 }
