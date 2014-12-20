@@ -36,4 +36,10 @@ public class LaivaTest {
     public void testaaLaivanPituusAlustuksenJalkeen(){
         assertEquals(1, laiva.laivanPituus());
     }
+    
+    @Test
+    public void testaaLaivanPituusKunLaiva2ruutuaPitka(){
+        laiva = new Laiva(2);
+        assertEquals(2, laiva.laivanPituus());
+    }
 }

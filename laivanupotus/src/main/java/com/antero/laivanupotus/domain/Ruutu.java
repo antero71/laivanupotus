@@ -10,7 +10,7 @@ package com.antero.laivanupotus.domain;
  *
  * @author Antero Oikkonen
  */
-public class Ruutu {
+public class Ruutu implements Comparable<Ruutu>{
     
     private int x;
     private int y;
@@ -88,6 +88,30 @@ public class Ruutu {
         }
         return true;
     }
+
+    @Override
+    public int compareTo(Ruutu o) {
+        int x = o.getX();
+        int y = o.getY();
+        
+        if(this.x == x && this.y < y)
+            return -1;
+        
+        if(this.x < x && this.y == y)
+            return -1;
+        
+        if(this.x == x && this.y == y)
+            return 0;
+        
+        return 1;
+    }
+
+    @Override
+    public String toString() {
+        return "x= "+x+": y="+y+" isLaiva: "+laivanOsa+" kielletty: "+kielletty;
+    }
+    
+    
     
     
     
