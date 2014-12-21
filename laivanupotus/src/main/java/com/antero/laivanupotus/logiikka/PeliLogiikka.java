@@ -13,9 +13,15 @@ package com.antero.laivanupotus.logiikka;
 public class PeliLogiikka {
     
     private Pelikentta peli;
+    private LaivojenPaikkojenArvonta arpoja;
     
     public PeliLogiikka(int x,int y){
         peli = new Pelikentta(x, y);
+        arpoja = new LaivojenPaikkojenArvonta();
+    }
+    
+    public void alustaLaivat(){
+        arpoja.alustaLaivat(peli);
     }
     
     
