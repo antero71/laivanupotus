@@ -129,5 +129,11 @@ public class LaivaTest {
     public void konstruktoriHeittaaPoikkeuksenJosPituusLiianSuuri() {
         laiva = new Laiva(10);
     }
+    
+    @Test
+    public void asetaLaivaRuudukonUlkopuolelle(){
+        laiva = new Laiva(2);
+        laiva.asetaLaivanPaikka(-1, -1, Suunta.PYSTY);
+    }
 
 }

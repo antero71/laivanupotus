@@ -12,4 +12,12 @@ package com.antero.laivanupotus.logiikka;
  */
 public class PeliLogiikka {
     
+    private Pelikentta peli;
+    
+    public PeliLogiikka(int x,int y){
+        peli = new Pelikentta(x, y);
+    }
+    
+    
+    
 }

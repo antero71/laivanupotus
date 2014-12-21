@@ -23,13 +23,17 @@ import static org.junit.Assert.*;
 public class PelikenttaTest {
 
     private Pelikentta pelikentta;
+    private int pelikenttaX = 10;
+    private int pelikenttaY = 10;
+    
 
     public PelikenttaTest() {
     }
 
     @Before
     public void setUp() {
-        pelikentta = new Pelikentta(10, 10);
+        pelikentta = new Pelikentta(pelikenttaX, pelikenttaY);
+        pelikentta.alustaRuudukko();
     }
 
     @After
@@ -38,7 +42,6 @@ public class PelikenttaTest {
 
     @Test
     public void testaaRuudukonAlustus() {
-        pelikentta.alustaRuudukko();
         Ruutu[][] ruudut = pelikentta.getRuudut();
 
         Ruutu alkuruutu = ruudut[1][1];
@@ -104,5 +107,47 @@ public class PelikenttaTest {
         assertTrue("Toinen laiva voi olla yhden ruudun päässä toisesta laivasta", pelikentta.asetaLaiva(laiva));
 
     }
+    
+    
+   @Test
+   public void tarkistaOnkoKiellettyAsettaaLaivaaAlkamanVasemmastaYlanurkasta(){
+       Laiva laiva = new Laiva(2);
+       laiva.asetaLaivanPaikka(1, 1, Suunta.PYSTY);
+       
+   }
+   
+   @Test
+   public void testaaAmmuJosOsuu(){
+       Laiva laiva = new Laiva(2);
+       laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
+       pelikentta.asetaLaiva(laiva);
+       assertTrue("laivaan ei osunut vaikka laiva oli paikalla",pelikentta.ammu(4, 4));
+       
+   }
+   
+   @Test
+   public void testaaAmmuJosHuti(){
+       Laiva laiva = new Laiva(2);
+       laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
+       pelikentta.asetaLaiva(laiva);
+       assertFalse("laivaan osui vaikka laivaa ei ollut paikalla",pelikentta.ammu(6, 8));   
+   }
+   
+   @Test
+   public void voikoPelikentanReunaanAsettaaLaivaa(){
+       Laiva laiva = new Laiva(3);
+       laiva.asetaLaivanPaikka(1, 1, Suunta.PYSTY);
+       assertTrue(pelikentta.asetaLaiva(laiva));
+       
+   }
+   
+   @Test
+   public void voikoPelikentanOikeaanAlakulmaanAsettaaLaivaa(){
+       Laiva laiva = new Laiva(1);
+       laiva.asetaLaivanPaikka(pelikenttaX, pelikenttaY, Suunta.PYSTY);
+       assertTrue(pelikentta.asetaLaiva(laiva));
+       
+   }
+   
 
 }

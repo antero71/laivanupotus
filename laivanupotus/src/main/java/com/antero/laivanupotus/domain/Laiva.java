@@ -62,7 +62,7 @@ public class Laiva {
      */
     
     public void asetaLaivanPaikka(int alkux, int alkuy, Enum suunta) {
-
+        
         this.suunta = suunta;
         Iterator<Ruutu> ruudutIter = ruudut.iterator();
 
