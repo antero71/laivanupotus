@@ -18,6 +18,7 @@ public class Ruutu implements Comparable<Ruutu>{
     private boolean kielletty;
     private boolean laivanOsa;
     private boolean osui;
+    private boolean ammuttu;
 
     public Ruutu(int x,int y){
         this.x = x;
@@ -59,6 +60,20 @@ public class Ruutu implements Comparable<Ruutu>{
     public void setLaivanOsa(boolean laivanOsa) {
         this.laivanOsa = laivanOsa;
     }
+
+    public boolean isOsui() {
+        return osui;
+    }
+
+    public boolean isAmmuttu() {
+        return ammuttu;
+    }
+
+    public void setAmmuttu(boolean ammuttu) {
+        this.ammuttu = ammuttu;
+    }
+    
+    
 
     @Override
     public int hashCode() {
