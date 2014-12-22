@@ -19,7 +19,7 @@ import java.util.TreeSet;
  */
 public class Pelikentta {
 
-    private Ruutu[][] ruudut = new Ruutu[9][9];
+    private Ruutu[][] ruudut = new Ruutu[10][10];
     private HashMap<Ruutu, Laiva> laivat = new HashMap<Ruutu, Laiva>();
     private int laivojenLkm = 0;
     private int kenttaX;
@@ -31,9 +31,9 @@ public class Pelikentta {
      * @param ruudut
      */
     public Pelikentta(int x, int y) {
-        kenttaX = x - 1;
-        kenttaY = y - 1;
-        ruudut = new Ruutu[x - 1][y - 1];
+        kenttaX = x;
+        kenttaY = y;
+        ruudut = new Ruutu[kenttaX][kenttaY];
     }
 
     public int getKenttaX() {
@@ -50,11 +50,14 @@ public class Pelikentta {
 
     public boolean asetaLaiva(Laiva laiva) {
         TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
+        System.out.println(laivanRuudut);
 
         if (tarkistaMeneekoRuudukonUlkopuolelle(laiva)) {
+            System.out.println("tarkistaMeneekoRuudukonUlkopuolelle palauttaa true");
             return false;
         }
         if (tarkistaOnkoKiellettyAsettaaLaivaa(laiva)) {
+            System.out.println("tarkistaOnkoKiellettyAsettaaLaivaa palauttaa true");
             return false;
         }
 
@@ -65,9 +68,7 @@ public class Pelikentta {
             laivat.put(r, laiva);
             int x = r.getX();
             int y = r.getY();
-            r.setKielletty(true);
-            System.out.println("x = " + x + ",y = " + y);
-            ruudut[x][y] = r;
+            alustaRuutu(r, x, y, true, true);
         }
         laivojenLkm++;
         return true;
@@ -83,7 +84,7 @@ public class Pelikentta {
             }
         } else {
             r = new Ruutu();
-            alustaRuutu(ruudut,r, x, y);
+            alustaRuutu(r, x, y, false, false);
         }
         r.setAmmuttu(true);
         return osui;
@@ -118,7 +119,7 @@ public class Pelikentta {
                 r.setY(y);
                 r.setKielletty(false);
                 r.setLaivanOsa(false);
-                System.out.println("x = " + x + ", y = " + y);
+                //System.out.println("x = " + x + ", y = " + y);
                 ruudut[x][y] = r;
             }
 
@@ -133,14 +134,13 @@ public class Pelikentta {
         int alkuy = laivanRuudut.first().getY();
 
         int loppux = laivanRuudut.last().getX();
-        System.out.println("loppux " + loppux);
         int loppuy = laivanRuudut.last().getY();
-        System.out.println("loppuy " + loppuy);
         int ypituus = kenttaY;
         int xpituus = kenttaX;
 
-        System.out.println("ypituus " + ypituus);
-        System.out.println("xpituus " + xpituus);
+        if (loppuy == 9) {
+            int i = 0;
+        }
 
         if (alkux < 1 || alkuy < 1) {
             return true;
@@ -184,9 +184,8 @@ public class Pelikentta {
         for (int i = alkux; i < loppux; i++) {
             for (int j = alkuy; j < loppuy; j++) {
                 //System.out.println("x = "+1+" y = "+j);
-                
-                
-                if (ruudut[i][j]!= null && ruudut[i][j].isKielletty()) {
+
+                if (ruudut[i][j] != null && ruudut[i][j].isKielletty()) {
                     return true;
                 }
             }
@@ -196,13 +195,15 @@ public class Pelikentta {
 
     }
 
-    private void alustaRuutu(Ruutu[][] ruudut, Ruutu r,int x, int y) {
-        if(r==null)
-            r=new Ruutu();
+    private void alustaRuutu(Ruutu r, int x, int y, boolean laivanOsa, boolean kielletty) {
+        if (r == null) {
+            r = new Ruutu();
+        }
         r.setX(x);
         r.setY(y);
         r.setAmmuttu(true);
-        r.setLaivanOsa(false);
+        r.setLaivanOsa(laivanOsa);
+        r.setKielletty(kielletty);
         ruudut[x][y] = r;
     }
 

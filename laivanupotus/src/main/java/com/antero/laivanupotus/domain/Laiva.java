@@ -138,7 +138,7 @@ public class Laiva {
 
     @Override
     public String toString() {
-        return ruudut.toString()+" suunta "+suunta;
+        return "Laiva: ["+ruudut.toString()+"], suunta "+suunta;
     }
     
     

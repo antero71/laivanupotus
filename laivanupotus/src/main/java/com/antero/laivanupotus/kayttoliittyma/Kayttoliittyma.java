@@ -5,12 +5,16 @@
  */
 package com.antero.laivanupotus.kayttoliittyma;
 
+import com.antero.laivanupotus.logiikka.PeliLogiikka;
+
 /**
  *
  * @author Antero Oikkonen
  */
 public class Kayttoliittyma extends javax.swing.JFrame {
 
+    private PeliLogiikka pelilogiikka;
+    
     /**
      * Creates new form Kayttoliittyma
      */

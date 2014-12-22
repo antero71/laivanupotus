@@ -57,7 +57,7 @@ public class PelikenttaTest {
     @Test
     public void testaaLaivanAsetusJosMeneeYliRuudukon() {
         Laiva laiva = new Laiva(3);
-        laiva.asetaLaivanPaikka(10, 10, Suunta.PYSTY);
+        laiva.asetaLaivanPaikka(9, 9, Suunta.PYSTY);
         assertFalse("Laivaa ei voi asettaa yli pelialueen", pelikentta.asetaLaiva(laiva));
     }
 
@@ -129,7 +129,7 @@ public class PelikenttaTest {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
         pelikentta.asetaLaiva(laiva);
-        assertFalse("laivaan osui vaikka laivaa ei ollut paikalla", pelikentta.ammu(6, 8));
+        assertFalse("laivaan osui vaikka laivaa ei ollut paikalla", pelikentta.ammu(6, 7));
     }
 
     @Test
@@ -143,7 +143,7 @@ public class PelikenttaTest {
     @Test
     public void voikoPelikentanOikeaanAlakulmaanAsettaaLaivaa() {
         Laiva laiva = new Laiva(1);
-        laiva.asetaLaivanPaikka(pelikenttaX, pelikenttaY, Suunta.PYSTY);
+        laiva.asetaLaivanPaikka(9, 9, Suunta.PYSTY);
         assertTrue(pelikentta.asetaLaiva(laiva));
 
     }

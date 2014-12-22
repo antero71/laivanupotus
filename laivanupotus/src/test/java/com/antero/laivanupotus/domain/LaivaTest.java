@@ -53,6 +53,23 @@ public class LaivaTest {
         assertEquals("Y-arvo väärin", 3, alku.getY());
 
     }
+    
+    @Test
+    public void testaaYhdenPituisenLaivanPaikkaRuudussa9x9(){
+        laiva.asetaLaivanPaikka(9, 9, Suunta.PYSTY);
+        assertEquals("Alkupään x-koordinaatti pitää olla 9",9, laiva.annaLaivanRuudut().first().getX());
+        assertEquals("Alkupään x-koordinaatti pitää olla 9",9, laiva.annaLaivanRuudut().first().getY());
+        
+        assertEquals("Loppupään x-koordinaatti pitää olla 9",9, laiva.annaLaivanRuudut().last().getX());
+        assertEquals("Loppupään y-koordinaatti pitää olla 9",9, laiva.annaLaivanRuudut().last().getY());
+        
+    }
+    
+    @Test
+    public void testaaOnkoAlkuruutuSamaKuinLoppuruutu(){
+        assertTrue("alkuruutu pitää olla sama kuin loppuruutu", laiva.annaLaivanRuudut().first().equals(laiva.annaLaivanRuudut().last()));
+            
+    }
 
     @Test
     public void testaaAlkupaanPaikkaKunLaivanPituus2() {
@@ -102,7 +119,7 @@ public class LaivaTest {
     }
 
     @Test
-    public void kaannaLaivaKaantaaJosPituus2() {
+    public void kaannaLaivaKaantaaJosPituus2JaPystyssa() {
         laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(4, 5, Suunta.PYSTY);
         assertEquals("loppupään X-arvo väärin", 4, laiva.annaLaivanRuudut().last().getX());
@@ -120,6 +137,27 @@ public class LaivaTest {
 
     }
 
+      @Test
+    public void kaannaLaivaKaantaaJosPituus2JaVaakasuorassa() {
+        laiva = new Laiva(2);
+        laiva.asetaLaivanPaikka(4, 5, Suunta.VAAKA);
+        assertEquals("loppupään X-arvo väärin", 5, laiva.annaLaivanRuudut().last().getX());
+        assertEquals("loppupään Y-arvo väärin", 5, laiva.annaLaivanRuudut().last().getY());
+
+        laiva.kaannaLaiva();
+
+        // alkupää
+        assertEquals("alkupään X-arvo väärin", 4, laiva.annaLaivanRuudut().first().getX());
+        assertEquals("alkupään Y-arvo väärin", 5, laiva.annaLaivanRuudut().first().getY());
+
+        // loppupää
+        assertEquals("loppupään X-arvo väärin", 4, laiva.annaLaivanRuudut().last().getX());
+        assertEquals("loppupään Y-arvo väärin", 6, laiva.annaLaivanRuudut().last().getY());
+
+    }
+
+    
+    
     @Test(expected = IllegalArgumentException.class)
     public void konstruktoriHeittaaPoikkeuksenJosPituusLiianPieni() {
         laiva = new Laiva(0);
@@ -129,11 +167,4 @@ public class LaivaTest {
     public void konstruktoriHeittaaPoikkeuksenJosPituusLiianSuuri() {
         laiva = new Laiva(10);
     }
-    
-    @Test
-    public void asetaLaivaRuudukonUlkopuolelle(){
-        laiva = new Laiva(2);
-        laiva.asetaLaivanPaikka(-1, -1, Suunta.PYSTY);
-    }
-
 }

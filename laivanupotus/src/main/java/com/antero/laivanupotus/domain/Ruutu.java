@@ -124,7 +124,7 @@ public class Ruutu implements Comparable<Ruutu>{
 
     @Override
     public String toString() {
-        return "x= "+x+": y="+y+" isLaiva: "+laivanOsa+" kielletty: "+kielletty;
+        return "x= "+x+": y="+y+": isLaiva = "+laivanOsa+", kielletty = "+kielletty+", ammuttu = "+ammuttu+", osui = "+osui;
     }
 
     public void osui(boolean osui) {
