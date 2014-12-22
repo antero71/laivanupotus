@@ -119,7 +119,7 @@ public class LaivaTest {
     }
 
     @Test
-    public void kaannaLaivaKaantaaJosPituus2JaPystyssa() {
+    public void kaannaLaivaPituus2JaPystyssa() {
         laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(4, 5, Suunta.PYSTY);
         assertEquals("loppupään X-arvo väärin", 4, laiva.annaLaivanRuudut().last().getX());
@@ -138,7 +138,7 @@ public class LaivaTest {
     }
 
       @Test
-    public void kaannaLaivaKaantaaJosPituus2JaVaakasuorassa() {
+    public void kaannaLaivanPituus2JaVaakasuorassa() {
         laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(4, 5, Suunta.VAAKA);
         assertEquals("loppupään X-arvo väärin", 5, laiva.annaLaivanRuudut().last().getX());

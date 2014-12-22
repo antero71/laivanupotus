@@ -50,14 +50,14 @@ public class Pelikentta {
 
     public boolean asetaLaiva(Laiva laiva) {
         TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
-        System.out.println(laivanRuudut);
+        // System.out.println(laivanRuudut);
 
         if (tarkistaMeneekoRuudukonUlkopuolelle(laiva)) {
-            System.out.println("tarkistaMeneekoRuudukonUlkopuolelle palauttaa true");
+            //System.out.println("tarkistaMeneekoRuudukonUlkopuolelle palauttaa true");
             return false;
         }
         if (tarkistaOnkoKiellettyAsettaaLaivaa(laiva)) {
-            System.out.println("tarkistaOnkoKiellettyAsettaaLaivaa palauttaa true");
+            //System.out.println("tarkistaOnkoKiellettyAsettaaLaivaa palauttaa true");
             return false;
         }
 
