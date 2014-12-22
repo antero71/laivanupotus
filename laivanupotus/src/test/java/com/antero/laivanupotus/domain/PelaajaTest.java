@@ -39,5 +39,40 @@ public class PelaajaTest {
         pelaaja.lisaaPisteita(1000);
         assertEquals(1100, pelaaja.getPisteet());
     }
+    
+    @Test
+    public void testaaVertailuJosVertailtavallaEnemmanPisteita(){
+        Pelaaja p = new Pelaaja("Kalle",100);
+        
+        Pelaaja p2 = new Pelaaja("Pekka",1000);
+        
+        assertEquals(1,p.compareTo(p2));
+    }
+    
+     
+    @Test
+    public void testaaVertailuJosVertailtavallaVahemmanPisteita(){
+        Pelaaja p = new Pelaaja("Kalle",1000);
+        
+        Pelaaja p2 = new Pelaaja("Pekka",100);
+        
+        assertEquals(-1,p.compareTo(p2));
+    }
+    
+      @Test
+    public void testaaVertailuJosVertailtavallaSamaMaaraPisteita(){
+        Pelaaja p = new Pelaaja("Kalle",1000);
+        
+        Pelaaja p2 = new Pelaaja("Pekka",1000);
+        
+        assertEquals(0,p.compareTo(p2));
+    }
+    
+    @Test
+    public void testaaOletuskonstruktori(){
+        Pelaaja p = new Pelaaja();
+        assertEquals(null, p.getNimi());
+        assertEquals(0, p.getPisteet());
+    }
 
 }

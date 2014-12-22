@@ -18,10 +18,7 @@ import java.util.Random;
  */
 public class LaivojenPaikkojenArpoja {
 
-    final static private int SUKELLUSVENE_PITUUS = 1;
-    final static private int HAVITTAJA_PITUUS = 2;
-    final static private int RISTEILIJA_PITUUS = 3;
-    final static private int LENTOTUKIALUS_PITUUS = 4;
+
 
     private Random random = new Random();
 
@@ -64,10 +61,10 @@ public class LaivojenPaikkojenArpoja {
 
         Collection<Laiva> laivat = new ArrayList<>();
 
-        laivat.addAll(luoLaiva(1, LENTOTUKIALUS_PITUUS));
-        laivat.addAll(luoLaiva(2, RISTEILIJA_PITUUS));
-        laivat.addAll(luoLaiva(3, HAVITTAJA_PITUUS));
-        laivat.addAll(luoLaiva(4, SUKELLUSVENE_PITUUS));
+        laivat.addAll(luoLaiva(1, Laiva.LENTOTUKIALUS_PITUUS));
+        laivat.addAll(luoLaiva(2, Laiva.RISTEILIJA_PITUUS));
+        laivat.addAll(luoLaiva(3, Laiva.HAVITTAJA_PITUUS));
+        laivat.addAll(luoLaiva(4, Laiva.SUKELLUSVENE_PITUUS));
 
         return laivat;
 

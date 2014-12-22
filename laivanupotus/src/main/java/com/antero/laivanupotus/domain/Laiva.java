@@ -10,6 +10,11 @@ import java.util.TreeSet;
  */
 public class Laiva {
 
+    public static final int SUKELLUSVENE_PITUUS = 1;
+    public static final int HAVITTAJA_PITUUS = 2;
+    public static final int RISTEILIJA_PITUUS = 3;
+    public static final int LENTOTUKIALUS_PITUUS = 4;
+
     private TreeSet<Ruutu> ruudut;
     private Enum suunta;
     private int maxpituus = 5; // laivan maksimipituuden oletus

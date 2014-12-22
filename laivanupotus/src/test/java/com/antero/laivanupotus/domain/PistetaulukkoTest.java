@@ -52,7 +52,6 @@ public class PistetaulukkoTest {
     @Test
     public void testaaToString() {
         Pelaaja p = new Pelaaja("Lokki",1200);
-    
 
         StringBuffer b = new StringBuffer();
 

@@ -45,6 +45,13 @@ public class Pelaaja implements Comparable<Pelaaja> {
         this.nimi = nimi;
     }
 
+    
+    /**
+     * suurin pistemäärä ensin järjestettyihin Collectioneihin
+     * @param o
+     * @return 
+     */
+    
     @Override
     public int compareTo(Pelaaja o) {
         int value = 0;

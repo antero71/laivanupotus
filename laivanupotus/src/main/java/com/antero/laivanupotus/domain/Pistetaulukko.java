@@ -30,10 +30,11 @@ public class Pistetaulukko {
     }
 
     /**
-     * pelaaja lisätään pistetaulukkoon vain siinä tapauksessa että hänen
+     * pelaaja lisätään pistetaulukkoon automaattisesti jos taulukon 
+     * koko on alle 10 ja jos se on 10, niin vain siinä tapauksessa että hänen
      * pisteensä on paremmat kuin viimeisenä taulukossa olevan pelaajan
      *
-     * @param p
+     * @param p <code>Pelaaja</code>
      * @return palauttaa true jos pelaaja lisättiin taulukkoon, muuten false
      */
     public boolean lisaaPelaajaPistetaulukkoon(Pelaaja p) {
@@ -64,9 +65,10 @@ public class Pistetaulukko {
 
     private String kokoaPelaajienTulokset() {
         Iterator<Pelaaja> iter = pelaajat.iterator();
+        Pelaaja p = null;
         StringBuffer b = new StringBuffer();
         while (iter.hasNext()) {
-            Pelaaja p = iter.next();
+            p = iter.next();
             b.append(p.getNimi());
             b.append(": ");
             b.append(p.getPisteet());
