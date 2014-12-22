@@ -16,7 +16,7 @@ import java.util.Random;
  *
  * @author Antero Oikkonen
  */
-public class LaivojenPaikkojenArvonta {
+public class LaivojenPaikkojenArpoja {
 
     final static private int SUKELLUSVENE_PITUUS = 1;
     final static private int HAVITTAJA_PITUUS = 2;

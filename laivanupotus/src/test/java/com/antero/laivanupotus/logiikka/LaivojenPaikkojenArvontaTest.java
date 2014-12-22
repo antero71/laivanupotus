@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  */
 public class LaivojenPaikkojenArvontaTest {
     
-    private LaivojenPaikkojenArvonta laivojenPaikat;
+    private LaivojenPaikkojenArpoja laivojenPaikat;
     private Pelikentta peli;
     
     public LaivojenPaikkojenArvontaTest() {
@@ -23,7 +23,7 @@ public class LaivojenPaikkojenArvontaTest {
     
     @Before
     public void setUp() {
-        laivojenPaikat = new LaivojenPaikkojenArvonta();
+        laivojenPaikat = new LaivojenPaikkojenArpoja();
         peli = new Pelikentta(9, 9);
         laivojenPaikat.alustaLaivat(peli);
     }
