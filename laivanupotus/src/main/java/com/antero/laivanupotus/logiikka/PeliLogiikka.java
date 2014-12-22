@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.antero.laivanupotus.logiikka;
 
 /**
@@ -11,19 +10,17 @@ package com.antero.laivanupotus.logiikka;
  * @author Antero Oikkonen
  */
 public class PeliLogiikka {
-    
+
     private Pelikentta peli;
     private LaivojenPaikkojenArvonta arpoja;
-    
-    public PeliLogiikka(int x,int y){
+
+    public PeliLogiikka(int x, int y) {
         peli = new Pelikentta(x, y);
         arpoja = new LaivojenPaikkojenArvonta();
     }
-    
-    public void alustaLaivat(){
+
+    public void alustaLaivat() {
         arpoja.alustaLaivat(peli);
     }
-    
-    
-    
+
 }

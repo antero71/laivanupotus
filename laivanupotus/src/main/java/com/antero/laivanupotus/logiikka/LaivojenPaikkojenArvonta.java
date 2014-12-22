@@ -18,10 +18,10 @@ import java.util.Random;
  */
 public class LaivojenPaikkojenArvonta {
 
-    final private int SUKELLUSVENE_PITUUS = 1;
-    final private int HAVITTAJA_PITUUS = 2;
-    final private int RISTEILIJA_PITUUS = 3;
-    final private int LENTOTUKIALUS_PITUUS = 4;
+    final static private int SUKELLUSVENE_PITUUS = 1;
+    final static private int HAVITTAJA_PITUUS = 2;
+    final static private int RISTEILIJA_PITUUS = 3;
+    final static private int LENTOTUKIALUS_PITUUS = 4;
 
     private Random random = new Random();
 
@@ -32,8 +32,8 @@ public class LaivojenPaikkojenArvonta {
         while (iter.hasNext()) {
             Laiva l = iter.next();
             arvoLaivanPaikka(peli, l);
-            System.out.println("laiva "+l.toString());
-            while(peli.asetaLaiva(l)!=true){
+            //System.out.println("laiva "+l.toString());
+            while (peli.asetaLaiva(l) != true) {
                 arvoLaivanPaikka(peli, l);
             }
         }

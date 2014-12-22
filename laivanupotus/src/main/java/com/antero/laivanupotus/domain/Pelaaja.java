@@ -10,6 +10,7 @@ package com.antero.laivanupotus.domain;
  * @author Antero Oikkonen
  */
 public class Pelaaja {
+
     private int pisteet;
     private String nimi;
 
@@ -20,9 +21,9 @@ public class Pelaaja {
     public void setPisteet(int pisteet) {
         this.pisteet = pisteet;
     }
-    
-    public void lisaaPisteita(int lisattava){
-        pisteet+=lisattava;
+
+    public void lisaaPisteita(int lisattava) {
+        pisteet += lisattava;
     }
 
     public String getNimi() {
@@ -32,6 +33,5 @@ public class Pelaaja {
     public void setNimi(String nimi) {
         this.nimi = nimi;
     }
-    
-    
+
 }

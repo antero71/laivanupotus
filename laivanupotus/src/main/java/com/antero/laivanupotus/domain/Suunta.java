@@ -10,5 +10,6 @@ package com.antero.laivanupotus.domain;
  * @author Antero Oikkonen
  */
 public enum Suunta {
-    PYSTY,VAAKA;   
+
+    PYSTY, VAAKA;
 }

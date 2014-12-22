@@ -3,32 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.antero.laivanupotus.domain;
 
 /**
  *
  * @author Antero Oikkonen
  */
-public class Ruutu implements Comparable<Ruutu>{
-    
+public class Ruutu implements Comparable<Ruutu> {
+
     private int x;
     private int y;
-    
+
     private boolean kielletty;
     private boolean laivanOsa;
     private boolean osui;
     private boolean ammuttu;
 
-    public Ruutu(int x,int y){
+    public Ruutu(int x, int y) {
         this.x = x;
         this.y = y;
     }
-    
-    public Ruutu(){
-        
+
+    public Ruutu() {
+
     }
-    
+
     public int getX() {
         return x;
     }
@@ -72,8 +71,6 @@ public class Ruutu implements Comparable<Ruutu>{
     public void setAmmuttu(boolean ammuttu) {
         this.ammuttu = ammuttu;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -109,30 +106,29 @@ public class Ruutu implements Comparable<Ruutu>{
     public int compareTo(Ruutu o) {
         int x = o.getX();
         int y = o.getY();
-        
-        if(this.x == x && this.y < y)
+
+        if (this.x == x && this.y < y) {
             return -1;
-        
-        if(this.x < x && this.y == y)
+        }
+
+        if (this.x < x && this.y == y) {
             return -1;
-        
-        if(this.x == x && this.y == y)
+        }
+
+        if (this.x == x && this.y == y) {
             return 0;
-        
+        }
+
         return 1;
     }
 
     @Override
     public String toString() {
-        return "x= "+x+": y="+y+": isLaiva = "+laivanOsa+", kielletty = "+kielletty+", ammuttu = "+ammuttu+", osui = "+osui;
+        return "x= " + x + ": y=" + y + ": isLaiva = " + laivanOsa + ", kielletty = " + kielletty + ", ammuttu = " + ammuttu + ", osui = " + osui;
     }
 
     public void osui(boolean osui) {
         this.osui = osui;
     }
-    
-    
-    
-    
-    
+
 }
