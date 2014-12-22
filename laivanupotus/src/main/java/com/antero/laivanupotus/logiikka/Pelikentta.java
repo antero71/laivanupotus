@@ -68,6 +68,7 @@ public class Pelikentta {
             laivat.put(r, laiva);
             int x = r.getX();
             int y = r.getY();
+            System.out.println("asetalaiva x="+x+",y="+y);
             alustaRuutu(r, x, y, true, true);
         }
         laivojenLkm++;
@@ -137,19 +138,21 @@ public class Pelikentta {
         int loppuy = laivanRuudut.last().getY();
         int ypituus = kenttaY;
         int xpituus = kenttaX;
-
-        if (loppuy == 9) {
-            int i = 0;
+        
+        if(loppux == 10 || loppuy == 10){
+             int i = 0;
         }
+           
 
-        if (alkux < 1 || alkuy < 1) {
+
+        if (alkux < 1 || alkuy < 0) {
             return true;
         }
         if (alkux > xpituus || alkuy > ypituus) {
             return true;
         }
 
-        if (loppux > xpituus || loppuy > ypituus) {
+        if (loppux > (xpituus-1) || loppuy > (ypituus-1)) {
             return true;
         }
 

@@ -24,7 +24,7 @@ public class LaivojenPaikkojenArvontaTest {
     @Before
     public void setUp() {
         laivojenPaikat = new LaivojenPaikkojenArpoja();
-        peli = new Pelikentta(9, 9);
+        peli = new Pelikentta(10, 10);
         laivojenPaikat.alustaLaivat(peli);
     }
 

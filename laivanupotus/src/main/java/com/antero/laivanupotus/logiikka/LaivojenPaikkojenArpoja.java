@@ -42,6 +42,7 @@ public class LaivojenPaikkojenArpoja {
     private void arvoLaivanPaikka(Pelikentta peli, Laiva l) {
         int x = arvoLuku(peli.getKenttaX());
         int y = arvoLuku(peli.getKenttaY());
+        System.out.println("arvottu x="+x+":y="+y);
         int s = arvoLuku(2);
         if (s == 0) {
             l.asetaLaivanPaikka(x, y, Suunta.VAAKA);
@@ -73,8 +74,8 @@ public class LaivojenPaikkojenArpoja {
     }
 
     /**
-     * arvotaan luku 1 - maksimi
-     *
+     * arvotaan luku 0 - (maksimi - 1)
+      *
      * @param maksimi
      * @return
      */
