@@ -9,11 +9,22 @@ package com.antero.laivanupotus.domain;
  *
  * @author Antero Oikkonen
  */
-public class Pelaaja {
+public class Pelaaja implements Comparable<Pelaaja> {
 
     private int pisteet;
     private String nimi;
 
+    public Pelaaja(String nimi,int pisteet) {
+        this.pisteet = pisteet;
+        this.nimi = nimi;
+    }
+
+    
+    public Pelaaja(){
+        
+    }
+    
+    
     public int getPisteet() {
         return pisteet;
     }
@@ -32,6 +43,23 @@ public class Pelaaja {
 
     public void setNimi(String nimi) {
         this.nimi = nimi;
+    }
+
+    @Override
+    public int compareTo(Pelaaja o) {
+        int value = 0;
+        if (pisteet == o.getPisteet()) {
+            value = 0;
+        }
+
+        if (pisteet > o.getPisteet()) {
+            value = -1;
+        }
+
+        if (pisteet < o.getPisteet()) {
+            value = 1;
+        }
+        return value;
     }
 
 }
