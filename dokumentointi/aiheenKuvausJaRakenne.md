@@ -1,25 +1,33 @@
 #Ohjelman nimi "Laivanupotus"
 
-Peliä pelataan 10 x 10 ruudukolla. Ruudukkoon laitetaan 
+Peliä pelataan 10-15 x 10-15 ruudukolla. Ruudukkoon laitetaan 
 erimittaisia laivoja niin että laivojen etäisyys toisistaan
 on vähintään yksi ruutu. Laiva voi olla kiinni reunassa. Laivan
 on oltava joko pystyssä tai vaakasuorassa, ei vinottain.
 
 ## Käyttäjät
 
-Pelaaja ja avustaja
+Pelaaja 
 
-## Avustajan toiminnot
+## Pelin aloitus
 
-Avustaja valitsee ruudukon vieressä olevasta laivalistasta laivan ja 
-asettaa sen pelialueelle, siten että sen etäisyys toisista laivoista 
-on vähintään 1 ruutu. Avustaja jatkaa kunnes kaikki laivat on aseteltu
-pelialueelle.
+Pelaaja antaa nimensä ja valitsee ruudukon koon, oletuksena 10 x 10 ruutua
+maksimissaan 15 x 15 ruutua. 
+
+Ohjelma arpoo vastustajan laivojen paikat omalle ruudukolleen.
 
 ## Pelaajan toiminnot
 
-Pelaaja valitsee ruudun johon hän "ampuu". Peli joko ilmoittaa
-että ohi meni tai osui. Jos osoi, ruutuun ilmaantuu laiva/laivanosa.
+Pelaaja antaa nimensä tulostilastoa varten. Sen jälkeen pelaaja voi suurentaa
+ruudukkoa oletuksen 10 x 10 ruudukosta maksimissaan 15 x 15 ruudukkoon.
+
+Pelaaja asettaa laivansa omaan ruudukkoonsa ja sen jälkeen voidaan aloittaa peli.
+
+Kun peli aloitetaan pelaaja valitsee ruudun johon hän "ampuu". Peli joko ilmoittaa
+että ohi meni tai osui. Jos osoi, ruutuun ilmaantuu laiva/laivanosa. Ja pelaaja saa 
+jatkaa kunnes tulee huti.
+Jos osuu niin pelaajan pistesaldoa päivitetään. Pelaajan ampumisen jälkeen tietokone
+ampuu, jos se osuu, se ampuu uudelleen kunnes menee ohi.
 
 ## Laivat
 
@@ -29,13 +37,9 @@ Laivojen pituudet ja määrät ovat
 * 3 hävittäjää, 2 ruutua
 * 4 sukellusvenettä, 1 ruutu
 
-## Optio 1: Laivojen paikkojen arvonta
+## Pistelistaus
 
-Sovellus arpoo laivojen paikat
-
-## Optio 2: Pistelistaus
-
-Pelaajien pisteiden listaus, joka ammus lasketaan ja 
-vähiten ammuksia kuluttanut on kärjessä.
-Eli paras mahdollinen tulos on 10 pistettä, eli jokainen laiva
-on uponnut, ja yhtään ylimääräistä ammusta ei ole ammuttu.
+Pelaajien pisteiden listaus. Pelaaja saa osumasta 100 pistettä ja menettää 
+ohiammutusta 50 pistettä. Pelaaja voi siis saada loppupisteekseen joko negatiivisen 
+tai positiivisen arvon. Paras pistemäärä
+voittaa.
