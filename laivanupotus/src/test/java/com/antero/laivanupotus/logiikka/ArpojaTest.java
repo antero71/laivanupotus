@@ -28,7 +28,7 @@ public class ArpojaTest {
     public void testaaArvoLuku() {
         int luku = 10;
         int arvottuLuku = Arpoja.arvoLuku(10);
-        System.out.println("arvottuluku "+arvottuLuku);
+        //System.out.println("arvottuluku "+arvottuLuku);
         
         assertTrue(luku > arvottuLuku);
         assertTrue(luku > -1);

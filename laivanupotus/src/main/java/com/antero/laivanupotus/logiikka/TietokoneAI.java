@@ -21,35 +21,55 @@ public class TietokoneAI {
     }
 
     public boolean ammu() {
-        int x = 0;
-        int y = 0;
+        Ruutu ammuttava = null;
         if (viimeksiOsuttu == null) {
-            x = Arpoja.arvoLuku(pelikentta.getKenttaX());
-            y = Arpoja.arvoLuku(pelikentta.getKenttaY());
-
+            ammuttava = arvoAmmuttavaRuutu();
         } else {
-            x = viimeksiOsuttu.getX();
-            y = viimeksiOsuttu.getY();
-            boolean suunta = Arpoja.arvoBoolean();
-            if (suunta && x < (pelikentta.getKenttaX() - 1)) {
-                x++;
-            } else if (suunta) {
-                x--;
-            }
-
-            if (!suunta && y < (pelikentta.getKenttaY() - 1)) {
-                y++;
-            } else if (!suunta) {
-                y--;
-            }
+            ammuttava = ammuViimeksiOsutunViereen();
 
         }
-        boolean osuiko = pelikentta.ammu(x, y);
+        boolean osuiko = pelikentta.ammu(ammuttava);
         if (osuiko) {
-            viimeksiOsuttu = new Ruutu(x, y);
+            viimeksiOsuttu = ammuttava;
         } else {
             viimeksiOsuttu = null;
         }
         return osuiko;
+    }
+
+    private Ruutu ammuViimeksiOsutunViereen() {
+        int x = viimeksiOsuttu.getX();
+        int y = viimeksiOsuttu.getY();
+        boolean suunta = Arpoja.arvoBoolean();
+        if (suunta && x < (pelikentta.getKenttaX() - 1)) {
+            x++;
+        } else if (suunta) {
+            x--;
+        }
+
+        if (!suunta && y < (pelikentta.getKenttaY() - 1)) {
+            y++;
+        } else if (!suunta) {
+            y--;
+        }
+        return new Ruutu(x,y);
+    }
+
+    private Ruutu arvoAmmuttavaRuutu() {
+        int x;
+        int y;
+        int maksimiLoop = pelikentta.getKenttaX() * pelikentta.getKenttaY();
+        int i = 0;
+        do {
+            i++;
+            if (i > maksimiLoop) {
+                return null;
+            }
+            x = Arpoja.arvoLuku(pelikentta.getKenttaX());
+            y = Arpoja.arvoLuku(pelikentta.getKenttaY());
+        } while (pelikentta.onkoAmmuttu(x, y));
+
+        return new Ruutu(x, y);
+
     }
 }

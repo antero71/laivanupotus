@@ -44,10 +44,26 @@ public class Pelikentta {
         return kenttaY;
     }
 
+    /**
+     * palauttaa monta laivaa on pelialueella
+     *
+     * @return
+     */
     public int getLaivojenLkm() {
         return laivojenLkm;
     }
 
+    /**
+     * asetataan laiva laivan sisältämän koordinaatiston perusteella
+     * pelialueelle. Jos menee pelialueen yli, palautuu false ja laivaa ei
+     * aseteta pelialueelle
+     *
+     * jos laiva mahtuu pelialueelle palautuu true ja laiva asetetaan
+     * pelialueelle siihen mihin laivan koordinaatisto osoittaa.
+     *
+     * @param laiva
+     * @return
+     */
     public boolean asetaLaiva(Laiva laiva) {
         TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
         // System.out.println(laivanRuudut);
@@ -68,17 +84,32 @@ public class Pelikentta {
             laivat.put(r, laiva);
             int x = r.getX();
             int y = r.getY();
-            System.out.println("asetalaiva x="+x+",y="+y);
-            alustaRuutu(r, x, y, true, true);
+            System.out.println("asetalaiva x=" + x + ",y=" + y);
+            alustaRuutu(r, x, y, true, true, false);
         }
+        asetaLaivanKieltoalue(laiva);
         laivojenLkm++;
         return true;
     }
 
-    public boolean ammu(Ruutu r){
-        return ammu(r.getX(),r.getY());
+    /**
+     * ammutaan Ruutu olion koordinaattien osoittamaan paikkaan
+     *
+     * @param r Ruutu
+     * @return boolean, true osoi, false ohi meni
+     */
+    public boolean ammu(Ruutu r) {
+        return ammu(r.getX(), r.getY());
     }
-    
+
+    /**
+     * ammutaan annettuihin koordinaatteihin, jos osuu, palautuu true muuten
+     * false
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean ammu(int x, int y) {
         Ruutu r = ruudut[x][y];
         boolean osui = false;
@@ -89,21 +120,40 @@ public class Pelikentta {
             }
         } else {
             r = new Ruutu();
-            alustaRuutu(r, x, y, false, false);
+            alustaRuutu(r, x, y, false, false, false);
         }
         r.setAmmuttu(true);
         return osui;
     }
 
-    public boolean onkoAmmuttu(int x,int y){
-        if(ruudut[x][y]==null)
+    /**
+     * palauttaa true jos annettuihin koordinaatteihin on ammuttu
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+    public boolean onkoAmmuttu(int x, int y) {
+        if (ruudut[x][y] == null) {
             return false;
-        if(!ruudut[x][y].isAmmuttu()){
+        }
+        if (!ruudut[x][y].isAmmuttu()) {
             return false;
         }
         return true;
     }
-    
+
+    /**
+     * Palauttaa upposiko laiva jonka jokin osa on koordinaateissa x,y
+     *
+     * Jos ko. koordinaateissa ei ole laivaa palatuu false
+     *
+     * Jos laivan osa on koordinaateissa, tarkistataan ko. laivan status
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean upposiko(int x, int y) {
         Ruutu r = ruudut[x][y];
         if (r != null) {
@@ -112,6 +162,11 @@ public class Pelikentta {
         return false;
     }
 
+    /**
+     * palauttaa pelikentän Ruudut -taulukon
+     *
+     * @return
+     */
     public Ruutu[][] getRuudut() {
         return ruudut;
     }
@@ -151,12 +206,10 @@ public class Pelikentta {
         int loppuy = laivanRuudut.last().getY();
         int ypituus = kenttaY;
         int xpituus = kenttaX;
-        
-        if(loppux == 10 || loppuy == 10){
-             int i = 0;
-        }
-           
 
+        if (loppux == 10 || loppuy == 10) {
+            int i = 0;
+        }
 
         if (alkux < 1 || alkuy < 0) {
             return true;
@@ -165,16 +218,78 @@ public class Pelikentta {
             return true;
         }
 
-        if (loppux > (xpituus-1) || loppuy > (ypituus-1)) {
+        if (loppux > (xpituus - 1) || loppuy > (ypituus - 1)) {
             return true;
         }
 
         return false;
     }
 
+    public void asetaLaivanKieltoalue(Laiva laiva) {
+        // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
+        // 1 ruudun päässä
+        int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva);
+
+        System.out.println("alkux " + koordinaatit[0]);
+        System.out.println("loppux " + koordinaatit[1]);
+        System.out.println("alkuy " + koordinaatit[2]);
+        System.out.println("loppux " + koordinaatit[3]);
+        // Lisätään loppukoordinaatteihin yksi jotta voidaan 
+        // käyttäää < vertailua
+        int vertailux = kenttaX - 1;
+        int vertailuy = kenttaY - 1;
+        System.out.println("vertailux " + vertailux);
+        System.out.println("vertailuy " + vertailuy);
+        System.out.println("koordinaatit[1] " + koordinaatit[1]);
+        System.out.println("koordinaatit[3] " + koordinaatit[3]);
+
+        if (koordinaatit[1] < vertailux) {
+            koordinaatit[1]++;
+        }
+
+        if (koordinaatit[1] < vertailuy) {
+            koordinaatit[3]++;
+        }
+
+        TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
+        Ruutu ruutu = null;
+        for (int i = koordinaatit[0]; i < koordinaatit[1]; i++) {
+            for (int j = koordinaatit[2]; j < koordinaatit[3]; j++) {
+                //System.out.println("x = "+1+" y = "+j);
+                ruutu = new Ruutu(i, j);
+                if (!laivanRuudut.contains(ruutu)) {
+                    alustaRuutu(ruutu, i, j, false, true, false);
+                }
+
+            }
+        }
+
+    }
+
     public boolean tarkistaOnkoKiellettyAsettaaLaivaa(Laiva laiva) {
         // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
         // 1 ruudun päässä
+
+        int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva);
+
+        for (int i = koordinaatit[0]; i < koordinaatit[1]; i++) {
+            for (int j = koordinaatit[2]; j < koordinaatit[3]; j++) {
+
+                if (ruudut[i][j] != null && ruudut[i][j].isKielletty() && ruudut[i][j].isLaivanOsa()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
+    }
+
+    /**
+     * palauttaa int[] jossa alkiossa 0 on alkux, 1:ssa loppux 2:ssa alkuy ja
+     * 3:ssa loppuy
+     */
+    private int[] laskeAlkuXYJaLoppuXYymparoivalleAlueelle(Laiva laiva) {
         TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
         Ruutu alku = laivanRuudut.first();
         int alkux = alku.getX();
@@ -190,37 +305,103 @@ public class Pelikentta {
             alkuy--;
         }
 
-        if (loppux < kenttaX) {
+        if ((kenttaX-1)> loppux) {
             loppux++;
         }
-        if (loppuy < kenttaY) {
+        if ((kenttaY-1) > loppuy) {
             loppuy++;
         }
-
-        for (int i = alkux; i < loppux; i++) {
-            for (int j = alkuy; j < loppuy; j++) {
-                //System.out.println("x = "+1+" y = "+j);
-
-                if (ruudut[i][j] != null && ruudut[i][j].isKielletty()) {
-                    return true;
-                }
-            }
+ 
+        if(loppux == 10 || loppuy == 10){
+            System.out.println("alkux "+alkux);
+            System.out.println("loppyx "+loppux);
+            System.out.println("alkuy "+alkuy);
+            System.out.println("loppuy "+loppuy);
+            System.out.println("KenttaX "+kenttaX);
+            System.out.println("KenttaY "+kenttaY);
         }
-
-        return false;
+        
+        int[] koordinaatit = new int[4];
+        koordinaatit[0] = alkux;
+        koordinaatit[1] = loppux;
+        koordinaatit[2] = alkuy;
+        koordinaatit[3] = loppuy;
+        return koordinaatit;
 
     }
 
-    private void alustaRuutu(Ruutu r, int x, int y, boolean laivanOsa, boolean kielletty) {
+    private void alustaRuutu(Ruutu r, int x, int y, boolean laivanOsa, boolean kielletty, boolean ammuttu) {
         if (r == null) {
             r = new Ruutu();
         }
         r.setX(x);
         r.setY(y);
-        r.setAmmuttu(true);
+        r.setAmmuttu(ammuttu);
         r.setLaivanOsa(laivanOsa);
         r.setKielletty(kielletty);
         ruudut[x][y] = r;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer pelikentta = kokoPelikenttaOsumatString();
+        pelikentta.append("\n\n");
+        pelikentta.append(pelikenttaLaivatString());
+
+        return pelikentta.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private StringBuffer kokoPelikenttaOsumatString() {
+        StringBuffer b = new StringBuffer();
+        for (int x = 0; x < kenttaX; x++) {
+            for (int y = 0; y < kenttaY; y++) {
+                if (ruudut[x][y] == null || (ruudut[x][y].isLaivanOsa() && !ruudut[x][y].isOsui())) {
+                    b.append(" ");
+                }
+                if (ruudut[x][y] != null && ruudut[x][y].isOsui()) {
+                    b.append("X");
+                }
+                if (ruudut[x][y] != null && !ruudut[x][y].isOsui() && ruudut[x][y].isAmmuttu()) {
+                    b.append("O");
+                }
+            }
+            b.append("\n");
+        }
+        return b;
+    }
+
+    private StringBuffer pelikenttaLaivatString() {
+        StringBuffer b = new StringBuffer();
+        for (int x = 0; x < kenttaX; x++) {
+            for (int y = 0; y < kenttaY; y++) {
+                if (ruudut[x][y] == null || !ruudut[x][y].isLaivanOsa()) {
+                    b.append(" ");
+                } else if (ruudut[x][y].isLaivanOsa()) {
+                    b.append("X");
+                }
+
+            }
+            b.append("\n");
+        }
+        return b;
+    }
+
+    public StringBuffer pelikenttaLaivatJaKielletytRuudutString() {
+        StringBuffer b = new StringBuffer();
+        for (int x = 0; x < kenttaX; x++) {
+            for (int y = 0; y < kenttaY; y++) {
+                if (ruudut[x][y] == null || (!ruudut[x][y].isLaivanOsa() && !ruudut[x][y].isKielletty())) {
+                    b.append(" ");
+                } else if (ruudut[x][y].isLaivanOsa()) {
+                    b.append("X");
+                } else if (ruudut[x][y].isKielletty() && !ruudut[x][y].isLaivanOsa()) {
+                    b.append("K");
+                }
+
+            }
+            b.append("\n");
+        }
+        return b;
     }
 
 }

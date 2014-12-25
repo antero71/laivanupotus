@@ -94,17 +94,19 @@ public class PelikenttaTest {
         assertFalse("Toista laivaa ei voi asettaa jo olemassaolevan laivan viereen", pelikentta.asetaLaiva(laiva));
 
     }
+    
+   
 
     @Test
-    public void tarkistaOnkoKiellettyAsettaaLaivaaToisenLaivanViereenYhdenRuudunPaahan() {
+    public void tarkistaOnkoKiellettyAsettaaLaivaaKulmittainToisenLaivanViereenYhdenRuudunPaahan() {
         Laiva laiva = new Laiva(3);
-        laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
+        laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
         pelikentta.alustaRuudukko();
         pelikentta.asetaLaiva(laiva);
 
         laiva = new Laiva(3);
-        laiva.asetaLaivanPaikka(3, 6, Suunta.VAAKA);
-        assertTrue("Toinen laiva voi olla yhden ruudun päässä toisesta laivasta", pelikentta.asetaLaiva(laiva));
+        laiva.asetaLaivanPaikka(5, 4, Suunta.PYSTY);
+        assertFalse("Toinen laiva ei voi olla kulmittain toisessa laivassa kiinni.", pelikentta.asetaLaiva(laiva));
 
     }
 
@@ -179,6 +181,25 @@ public class PelikenttaTest {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(10, 10, Suunta.VAAKA);
         assertFalse(pelikentta.asetaLaiva(laiva));
+    }
+    
+    @Test
+    public void testaaToString(){
+        LaivojenPaikkojenArpoja arpoja = new LaivojenPaikkojenArpoja();
+        arpoja.alustaLaivat(pelikentta);
+        
+        System.out.println("pelikentta "+pelikentta);
+    }
+    
+    @Test
+    public void testaaKiellettyAlue(){
+        Laiva l = new Laiva(1);
+        
+        l.asetaLaivanPaikka(3, 3, Suunta.PYSTY);
+        pelikentta.asetaLaiva(l);
+        
+        System.out.println("kielletyt ruudut "+pelikentta.pelikenttaLaivatJaKielletytRuudutString());
+        
     }
 
 }

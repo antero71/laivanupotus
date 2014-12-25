@@ -18,8 +18,6 @@ import java.util.Random;
  */
 public class LaivojenPaikkojenArpoja {
 
-
-
     private Random random = new Random();
 
     public void alustaLaivat(Pelikentta peli) {
@@ -28,19 +26,18 @@ public class LaivojenPaikkojenArpoja {
         Iterator<Laiva> iter = laivat.iterator();
         while (iter.hasNext()) {
             Laiva l = iter.next();
-            arvoLaivanPaikka(peli, l);
-            //System.out.println("laiva "+l.toString());
-            while (peli.asetaLaiva(l) != true) {
+            do {
                 arvoLaivanPaikka(peli, l);
-            }
+
+            } while (peli.asetaLaiva(l) != true);
         }
     }
 
     private void arvoLaivanPaikka(Pelikentta peli, Laiva l) {
-        int x = arvoLuku(peli.getKenttaX());
-        int y = arvoLuku(peli.getKenttaY());
-        System.out.println("arvottu x="+x+":y="+y);
-        int s = arvoLuku(2);
+        int x = Arpoja.arvoLuku(peli.getKenttaX());
+        int y = Arpoja.arvoLuku(peli.getKenttaY());
+        //System.out.println("arvottu x="+x+":y="+y);
+        int s = Arpoja.arvoLuku(2);
         if (s == 0) {
             l.asetaLaivanPaikka(x, y, Suunta.VAAKA);
         }
@@ -69,15 +66,4 @@ public class LaivojenPaikkojenArpoja {
         return laivat;
 
     }
-
-    /**
-     * arvotaan luku 0 - (maksimi - 1)
-      *
-     * @param maksimi
-     * @return
-     */
-    private int arvoLuku(int maksimi) {
-        return random.nextInt(maksimi);
-    }
-
 }

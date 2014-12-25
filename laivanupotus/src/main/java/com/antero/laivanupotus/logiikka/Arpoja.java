@@ -24,4 +24,8 @@ public class Arpoja {
     public static int arvoLuku(int luku) {
         return rand.nextInt(luku);
     }
+    
+    public static boolean arvoBoolean(){
+        return rand.nextBoolean();
+    }
 }
