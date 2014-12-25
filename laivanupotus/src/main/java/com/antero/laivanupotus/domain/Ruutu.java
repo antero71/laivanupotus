@@ -6,7 +6,7 @@
 package com.antero.laivanupotus.domain;
 
 /**
- *
+ * Pelin ruudut, 
  * @author Antero Oikkonen
  */
 public class Ruutu implements Comparable<Ruutu> {
@@ -93,12 +93,6 @@ public class Ruutu implements Comparable<Ruutu> {
         if (this.y != other.y) {
             return false;
         }
-        if (this.kielletty != other.kielletty) {
-            return false;
-        }
-        if (this.laivanOsa != other.laivanOsa) {
-            return false;
-        }
         return true;
     }
 
@@ -127,6 +121,10 @@ public class Ruutu implements Comparable<Ruutu> {
         return "x= " + x + ": y=" + y + ": isLaiva = " + laivanOsa + ", kielletty = " + kielletty + ", ammuttu = " + ammuttu + ", osui = " + osui;
     }
 
+    /**
+     * päivitetään osoiko ruutuun vai ei
+     * @param osui 
+     */
     public void osui(boolean osui) {
         this.osui = osui;
     }

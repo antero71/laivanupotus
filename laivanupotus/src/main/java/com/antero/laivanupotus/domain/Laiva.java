@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.TreeSet;
 
 /**
- *
+ * Pelin Laiva luokka joka sisältää Laivan toimillisuudet
  * @author Antero Oikkonen
  */
 public class Laiva {
@@ -52,6 +52,11 @@ public class Laiva {
         return ruudut.size();
     }
 
+    /**
+     * palauttaa <code>Ruutu</code> oliot joista laiva koostuu
+     * @return TreeSet laivan ruuduista
+     */
+    
     public TreeSet<Ruutu> annaLaivanRuudut() {
         return ruudut;
     }
@@ -91,6 +96,11 @@ public class Laiva {
 
     }
 
+    /**
+     * metodi joka tutkii upposiko laiva vai ei
+     * @return true jos kaikkiin laivan ruutuihin on osunut, muuten false
+     */
+    
     public boolean upposiko() {
         boolean upposiko = true;
         Iterator<Ruutu> iter = ruudut.iterator();

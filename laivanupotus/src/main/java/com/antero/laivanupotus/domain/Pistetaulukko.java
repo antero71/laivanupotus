@@ -8,14 +8,7 @@ package com.antero.laivanupotus.domain;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-/**
- *
- * @author Antero Oikkonen
- */
-/**
- *
- * @author Antero Oikkonen
- */
+
 /**
  * pistetaulukko muistaa 10 parhaan pelaajan pisteet
  *
@@ -53,6 +46,11 @@ public class Pistetaulukko {
 
     }
 
+    /**
+     * haetaan pienin pistemäärä
+     * @return pienin pistemäärä
+     */
+    
     public int annaPieninPistemaara(){
         return pelaajat.last().getPisteet();
     }

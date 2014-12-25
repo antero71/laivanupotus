@@ -8,7 +8,7 @@ package com.antero.laivanupotus.logiikka;
 import java.util.Random;
 
 /**
- *
+ * Apuluokka Random toiminnallisuudelle
  * @author Antero Oikkonen
  */
 public class Arpoja {

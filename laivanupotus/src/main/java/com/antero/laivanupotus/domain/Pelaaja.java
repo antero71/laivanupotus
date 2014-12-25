@@ -6,7 +6,7 @@
 package com.antero.laivanupotus.domain;
 
 /**
- *
+ * Pelaaja -luokka sisältää pelaajan nimen ja pisteet
  * @author Antero Oikkonen
  */
 public class Pelaaja implements Comparable<Pelaaja> {

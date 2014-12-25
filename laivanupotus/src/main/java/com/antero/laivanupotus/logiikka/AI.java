@@ -5,10 +5,13 @@
  */
 package com.antero.laivanupotus.logiikka;
 
+import com.antero.laivanupotus.domain.Ruutu;
+
 /**
- *
+ * Rajapinta pelin "älylle"
  * @author Antero Oikkonen
  */
 public interface AI {
-    
+    boolean ammu();
+    Ruutu viimeksiAmmuttu();
 }

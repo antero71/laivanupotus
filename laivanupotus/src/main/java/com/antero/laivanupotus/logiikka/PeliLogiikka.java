@@ -5,6 +5,7 @@
  */
 package com.antero.laivanupotus.logiikka;
 
+import com.antero.laivanupotus.domain.Laiva;
 import com.antero.laivanupotus.domain.Pistetaulukko;
 
 /**
@@ -14,17 +15,25 @@ import com.antero.laivanupotus.domain.Pistetaulukko;
 public class PeliLogiikka {
 
     private Pelikentta tietokoneenPeli;
+    private Pelikentta pelaajanPeli;
     private LaivojenPaikkojenArpoja arpoja;
     private Pistetaulukko pisteet;
+    private AI ai;
 
-    public PeliLogiikka(int x, int y) {
+    public PeliLogiikka(int x, int y, AI ai) {
         tietokoneenPeli = new Pelikentta(x, y);
+        pelaajanPeli = new Pelikentta(x, y);
         arpoja = new LaivojenPaikkojenArpoja();
         pisteet = new Pistetaulukko();
+        this.ai = ai;
     }
 
     public void alustaLaivat() {
         arpoja.alustaLaivat(tietokoneenPeli);
+    }
+    
+    public boolean lisaaLaiva(Laiva laiva){
+        return pelaajanPeli.asetaLaiva(laiva);
     }
 
 }
