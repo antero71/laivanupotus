@@ -28,6 +28,16 @@ public class PeliLogiikka {
         this.ai = ai;
     }
 
+    public AI getAi() {
+        return ai;
+    }
+
+    public void setAi(AI ai) {
+        this.ai = ai;
+    }
+    
+    
+
     public void alustaLaivat() {
         arpoja.alustaLaivat(tietokoneenPeli);
     }
@@ -35,5 +45,19 @@ public class PeliLogiikka {
     public boolean lisaaLaiva(Laiva laiva){
         return pelaajanPeli.asetaLaiva(laiva);
     }
+
+    public Pelikentta getTietokoneenPeli() {
+        return tietokoneenPeli;
+    }
+
+    public Pelikentta getPelaajanPeli() {
+        return pelaajanPeli;
+    }
+
+    public Pistetaulukko getPisteet() {
+        return pisteet;
+    }
+    
+    
 
 }

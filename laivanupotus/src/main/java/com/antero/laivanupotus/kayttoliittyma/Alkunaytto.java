@@ -6,6 +6,10 @@
 package com.antero.laivanupotus.kayttoliittyma;
 
 import com.antero.laivanupotus.domain.Pelaaja;
+import com.antero.laivanupotus.logiikka.Pelikentta;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -99,9 +103,11 @@ public class Alkunaytto extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
-        Kayttoliittyma k = new Kayttoliittyma();
-        k.setPelaaja(new Pelaaja(nimiKentta.getText(),0));
-        k.setVisible(true);
+        Kayttoliittyma2 k = new Kayttoliittyma2();
+        k.setPelaaja(new Pelaaja(nimiKentta.getText(), 0));
+        k.luoRuudukko();
+        k.pack();
+
     }//GEN-LAST:event_okButtonActionPerformed
 
     /**

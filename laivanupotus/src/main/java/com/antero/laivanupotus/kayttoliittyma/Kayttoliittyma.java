@@ -40,6 +40,21 @@ public class Kayttoliittyma extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         tervetuloaLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        l00 = new javax.swing.JLabel();
+        l10 = new javax.swing.JLabel();
+        l20 = new javax.swing.JLabel();
+        l30 = new javax.swing.JLabel();
+        l40 = new javax.swing.JLabel();
+        l50 = new javax.swing.JLabel();
+        l60 = new javax.swing.JLabel();
+        l70 = new javax.swing.JLabel();
+        l80 = new javax.swing.JLabel();
+        l01 = new javax.swing.JLabel();
+        l90 = new javax.swing.JLabel();
+        l02 = new javax.swing.JLabel();
+        l11 = new javax.swing.JLabel();
+        l12 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         aloitaMenu = new javax.swing.JMenu();
         uusiPeliItem = new javax.swing.JMenuItem();
@@ -55,6 +70,97 @@ public class Kayttoliittyma extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        l00.setText("l00");
+
+        l10.setText("l10");
+
+        l20.setText("l20");
+
+        l30.setText("l30");
+
+        l40.setText("l40");
+
+        l50.setText("l50");
+
+        l60.setText("l60");
+
+        l70.setText("l70");
+
+        l80.setText("l80");
+
+        l01.setText("l01");
+
+        l90.setText("l90");
+
+        l02.setText("l02");
+
+        l11.setText("l11");
+
+        l12.setText("l12");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(l00)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l50)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l60)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l70)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l80)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l90))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(l01)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l11))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(l02)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(l12)))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(l00)
+                    .addComponent(l10)
+                    .addComponent(l20)
+                    .addComponent(l30)
+                    .addComponent(l40)
+                    .addComponent(l50)
+                    .addComponent(l60)
+                    .addComponent(l70)
+                    .addComponent(l80)
+                    .addComponent(l90))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(l01)
+                    .addComponent(l11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(l02)
+                    .addComponent(l12))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
 
         aloitaMenu.setText("aloita");
 
@@ -75,16 +181,23 @@ public class Kayttoliittyma extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(tervetuloaLabel)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(tervetuloaLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(93, 93, 93)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(tervetuloaLabel)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,6 +256,21 @@ public class Kayttoliittyma extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel l00;
+    private javax.swing.JLabel l01;
+    private javax.swing.JLabel l02;
+    private javax.swing.JLabel l10;
+    private javax.swing.JLabel l11;
+    private javax.swing.JLabel l12;
+    private javax.swing.JLabel l20;
+    private javax.swing.JLabel l30;
+    private javax.swing.JLabel l40;
+    private javax.swing.JLabel l50;
+    private javax.swing.JLabel l60;
+    private javax.swing.JLabel l70;
+    private javax.swing.JLabel l80;
+    private javax.swing.JLabel l90;
     private javax.swing.JLabel tervetuloaLabel;
     private javax.swing.JMenuItem uusiPeliItem;
     // End of variables declaration//GEN-END:variables
