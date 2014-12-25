@@ -5,22 +5,26 @@
  */
 package com.antero.laivanupotus.logiikka;
 
+import com.antero.laivanupotus.domain.Pistetaulukko;
+
 /**
  *
  * @author Antero Oikkonen
  */
 public class PeliLogiikka {
 
-    private Pelikentta peli;
+    private Pelikentta tietokoneenPeli;
     private LaivojenPaikkojenArpoja arpoja;
+    private Pistetaulukko pisteet;
 
     public PeliLogiikka(int x, int y) {
-        peli = new Pelikentta(x, y);
+        tietokoneenPeli = new Pelikentta(x, y);
         arpoja = new LaivojenPaikkojenArpoja();
+        pisteet = new Pistetaulukko();
     }
 
     public void alustaLaivat() {
-        arpoja.alustaLaivat(peli);
+        arpoja.alustaLaivat(tietokoneenPeli);
     }
 
 }

@@ -5,6 +5,8 @@
  */
 package com.antero.laivanupotus.kayttoliittyma;
 
+import com.antero.laivanupotus.domain.Pelaaja;
+
 /**
  *
  * @author Antero Oikkonen
@@ -97,6 +99,9 @@ public class Alkunaytto extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
+        Kayttoliittyma k = new Kayttoliittyma();
+        k.setPelaaja(new Pelaaja(nimiKentta.getText(),0));
+        k.setVisible(true);
     }//GEN-LAST:event_okButtonActionPerformed
 
     /**

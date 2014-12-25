@@ -5,6 +5,7 @@
  */
 package com.antero.laivanupotus.kayttoliittyma;
 
+import com.antero.laivanupotus.domain.Pelaaja;
 import com.antero.laivanupotus.logiikka.PeliLogiikka;
 
 /**
@@ -14,6 +15,8 @@ import com.antero.laivanupotus.logiikka.PeliLogiikka;
 public class Kayttoliittyma extends javax.swing.JFrame {
 
     private PeliLogiikka pelilogiikka;
+    private Alkunaytto alkunaytto;
+    private Pelaaja pelaaja;
     
     /**
      * Creates new form Kayttoliittyma
@@ -34,10 +37,12 @@ public class Kayttoliittyma extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        tervetuloaLabel = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        aloitaMenu = new javax.swing.JMenu();
+        uusiPeliItem = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -45,17 +50,23 @@ public class Kayttoliittyma extends javax.swing.JFrame {
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu3.setText("File");
+        aloitaMenu.setText("aloita");
 
-        jMenu5.setText("jMenu5");
-        jMenu3.add(jMenu5);
+        uusiPeliItem.setText("uusi peli");
+        uusiPeliItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uusiPeliItemActionPerformed(evt);
+            }
+        });
+        aloitaMenu.add(uusiPeliItem);
 
-        jMenuBar2.add(jMenu3);
-
-        jMenu4.setText("Edit");
-        jMenuBar2.add(jMenu4);
+        jMenuBar2.add(aloitaMenu);
 
         setJMenuBar(jMenuBar2);
 
@@ -63,15 +74,31 @@ public class Kayttoliittyma extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(tervetuloaLabel)
+                .addContainerGap(309, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(tervetuloaLabel)
+                .addContainerGap(249, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void uusiPeliItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uusiPeliItemActionPerformed
+        // TODO add your handling code here:
+            /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Alkunaytto().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_uusiPeliItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,12 +136,19 @@ public class Kayttoliittyma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu aloitaMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JLabel tervetuloaLabel;
+    private javax.swing.JMenuItem uusiPeliItem;
     // End of variables declaration//GEN-END:variables
+
+    public void setPelaaja(Pelaaja pelaaja) {
+        this.pelaaja = pelaaja;
+        tervetuloaLabel.setText("Tervetuloa: "+pelaaja.getNimi());
+    }
 }

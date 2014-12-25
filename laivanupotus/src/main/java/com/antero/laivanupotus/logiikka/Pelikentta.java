@@ -75,6 +75,10 @@ public class Pelikentta {
         return true;
     }
 
+    public boolean ammu(Ruutu r){
+        return ammu(r.getX(),r.getY());
+    }
+    
     public boolean ammu(int x, int y) {
         Ruutu r = ruudut[x][y];
         boolean osui = false;
@@ -91,6 +95,15 @@ public class Pelikentta {
         return osui;
     }
 
+    public boolean onkoAmmuttu(int x,int y){
+        if(ruudut[x][y]==null)
+            return false;
+        if(!ruudut[x][y].isAmmuttu()){
+            return false;
+        }
+        return true;
+    }
+    
     public boolean upposiko(int x, int y) {
         Ruutu r = ruudut[x][y];
         if (r != null) {
