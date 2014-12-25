@@ -84,7 +84,7 @@ public class Pelikentta {
             laivat.put(r, laiva);
             int x = r.getX();
             int y = r.getY();
-            System.out.println("asetalaiva x=" + x + ",y=" + y);
+            //System.out.println("asetalaiva x=" + x + ",y=" + y);
             alustaRuutu(r, x, y, true, true, false);
         }
         asetaLaivanKieltoalue(laiva);
@@ -225,24 +225,21 @@ public class Pelikentta {
         return false;
     }
 
+    /**
+     * laivan ympärillä olevat ruudut merkitään kielletyiksi
+     * @param laiva 
+     */
+    
     public void asetaLaivanKieltoalue(Laiva laiva) {
         // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
         // 1 ruudun päässä
         int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva);
 
-        System.out.println("alkux " + koordinaatit[0]);
-        System.out.println("loppux " + koordinaatit[1]);
-        System.out.println("alkuy " + koordinaatit[2]);
-        System.out.println("loppux " + koordinaatit[3]);
         // Lisätään loppukoordinaatteihin yksi jotta voidaan 
         // käyttäää < vertailua
         int vertailux = kenttaX - 1;
         int vertailuy = kenttaY - 1;
-        System.out.println("vertailux " + vertailux);
-        System.out.println("vertailuy " + vertailuy);
-        System.out.println("koordinaatit[1] " + koordinaatit[1]);
-        System.out.println("koordinaatit[3] " + koordinaatit[3]);
-
+      
         if (koordinaatit[1] < vertailux) {
             koordinaatit[1]++;
         }

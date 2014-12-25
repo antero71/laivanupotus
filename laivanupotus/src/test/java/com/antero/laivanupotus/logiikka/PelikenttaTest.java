@@ -44,7 +44,7 @@ public class PelikenttaTest {
         Ruutu[][] ruudut = pelikentta.getRuudut();
 
         Ruutu alkuruutu = ruudut[0][0];
-        System.out.println("ruudut.length "+ruudut.length);
+        System.out.println("ruudut.length " + ruudut.length);
         Ruutu loppuruutu = ruudut[9][9];
         assertEquals("Alkuruudun x-koordinaatti ei ole 0", 0, alkuruutu.getX());
         assertEquals("Alkuruudun y-koordinaatti ei ole 0", 0, alkuruutu.getY());
@@ -94,8 +94,6 @@ public class PelikenttaTest {
         assertFalse("Toista laivaa ei voi asettaa jo olemassaolevan laivan viereen", pelikentta.asetaLaiva(laiva));
 
     }
-    
-   
 
     @Test
     public void tarkistaOnkoKiellettyAsettaaLaivaaKulmittainToisenLaivanViereenYhdenRuudunPaahan() {
@@ -159,7 +157,7 @@ public class PelikenttaTest {
         assertTrue("Pitäisi osua", pelikentta.ammu(2, 4));
 
         assertTrue(laiva.upposiko());
-        
+
         assertTrue(pelikentta.upposiko(2, 3));
 
     }
@@ -170,36 +168,37 @@ public class PelikenttaTest {
         laiva.asetaLaivanPaikka(2, 3, Suunta.PYSTY);
         pelikentta.asetaLaiva(laiva);
         assertTrue("Pitäisi osua", pelikentta.ammu(2, 3));
+        assertFalse(pelikentta.upposiko(2, 3));
         assertFalse("Ei pitäisi osua", pelikentta.ammu(2, 6));
 
         assertFalse(laiva.upposiko());
 
     }
-    
+
     @Test
-    public void testaaVoikoMennaYliAlueen(){
+    public void testaaVoikoMennaYliAlueen() {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(10, 10, Suunta.VAAKA);
         assertFalse(pelikentta.asetaLaiva(laiva));
     }
-    
+
     @Test
-    public void testaaToString(){
+    public void testaaToString() {
         LaivojenPaikkojenArpoja arpoja = new LaivojenPaikkojenArpoja();
         arpoja.alustaLaivat(pelikentta);
-        
-        System.out.println("pelikentta "+pelikentta);
+
+        System.out.println("pelikentta " + pelikentta);
     }
-    
+
     @Test
-    public void testaaKiellettyAlue(){
+    public void testaaKiellettyAlue() {
         Laiva l = new Laiva(1);
-        
+
         l.asetaLaivanPaikka(3, 3, Suunta.PYSTY);
         pelikentta.asetaLaiva(l);
-        
-        System.out.println("kielletyt ruudut "+pelikentta.pelikenttaLaivatJaKielletytRuudutString());
-        
+
+        System.out.println("kielletyt ruudut " + pelikentta.pelikenttaLaivatJaKielletytRuudutString());
+
     }
 
 }
