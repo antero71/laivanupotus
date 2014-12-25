@@ -7,4 +7,7 @@
              niiden testejä, 3,5 h
 * 22.12.2014 Pelikentän ruudukon koon viilausta, Pelaaja, Pistetaulukko koodausta 
              ja testausta, pit-raportin ja checkstyle -raportin tekoa. 4 h
+* 23.12.2014 luokkakaavion piirtämistä ja viemistä githubiin, 0,5 h
+* 25.12.2014 pelikentän laivan ympäristön kieltoalueen korjausta, Tietokoneen teko"älyä", käyttöliittymään liittyvää
+             säätämämistä, 7 h
 
