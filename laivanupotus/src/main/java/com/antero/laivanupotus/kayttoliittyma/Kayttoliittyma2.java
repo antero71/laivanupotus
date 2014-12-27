@@ -14,6 +14,8 @@ import com.antero.laivanupotus.logiikka.PeliLogiikka;
 import com.antero.laivanupotus.logiikka.Pelikentta;
 import com.antero.laivanupotus.logiikka.TietokoneAI;
 import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.MenuBar;
 import javax.swing.GroupLayout;
@@ -48,12 +50,9 @@ public class Kayttoliittyma2 extends JFrame {
     private javax.swing.JMenuBar menuBar = new JMenuBar();
 
     JPanel panel = new JPanel();
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem lopetaItem;
     private javax.swing.JLabel tervetuloaLabel;
     //private javax.swing.JMenuItem uusiPeliItem;
     // End of variables dec
@@ -61,25 +60,15 @@ public class Kayttoliittyma2 extends JFrame {
     // private javax.swing.JLabel tervetuloaLabel = new JLabel();
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        lopetaItem = new javax.swing.JMenuItem();
         tervetuloaLabel = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         aloitaMenu = new javax.swing.JMenu();
         uusiPeliItem = new javax.swing.JMenuItem();
+     
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenuItem2.setText("jMenuItem2");
+        lopetaItem.setText("Lopeta");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,7 +82,14 @@ public class Kayttoliittyma2 extends JFrame {
                 uusiPeliItemActionPerformed(evt);
             }
         });
+        
+        lopetaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                System.exit(-1);
+            }
+        });
         aloitaMenu.add(uusiPeliItem);
+        aloitaMenu.add(lopetaItem);
 
         menuBar.add(aloitaMenu);
 
@@ -105,7 +101,12 @@ public class Kayttoliittyma2 extends JFrame {
 
         setJMenuBar(jMenuBar2);
         this.setTitle("Laivanupotus");
+        
+        JPanel pistePanel = new Pistenaytto();
+        this.getContentPane().add(pistePanel);
+        
         pack();
+        setVisible(true);
 
     }
 
@@ -132,9 +133,9 @@ public class Kayttoliittyma2 extends JFrame {
         tervetuloaLabel.setText("Tervetuloa: " + pelaaja.getNimi());
     }
 
-    public void luoRuudukko() {
+    public JPanel luoRuudukko() {
         GridLayout layout = new GridLayout(pelilogiikka.getPelaajanPeli().getKenttaX(), pelilogiikka.getPelaajanPeli().getKenttaY());
-        JPanel alusta = new JPanel(layout);
+        JPanel pelipanel = new JPanel(layout);
         //this.peli.valmisteleAlusta();
         pelilogiikka.alustaLaivat();
 
@@ -142,16 +143,16 @@ public class Kayttoliittyma2 extends JFrame {
             for (int j = 0; j < pelilogiikka.getPelaajanPeli().getKenttaY(); j++) {
                 Ruutu ruutu = new Ruutu(i, j);
                 NaytonRuutu naytonRuutu = new NaytonRuutu(ruutu);
-                naytonRuutu.setSize(30, 30);
+                naytonRuutu.setPreferredSize(new Dimension(30,30));
+                
                 tahtain = new Ammuskuuntelija(this, i, j, naytonRuutu);
                 naytonRuutu.addActionListener(tahtain);
-                alusta.add(naytonRuutu);
+                pelipanel.add(naytonRuutu);
             }
 
         }
 
-        this.add(alusta,BorderLayout.SOUTH);
-        this.pack();
+        return pelipanel;
     }
 
 }
