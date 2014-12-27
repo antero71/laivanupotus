@@ -172,6 +172,17 @@ public class Pelikentta {
         }
         return false;
     }
+    
+    /**
+     * upposiko Ruudun osoittamassa paikassa oleva laiva?
+     * 
+     * @param r
+     * @return true jos laiva upposi, false muussa tapauksessa
+     */
+    
+    public boolean upposiko(Ruutu r){
+        return upposiko(r.getX(),r.getY());
+    }
 
     /**
      * palauttaa pelikentän Ruudut -taulukon

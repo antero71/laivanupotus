@@ -31,6 +31,10 @@ public class Ammuskuuntelija implements ActionListener {
             naytonRuutu.setBorder(null);
           
             muutaPisteita(100);
+            if(kali.getPelilogiikka().getTietokoneenPeli().upposiko(naytonRuutu.getRuutu())){
+                muutaPisteita(1000);
+            }
+            
         } else {
             naytonRuutu.setText("O");
             muutaPisteita(-50);
