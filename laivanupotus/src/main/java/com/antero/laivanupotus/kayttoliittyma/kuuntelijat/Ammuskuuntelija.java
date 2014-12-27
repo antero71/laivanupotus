@@ -5,8 +5,9 @@
  */
 package com.antero.laivanupotus.kayttoliittyma.kuuntelijat;
 
-import com.antero.laivanupotus.kayttoliittyma.Kayttoliittyma2;
+import com.antero.laivanupotus.kayttoliittyma.Kayttoliittyma;
 import com.antero.laivanupotus.kayttoliittyma.NaytonRuutu;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,26 +15,39 @@ import java.awt.event.ActionListener;
  *
  * @author Antero Oikkonen
  */
-public class Ammuskuuntelija implements ActionListener{
+public class Ammuskuuntelija implements ActionListener {
 
     private int x;
     private int y;
-    private Kayttoliittyma2 kl2;
+    private Kayttoliittyma kali;
     private final NaytonRuutu naytonRuutu;
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-         
+
+        if (kali.getPelilogiikka().getTietokoneenPeli().ammu(naytonRuutu.getRuutu())) {
+            naytonRuutu.setText("X");
+            naytonRuutu.setBorder(null);
+            naytonRuutu.setBackground(Color.RED);
+            muutaPisteita(100);
+        } else {
+            naytonRuutu.setText("O");
+            muutaPisteita(-50);
+        }
     }
 
-    public Ammuskuuntelija(Kayttoliittyma2 kl2, int x, int y, NaytonRuutu naytonRuutu) {
-        this.kl2=kl2;
+    private void muutaPisteita(int muutos) {
+        int pisteet = Integer.parseInt(kali.getPistenaytto().getPelaajanPisteet().getText());
+        pisteet += muutos;
+        kali.getPistenaytto().getPelaajanPisteet().setText("" + pisteet);
+
+    }
+
+    public Ammuskuuntelija(Kayttoliittyma kl2, int x, int y, NaytonRuutu naytonRuutu) {
+        this.kali = kl2;
         this.x = x;
         this.y = y;
         this.naytonRuutu = naytonRuutu;
     }
-    
-    
-    
+
 }

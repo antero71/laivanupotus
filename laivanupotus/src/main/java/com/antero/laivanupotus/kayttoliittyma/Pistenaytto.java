@@ -23,6 +23,8 @@ public class Pistenaytto extends JPanel {
 
     BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 
+    
+    
     public Pistenaytto() {
         this.setLayout(layout);
         this.add(pelaajanNimi);
@@ -30,6 +32,12 @@ public class Pistenaytto extends JPanel {
         //pelaajanNimi.setText("Testi");
         //pelaajanPisteet.setText("109");
     }
+
+    public JLabel getPelaajanPisteet() {
+        return pelaajanPisteet;
+    }
+    
+    
     
     public void setPelaaja(Pelaaja pelaaja){
         pelaajanNimi.setText(pelaaja.getNimi());

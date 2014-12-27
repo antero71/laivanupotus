@@ -19,5 +19,11 @@ public class NaytonRuutu extends JButton{
         super();
         this.r=r;
     }
+
+    public Ruutu getRuutu() {
+        return r;
+    }
+    
+    
     
 }
