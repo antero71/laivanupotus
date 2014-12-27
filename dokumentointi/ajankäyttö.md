@@ -10,4 +10,5 @@
 * 23.12.2014 luokkakaavion piirtämistä ja viemistä githubiin, 0,5 h
 * 25.12.2014 pelikentän laivan ympäristön kieltoalueen korjausta, Tietokoneen teko"älyä", käyttöliittymään liittyvää
              säätämämistä, 7 h
+* 27.12.2014 käyttöliittymän kanssa säätämästi ja korjauksia laivan paikan asetukseen, 4 h
 
