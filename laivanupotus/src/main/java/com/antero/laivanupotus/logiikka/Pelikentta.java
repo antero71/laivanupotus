@@ -239,7 +239,7 @@ public class Pelikentta {
     /**
      * laivan ympärillä olevat ruudut merkitään kielletyiksi
      *
-     * @param laiva
+     * @param laiva jonka ympäristä asetataan ruudut kielletyiksi
      */
     public void asetaLaivanKieltoalue(Laiva laiva) {
         // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
@@ -274,7 +274,7 @@ public class Pelikentta {
 
     }
 
-    private boolean tarkistaOnkoKiellettyAsettaaLaivaa(Laiva laiva) {
+    public boolean tarkistaOnkoKiellettyAsettaaLaivaa(Laiva laiva) {
         // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
         // 1 ruudun päässä
 
@@ -283,7 +283,7 @@ public class Pelikentta {
         for (int i = koordinaatit[0]; i < koordinaatit[1]; i++) {
             for (int j = koordinaatit[2]; j < koordinaatit[3]; j++) {
 
-                if (ruudut[i][j] != null && ruudut[i][j].isKielletty() && ruudut[i][j].isLaivanOsa()) {
+                if (ruudut[i][j] != null && ruudut[i][j].isKielletty()) {
                     return true;
                 }
             }

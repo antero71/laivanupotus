@@ -27,8 +27,9 @@ public class Ammuskuuntelija implements ActionListener {
 
         if (kali.getPelilogiikka().getTietokoneenPeli().ammu(naytonRuutu.getRuutu())) {
             naytonRuutu.setText("X");
-            naytonRuutu.setBorder(null);
             naytonRuutu.setBackground(Color.RED);
+            naytonRuutu.setBorder(null);
+          
             muutaPisteita(100);
         } else {
             naytonRuutu.setText("O");

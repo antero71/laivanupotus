@@ -33,4 +33,9 @@ public class LaivojenPaikkojenArvontaTest {
         assertEquals(10, peli.getLaivojenLkm());
     }
     
+    @Test
+    public void onkoArvottuLaivojaLiianLahelleToisiaan(){
+        
+    }
+    
 }

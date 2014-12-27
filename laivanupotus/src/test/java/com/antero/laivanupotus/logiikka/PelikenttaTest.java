@@ -189,6 +189,21 @@ public class PelikenttaTest {
 
         System.out.println("pelikentta " + pelikentta);
     }
+    
+    @Test
+    public void testaaVoikoAsettaaSukellusvenettaLentotukialuksenViereen(){
+        Laiva sukellusvene = new Laiva(1);
+        
+        sukellusvene.asetaLaivanPaikka(4,3,Suunta.PYSTY);
+        
+        Laiva lentotukialus = new Laiva(Laiva.LENTOTUKIALUS_PITUUS);
+        
+        lentotukialus.asetaLaivanPaikka(2, 4, Suunta.VAAKA);
+        
+        assertTrue(pelikentta.asetaLaiva(lentotukialus));
+        
+        assertFalse(pelikentta.asetaLaiva(sukellusvene));
+    }
 
     @Test
     public void testaaKiellettyAlue() {
@@ -199,6 +214,16 @@ public class PelikenttaTest {
 
         System.out.println("kielletyt ruudut " + pelikentta.pelikenttaLaivatJaKielletytRuudutString());
 
+        Laiva l2 = new Laiva(1);
+        l2.asetaLaivanPaikka(4,4,Suunta.PYSTY);
+        
+        assertFalse(pelikentta.asetaLaiva(l2));
+        
+        l2.asetaLaivanPaikka(2, 2, Suunta.VAAKA);
+        
+        assertFalse(pelikentta.asetaLaiva(l2));
+        
+        
     }
 
 }
