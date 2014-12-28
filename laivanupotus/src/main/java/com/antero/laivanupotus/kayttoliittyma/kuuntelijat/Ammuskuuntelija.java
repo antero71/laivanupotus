@@ -5,8 +5,11 @@
  */
 package com.antero.laivanupotus.kayttoliittyma.kuuntelijat;
 
+import com.antero.laivanupotus.domain.Pelaaja;
+import com.antero.laivanupotus.domain.Pistetaulukko;
 import com.antero.laivanupotus.kayttoliittyma.Kayttoliittyma;
 import com.antero.laivanupotus.kayttoliittyma.NaytonRuutu;
+import com.antero.laivanupotus.tiedostot.Tiedosto;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,12 +32,17 @@ public class Ammuskuuntelija implements ActionListener {
             naytonRuutu.setText("X");
             naytonRuutu.setBackground(Color.RED);
             naytonRuutu.setBorder(null);
-          
+
             muutaPisteita(100);
-            if(kali.getPelilogiikka().getTietokoneenPeli().upposiko(naytonRuutu.getRuutu())){
+            if (kali.getPelilogiikka().getTietokoneenPeli().upposiko(naytonRuutu.getRuutu())) {
                 muutaPisteita(1000);
             }
-            
+            if (kali.getPelilogiikka().getTietokoneenPeli().isPeliPaattynyt()) {
+                kali.getPistenaytto().getIlmoitus().setText("Peli päättyi!");
+                Pistetaulukko pisteet = luoPistetaulukko();
+                Tiedosto.tallennaTiedosto(pisteet);
+                return;
+            }
         } else {
             naytonRuutu.setText("O");
             muutaPisteita(-50);
@@ -53,6 +61,17 @@ public class Ammuskuuntelija implements ActionListener {
         this.x = x;
         this.y = y;
         this.naytonRuutu = naytonRuutu;
+    }
+
+    private Pistetaulukko luoPistetaulukko() {
+        String pisteet = kali.getPistenaytto().getPelaajanPisteet().getText();
+        String nimi = kali.getPistenaytto().getPelaajanNimi().getText();
+       
+        Pelaaja p = new Pelaaja(nimi, Integer.parseInt(pisteet));
+        Pistetaulukko pistaul = new Pistetaulukko();
+        pistaul.lisaaPelaajaPistetaulukkoon(p);
+        return pistaul;
+        
     }
 
 }

@@ -8,6 +8,7 @@ package com.antero.laivanupotus.logiikka;
 import com.antero.laivanupotus.domain.Laiva;
 import com.antero.laivanupotus.domain.Ruutu;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -25,6 +26,8 @@ public class Pelikentta {
     private int laivojenLkm = 0;
     private int kenttaX;
     private int kenttaY;
+
+    private Collection<Laiva> laivatCol = new ArrayList();
 
     /**
      * mahdollistetaan pelikentän koon muutos (oletuksena 10 x 10 ruutua
@@ -100,6 +103,7 @@ public class Pelikentta {
         }
         asetaLaivanKieltoalue(laiva);
         laivojenLkm++;
+        laivatCol.add(laiva);
         return true;
     }
 
@@ -163,7 +167,8 @@ public class Pelikentta {
      *
      * @param x x-koordinaatti 0...(kenttaX-1)
      * @param y y-koordinaatti 0...(kenttaY-1)
-     * @return boolean, true jos koordinaateissa oleva laiva upposi, muuten false
+     * @return boolean, true jos koordinaateissa oleva laiva upposi, muuten
+     * false
      */
     public boolean upposiko(int x, int y) {
         Ruutu r = ruudut[x][y];
@@ -172,16 +177,15 @@ public class Pelikentta {
         }
         return false;
     }
-    
+
     /**
      * upposiko Ruudun osoittamassa paikassa oleva laiva?
-     * 
+     *
      * @param r
      * @return true jos laiva upposi, false muussa tapauksessa
      */
-    
-    public boolean upposiko(Ruutu r){
-        return upposiko(r.getX(),r.getY());
+    public boolean upposiko(Ruutu r) {
+        return upposiko(r.getX(), r.getY());
     }
 
     /**
@@ -317,10 +321,10 @@ public class Pelikentta {
         int loppux = loppu.getX();
         int loppuy = loppu.getY();
 
-        if (alkux > 1) {
+        if (alkux > 0) {
             alkux--;
         }
-        if (alkuy > 1) {
+        if (alkuy > 0) {
             alkuy--;
         }
 
@@ -331,20 +335,13 @@ public class Pelikentta {
             loppuy++;
         }
 
-        if (loppux == 10 || loppuy == 10) {
-            System.out.println("alkux " + alkux);
-            System.out.println("loppyx " + loppux);
-            System.out.println("alkuy " + alkuy);
-            System.out.println("loppuy " + loppuy);
-            System.out.println("KenttaX " + kenttaX);
-            System.out.println("KenttaY " + kenttaY);
-        }
-
         int[] koordinaatit = new int[4];
+
         koordinaatit[0] = alkux;
         koordinaatit[1] = loppux;
         koordinaatit[2] = alkuy;
         koordinaatit[3] = loppuy;
+
         return koordinaatit;
 
     }
@@ -421,6 +418,22 @@ public class Pelikentta {
             b.append("\n");
         }
         return b;
+    }
+
+    /**
+     * tutkii onko kaikki laivat uponneet
+     *
+     * @return true jos kaikki laivat ovat uponneet, muuten false
+     */
+    public boolean isPeliPaattynyt() {
+        boolean paattynyt = true;
+        for (Laiva l : laivatCol) {
+            if (!l.upposiko()) {
+                paattynyt = false;
+                break;
+            }
+        }
+        return paattynyt;
     }
 
 }

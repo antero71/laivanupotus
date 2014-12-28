@@ -225,5 +225,18 @@ public class PelikenttaTest {
         
         
     }
+    
+    @Test
+    public void testaaVasemmanReunaAlueenKiellettyAlue(){
+        Laiva l = new Laiva(4);
+        l.asetaLaivanPaikka(0, 3, Suunta.PYSTY);
+        pelikentta.asetaLaiva(l);
+        
+        Laiva l2 = new Laiva(1);
+        l2.asetaLaivanPaikka(1, 4, Suunta.PYSTY);
+        
+        assertFalse(pelikentta.asetaLaiva(l2));
+        
+    }
 
 }

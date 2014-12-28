@@ -112,8 +112,6 @@ public class Kayttoliittyma extends JFrame {
 
         setJMenuBar(menuBar);
 
-        aloitaMenu.add(uusiPeliItem);
-
         jMenuBar2.add(aloitaMenu);
 
         setJMenuBar(jMenuBar2);

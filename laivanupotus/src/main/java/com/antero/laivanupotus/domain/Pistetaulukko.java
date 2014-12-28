@@ -22,6 +22,12 @@ public class Pistetaulukko {
         pelaajat = new TreeSet<Pelaaja>();
     }
 
+    public TreeSet<Pelaaja> getPelaajat() {
+        return pelaajat;
+    }
+
+    
+    
     /**
      * pelaaja lisätään pistetaulukkoon automaattisesti jos taulukon 
      * koko on alle 10 ja jos se on 10, niin vain siinä tapauksessa että hänen
