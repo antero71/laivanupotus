@@ -15,6 +15,7 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,20 +39,32 @@ public class Tiedosto {
         } catch (IOException x) {
             // Some other sort of failure, such as permissions.
             System.err.format("createFile error: %s%n", x);
+            Path dir = Paths.get(System.getProperty("user.home"), "laivanupotus");
+            
+            try {
+                Files.createDirectories(dir);
+                Path file2 = Paths.get(System.getProperty("user.home"), "laivanupotus", "pisteet.txt");
+                Files.createFile(file2);
+            } catch (IOException ex) {
+                Logger.getLogger(Tiedosto.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         Charset charset = Charset.forName("UTF-8");
         //String s = ...;
         BufferedWriter writer = null;
         try {
-            writer = Files.newBufferedWriter(file, charset);
+
+            writer = Files.newBufferedWriter(file, charset, StandardOpenOption.APPEND);
 
             TreeSet<Pelaaja> pelaajat = pisteet.getPelaajat();
 
             for (Pelaaja p : pelaajat) {
                 writer.write(p.getNimi(), 0, p.getNimi().length());
+                writer.write(" ", 0, " ".length());
                 String pist = "" + p.getPisteet();
                 writer.write(pist, 0, pist.length());
+                writer.write("\n", 0, "\n".length());
             }
 
         } catch (IOException x) {

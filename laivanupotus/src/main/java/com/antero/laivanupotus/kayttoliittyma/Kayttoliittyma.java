@@ -91,9 +91,9 @@ public class Kayttoliittyma extends JFrame {
 
         panel.add(aloitaMenu);
         panel.add(tervetuloaLabel);
-        aloitaMenu.setText("aloita");
+        aloitaMenu.setText("Laivanupotus");
 
-        uusiPeliItem.setText("uusi peli");
+        uusiPeliItem.setText("Uusi peli");
         uusiPeliItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 uusiPeliItemActionPerformed(evt);
