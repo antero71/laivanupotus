@@ -12,4 +12,5 @@
              säätämämistä, 7 h
 * 27.12.2014 käyttöliittymän kanssa säätämästi ja korjauksia laivan paikan asetukseen, 4 h
 * 28.12.2014 käyttöliittymää, pistetilaston tallennus tiedostoon, vertaisarviointia, 4 h
+* 29.12.2014 pistetilaston näyttö ja tilaston haku tiedostosta, luokkakaavio, pit-raportti ja checkstyle raportti 3 h
 
