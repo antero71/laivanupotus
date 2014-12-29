@@ -183,12 +183,13 @@ public class Alkunaytto extends javax.swing.JFrame {
             virheilmoitusLabel.setText("Kenttiin tulee syöttää numerot 10...15");
             return;
         }
+        if(nimiKentta.getText().isEmpty()){
+            virheilmoitusLabel.setText("Nimi ei saa olla tyhjä");
+            return;
+        }
 
         x = Integer.valueOf(textX.getText());
         y = Integer.valueOf(textY.getText());
-
-        System.out.println("x " + x);
-        System.out.println("y " + y);
 
         Kayttoliittyma k = new Kayttoliittyma(x, y, false);
         // k.setPelaaja(new Pelaaja(nimiKentta.getText(), 0));

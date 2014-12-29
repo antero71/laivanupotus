@@ -6,6 +6,7 @@
 package com.antero.laivanupotus.kayttoliittyma;
 
 import com.antero.laivanupotus.domain.Pelaaja;
+import com.antero.laivanupotus.domain.Pistetaulukko;
 import com.antero.laivanupotus.domain.Ruutu;
 import com.antero.laivanupotus.kayttoliittyma.kuuntelijat.Ammuskuuntelija;
 import com.antero.laivanupotus.logiikka.AI;
@@ -13,11 +14,13 @@ import com.antero.laivanupotus.logiikka.LaivojenPaikkojenArpoja;
 import com.antero.laivanupotus.logiikka.PeliLogiikka;
 import com.antero.laivanupotus.logiikka.Pelikentta;
 import com.antero.laivanupotus.logiikka.TietokoneAI;
+import com.antero.laivanupotus.tiedostot.Tiedosto;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.MenuBar;
+import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -50,12 +53,13 @@ public class Kayttoliittyma extends JFrame {
         return pistenaytto;
     }
 
-    public void createPistenaytto(){
-        if(pistenaytto==null) 
+    public void createPistenaytto() {
+        if (pistenaytto == null) {
             pistenaytto = new Pistenaytto();
+        }
 
     }
-    
+
     public Kayttoliittyma(int x, int y, boolean naytaTervetuloa) {
         pelilogiikka = new PeliLogiikka(x, y, null);
         Pelikentta p = pelilogiikka.getTietokoneenPeli();
@@ -73,7 +77,7 @@ public class Kayttoliittyma extends JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem lopetaItem;
     private javax.swing.JLabel tervetuloaLabel;
-    //private javax.swing.JMenuItem uusiPeliItem;
+    private javax.swing.JMenuItem naytaPisteetItem;
     // End of variables dec
 
     // private javax.swing.JLabel tervetuloaLabel = new JLabel();
@@ -84,6 +88,8 @@ public class Kayttoliittyma extends JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         aloitaMenu = new javax.swing.JMenu();
         uusiPeliItem = new javax.swing.JMenuItem();
+        naytaPisteetItem = new javax.swing.JMenuItem();
+        naytaPisteetItem.setText("Pelin pisteet");
 
         lopetaItem.setText("Lopeta");
 
@@ -105,7 +111,25 @@ public class Kayttoliittyma extends JFrame {
                 System.exit(0);
             }
         });
+
+        naytaPisteetItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                naytaPisteetItemActionPerformed(evt);
+            }
+
+            private void naytaPisteetItemActionPerformed(ActionEvent evt) {
+                
+                Pistetaulukko pisteet = Tiedosto.luePistetaulukkoTiedostosta();
+
+                PistenayttoSivu pistanaytto = new PistenayttoSivu(pisteet);
+                pistanaytto.pack();
+                pistanaytto.setVisible(true);
+
+            }
+        });
+
         aloitaMenu.add(uusiPeliItem);
+        aloitaMenu.add(naytaPisteetItem);
         aloitaMenu.add(lopetaItem);
 
         menuBar.add(aloitaMenu);
