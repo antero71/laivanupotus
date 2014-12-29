@@ -21,7 +21,9 @@ Ohjelma arpoo vastustajan laivojen paikat omalle ruudukolleen.
 Pelaaja antaa nimensä tulostilastoa varten. Sen jälkeen pelaaja voi suurentaa
 ruudukkoa oletuksen 10 x 10 ruudukosta maksimissaan 15 x 15 ruudukkoon.
 
+
 Pelaaja asettaa laivansa omaan ruudukkoonsa ja sen jälkeen voidaan aloittaa peli.
+(Tämä ei vielä toimi, vain yksinpeli 29.12.2014)
 
 Kun peli aloitetaan pelaaja valitsee ruudun johon hän "ampuu". Peli joko ilmoittaa
 että ohi meni tai osui. Jos osoi, ruutuun ilmaantuu laiva/laivanosa. Ja pelaaja saa 
@@ -40,6 +42,5 @@ Laivojen pituudet ja määrät ovat
 ## Pistelistaus
 
 Pelaajien pisteiden listaus. Pelaaja saa osumasta 100 pistettä ja menettää 
-ohiammutusta 50 pistettä. Pelaaja voi siis saada loppupisteekseen joko negatiivisen 
-tai positiivisen arvon. Paras pistemäärä
+ohiammutusta 50 pistettä. Upotuksesta saa 1000 pistettä. Paras pistemäärä
 voittaa.
