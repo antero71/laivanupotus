@@ -9,6 +9,7 @@ import java.util.Random;
 
 /**
  * Apuluokka Random toiminnallisuudelle
+ *
  * @author Antero Oikkonen
  */
 public class Arpoja {
@@ -24,8 +25,8 @@ public class Arpoja {
     public static int arvoLuku(int luku) {
         return rand.nextInt(luku);
     }
-    
-    public static boolean arvoBoolean(){
+
+    public static boolean arvoBoolean() {
         return rand.nextBoolean();
     }
 }

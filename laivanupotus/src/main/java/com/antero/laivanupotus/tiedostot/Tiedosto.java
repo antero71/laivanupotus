@@ -27,15 +27,14 @@ import java.util.logging.Logger;
  */
 public class Tiedosto {
 
-    
     /**
      * luetaan tiedostosta pistetaulukon tiedot
-     * @return 
+     *
+     * @return
      */
     public static Pistetaulukko luePistetaulukkoTiedostosta() {
-        Path file =  luoTiedosto();
-        
-        
+        Path file = luoTiedosto();
+
         Pistetaulukko pisteet = new Pistetaulukko();
         try {
             Scanner lukija = new Scanner(file);
@@ -55,9 +54,9 @@ public class Tiedosto {
 
     /**
      * tallennetaan Pistetaulukon pisteet tiedostoon
-     * @param pisteet 
+     *
+     * @param pisteet
      */
-    
     public static void tallennaTiedosto(Pistetaulukko pisteet) {
 
         Path file = luoTiedosto();
@@ -105,7 +104,7 @@ public class Tiedosto {
             // Some other sort of failure, such as permissions.
             System.err.format("createFile error: %s%n", x);
             Path dir = Paths.get(System.getProperty("user.home"), "laivanupotus");
-            
+
             try {
                 Files.createDirectories(dir);
                 Path file2 = Paths.get(System.getProperty("user.home"), "laivanupotus", "pisteet.txt");

@@ -35,14 +35,12 @@ public class PeliLogiikka {
     public void setAi(AI ai) {
         this.ai = ai;
     }
-    
-    
 
     public void alustaLaivat() {
         arpoja.alustaLaivat(tietokoneenPeli);
     }
-    
-    public boolean lisaaLaiva(Laiva laiva){
+
+    public boolean lisaaLaiva(Laiva laiva) {
         return pelaajanPeli.asetaLaiva(laiva);
     }
 
@@ -57,7 +55,5 @@ public class PeliLogiikka {
     public Pistetaulukko getPisteet() {
         return pisteet;
     }
-    
-    
 
 }

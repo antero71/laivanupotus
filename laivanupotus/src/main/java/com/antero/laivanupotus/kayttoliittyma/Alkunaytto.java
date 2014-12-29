@@ -183,7 +183,7 @@ public class Alkunaytto extends javax.swing.JFrame {
             virheilmoitusLabel.setText("Kenttiin tulee syöttää numerot 10...15");
             return;
         }
-        if(nimiKentta.getText().isEmpty()){
+        if (nimiKentta.getText().isEmpty()) {
             virheilmoitusLabel.setText("Nimi ei saa olla tyhjä");
             return;
         }

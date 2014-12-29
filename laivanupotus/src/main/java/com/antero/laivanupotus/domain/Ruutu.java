@@ -6,7 +6,8 @@
 package com.antero.laivanupotus.domain;
 
 /**
- * Pelin ruudut, 
+ * Pelin ruudut,
+ *
  * @author Antero Oikkonen
  */
 public class Ruutu implements Comparable<Ruutu> {
@@ -123,7 +124,8 @@ public class Ruutu implements Comparable<Ruutu> {
 
     /**
      * päivitetään osoiko ruutuun vai ei
-     * @param osui 
+     *
+     * @param osui
      */
     public void osui(boolean osui) {
         this.osui = osui;

@@ -8,7 +8,6 @@ package com.antero.laivanupotus.domain;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-
 /**
  * pistetaulukko muistaa 10 parhaan pelaajan pisteet
  *
@@ -26,12 +25,10 @@ public class Pistetaulukko {
         return pelaajat;
     }
 
-    
-    
     /**
-     * pelaaja lisätään pistetaulukkoon automaattisesti jos taulukon 
-     * koko on alle 10 ja jos se on 10, niin vain siinä tapauksessa että hänen
-     * pisteensä on paremmat kuin viimeisenä taulukossa olevan pelaajan
+     * pelaaja lisätään pistetaulukkoon automaattisesti jos taulukon koko on
+     * alle 10 ja jos se on 10, niin vain siinä tapauksessa että hänen pisteensä
+     * on paremmat kuin viimeisenä taulukossa olevan pelaajan
      *
      * @param p <code>Pelaaja</code>
      * @return palauttaa true jos pelaaja lisättiin taulukkoon, muuten false
@@ -54,13 +51,13 @@ public class Pistetaulukko {
 
     /**
      * haetaan pienin pistemäärä
+     *
      * @return pienin pistemäärä
      */
-    
-    public int annaPieninPistemaara(){
+    public int annaPieninPistemaara() {
         return pelaajat.last().getPisteet();
     }
-    
+
     @Override
     public String toString() {
         String pelaajaString = kokoaPelaajienTulokset();

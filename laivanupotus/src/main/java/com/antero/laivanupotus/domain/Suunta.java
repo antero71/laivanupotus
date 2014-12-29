@@ -7,6 +7,7 @@ package com.antero.laivanupotus.domain;
 
 /**
  * Laivan suunnat
+ *
  * @author Antero Oikkonen
  */
 public enum Suunta {

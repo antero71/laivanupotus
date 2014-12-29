@@ -43,8 +43,7 @@ public class PistenayttoSivu extends JFrame {
 
             panel = new JPanel(layout);
             panel.add(l);
-    
-          
+
         } else {
 
             layout = new GridLayout(size, 1);

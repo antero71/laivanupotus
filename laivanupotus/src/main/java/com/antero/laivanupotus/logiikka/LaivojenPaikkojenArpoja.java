@@ -14,6 +14,7 @@ import java.util.Random;
 
 /**
  * Luokka joka arpoo laivat pelikentälle
+ *
  * @author Antero Oikkonen
  */
 public class LaivojenPaikkojenArpoja {
@@ -22,9 +23,9 @@ public class LaivojenPaikkojenArpoja {
 
     /**
      * luo ja sijoittaa laivat pelikentälle
-     * @param peli 
+     *
+     * @param peli
      */
-    
     public void alustaLaivat(Pelikentta peli) {
         peli.alustaRuudukko();
         Collection<Laiva> laivat = luoLaivat();

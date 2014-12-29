@@ -22,18 +22,15 @@ public class Pistenaytto extends JPanel {
     private JLabel pelaajanNimi = new JLabel();
     private JLabel pelaajanPisteet = new JLabel();
     private JLabel ilmoitus = new JLabel();
-    
 
     BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 
-    
-    
     public Pistenaytto() {
         this.setLayout(layout);
         this.add(pelaajanNimi);
-        this.add(Box.createRigidArea(new Dimension(0,5)));
+        this.add(Box.createRigidArea(new Dimension(0, 5)));
         this.add(pelaajanPisteet);
-        add(Box.createRigidArea(new Dimension(0,5)));
+        add(Box.createRigidArea(new Dimension(0, 5)));
         this.add(ilmoitus);
         //pelaajanNimi.setText("Testi");
         //pelaajanPisteet.setText("109");
@@ -50,12 +47,10 @@ public class Pistenaytto extends JPanel {
     public JLabel getIlmoitus() {
         return ilmoitus;
     }
-    
-    
-    
-    public void setPelaaja(Pelaaja pelaaja){
+
+    public void setPelaaja(Pelaaja pelaaja) {
         pelaajanNimi.setText(pelaaja.getNimi());
-        pelaajanPisteet.setText(""+pelaaja.getPisteet());
-        
+        pelaajanPisteet.setText("" + pelaaja.getPisteet());
+
     }
 }

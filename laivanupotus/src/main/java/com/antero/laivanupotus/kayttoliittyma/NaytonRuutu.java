@@ -12,18 +12,17 @@ import javax.swing.JButton;
  *
  * @author Antero Oikkonen
  */
-public class NaytonRuutu extends JButton{
+public class NaytonRuutu extends JButton {
+
     Ruutu r = null;
-    
-    public NaytonRuutu(Ruutu r){
+
+    public NaytonRuutu(Ruutu r) {
         super();
-        this.r=r;
+        this.r = r;
     }
 
     public Ruutu getRuutu() {
         return r;
     }
-    
-    
-    
+
 }

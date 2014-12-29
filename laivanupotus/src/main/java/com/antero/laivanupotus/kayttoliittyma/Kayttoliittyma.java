@@ -118,7 +118,7 @@ public class Kayttoliittyma extends JFrame {
             }
 
             private void naytaPisteetItemActionPerformed(ActionEvent evt) {
-                
+
                 Pistetaulukko pisteet = Tiedosto.luePistetaulukkoTiedostosta();
 
                 PistenayttoSivu pistanaytto = new PistenayttoSivu(pisteet);

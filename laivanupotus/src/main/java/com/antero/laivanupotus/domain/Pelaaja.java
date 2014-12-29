@@ -7,6 +7,7 @@ package com.antero.laivanupotus.domain;
 
 /**
  * Pelaaja -luokka sisältää pelaajan nimen ja pisteet
+ *
  * @author Antero Oikkonen
  */
 public class Pelaaja implements Comparable<Pelaaja> {
@@ -14,17 +15,15 @@ public class Pelaaja implements Comparable<Pelaaja> {
     private int pisteet;
     private String nimi;
 
-    public Pelaaja(String nimi,int pisteet) {
+    public Pelaaja(String nimi, int pisteet) {
         this.pisteet = pisteet;
         this.nimi = nimi;
     }
 
-    
-    public Pelaaja(){
-        
+    public Pelaaja() {
+
     }
-    
-    
+
     public int getPisteet() {
         return pisteet;
     }
@@ -45,13 +44,12 @@ public class Pelaaja implements Comparable<Pelaaja> {
         this.nimi = nimi;
     }
 
-    
     /**
      * suurin pistemäärä ensin järjestettyihin Collectioneihin
+     *
      * @param o
-     * @return 
+     * @return
      */
-    
     @Override
     public int compareTo(Pelaaja o) {
         int value = 0;

@@ -11,7 +11,7 @@ import com.antero.laivanupotus.domain.Ruutu;
  *
  * @author Antero Oikkonen
  */
-public class TietokoneAI implements AI{
+public class TietokoneAI implements AI {
 
     private Pelikentta pelikentta;
     private Ruutu viimeksiOsuttu;
@@ -25,27 +25,26 @@ public class TietokoneAI implements AI{
         return pelikentta;
     }
 
-    
     /**
      * apumetodi testausta helpottamaan
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
-    
-    public boolean ammu(int x,int y){
-        if(pelikentta.ammu(x, y)){
-            viimeksiOsuttu = new Ruutu(x,y);
+    public boolean ammu(int x, int y) {
+        if (pelikentta.ammu(x, y)) {
+            viimeksiOsuttu = new Ruutu(x, y);
             viimeksiAmmuttu = viimeksiOsuttu;
             return true;
-        }else{
-            viimeksiAmmuttu = new Ruutu(x,y);
+        } else {
+            viimeksiAmmuttu = new Ruutu(x, y);
             viimeksiOsuttu = null;
             return false;
         }
-       
+
     }
-    
+
     @Override
     public boolean ammu() {
         Ruutu ammuttava = null;
@@ -55,8 +54,9 @@ public class TietokoneAI implements AI{
             ammuttava = ammuViimeksiOsutunViereen();
 
         }
-        if(ammuttava==null)
+        if (ammuttava == null) {
             return false;
+        }
         boolean osuiko = pelikentta.ammu(ammuttava);
         if (osuiko) {
             viimeksiOsuttu = ammuttava;
@@ -82,7 +82,7 @@ public class TietokoneAI implements AI{
         } else if (!suunta) {
             y--;
         }
-        return new Ruutu(x,y);
+        return new Ruutu(x, y);
     }
 
     private Ruutu arvoAmmuttavaRuutu() {

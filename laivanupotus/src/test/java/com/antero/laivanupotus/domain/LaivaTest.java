@@ -53,22 +53,22 @@ public class LaivaTest {
         assertEquals("Y-arvo väärin", 3, alku.getY());
 
     }
-    
+
     @Test
-    public void testaaYhdenPituisenLaivanPaikkaRuudussa9x9(){
+    public void testaaYhdenPituisenLaivanPaikkaRuudussa9x9() {
         laiva.asetaLaivanPaikka(9, 9, Suunta.PYSTY);
-        assertEquals("Alkupään x-koordinaatti pitää olla 9",9, laiva.annaLaivanRuudut().first().getX());
-        assertEquals("Alkupään x-koordinaatti pitää olla 9",9, laiva.annaLaivanRuudut().first().getY());
-        
-        assertEquals("Loppupään x-koordinaatti pitää olla 9",9, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("Loppupään y-koordinaatti pitää olla 9",9, laiva.annaLaivanRuudut().last().getY());
-        
+        assertEquals("Alkupään x-koordinaatti pitää olla 9", 9, laiva.annaLaivanRuudut().first().getX());
+        assertEquals("Alkupään x-koordinaatti pitää olla 9", 9, laiva.annaLaivanRuudut().first().getY());
+
+        assertEquals("Loppupään x-koordinaatti pitää olla 9", 9, laiva.annaLaivanRuudut().last().getX());
+        assertEquals("Loppupään y-koordinaatti pitää olla 9", 9, laiva.annaLaivanRuudut().last().getY());
+
     }
-    
+
     @Test
-    public void testaaOnkoAlkuruutuSamaKuinLoppuruutu(){
+    public void testaaOnkoAlkuruutuSamaKuinLoppuruutu() {
         assertTrue("alkuruutu pitää olla sama kuin loppuruutu", laiva.annaLaivanRuudut().first().equals(laiva.annaLaivanRuudut().last()));
-            
+
     }
 
     @Test
@@ -137,7 +137,7 @@ public class LaivaTest {
 
     }
 
-      @Test
+    @Test
     public void kaannaLaivanPituus2JaVaakasuorassa() {
         laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(4, 5, Suunta.VAAKA);
@@ -156,8 +156,6 @@ public class LaivaTest {
 
     }
 
-    
-    
     @Test(expected = IllegalArgumentException.class)
     public void konstruktoriHeittaaPoikkeuksenJosPituusLiianPieni() {
         laiva = new Laiva(0);

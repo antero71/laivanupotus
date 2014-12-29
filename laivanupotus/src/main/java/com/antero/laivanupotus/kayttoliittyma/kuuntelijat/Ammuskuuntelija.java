@@ -66,12 +66,12 @@ public class Ammuskuuntelija implements ActionListener {
     private Pistetaulukko luoPistetaulukko() {
         String pisteet = kali.getPistenaytto().getPelaajanPisteet().getText();
         String nimi = kali.getPistenaytto().getPelaajanNimi().getText();
-       
+
         Pelaaja p = new Pelaaja(nimi, Integer.parseInt(pisteet));
         Pistetaulukko pistaul = new Pistetaulukko();
         pistaul.lisaaPelaajaPistetaulukkoon(p);
         return pistaul;
-        
+
     }
 
 }
