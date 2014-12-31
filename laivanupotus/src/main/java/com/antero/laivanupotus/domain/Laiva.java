@@ -49,7 +49,7 @@ public class Laiva {
         this.maxpituus = maxpituus;
     }
 
-    public int laivanPituus() {
+    public int getLaivanPituus() {
         return ruudut.size();
     }
 
@@ -58,7 +58,7 @@ public class Laiva {
      *
      * @return TreeSet laivan ruuduista
      */
-    public TreeSet<Ruutu> annaLaivanRuudut() {
+    public TreeSet<Ruutu> getLaivanRuudut() {
         return ruudut;
     }
 

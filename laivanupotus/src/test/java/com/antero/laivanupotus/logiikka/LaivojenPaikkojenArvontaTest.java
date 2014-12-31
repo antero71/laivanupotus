@@ -5,6 +5,7 @@
  */
 package com.antero.laivanupotus.logiikka;
 
+import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -23,7 +24,7 @@ public class LaivojenPaikkojenArvontaTest {
     
     @Before
     public void setUp() {
-        laivojenPaikat = new LaivojenPaikkojenArpoja();
+        laivojenPaikat = new LaivojenPaikkojenArpoja(new Random());
         peli = new Pelikentta(10, 10);
         laivojenPaikat.alustaLaivat(peli);
     }

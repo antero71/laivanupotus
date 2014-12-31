@@ -7,6 +7,7 @@ package com.antero.laivanupotus.logiikka;
 
 import com.antero.laivanupotus.domain.Laiva;
 import com.antero.laivanupotus.domain.Pistetaulukko;
+import java.util.Random;
 
 /**
  *
@@ -23,7 +24,7 @@ public class PeliLogiikka {
     public PeliLogiikka(int x, int y, AI ai) {
         tietokoneenPeli = new Pelikentta(x, y);
         pelaajanPeli = new Pelikentta(x, y);
-        arpoja = new LaivojenPaikkojenArpoja();
+        arpoja = new LaivojenPaikkojenArpoja(new Random());
         pisteet = new Pistetaulukko();
         this.ai = ai;
     }

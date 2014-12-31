@@ -202,7 +202,7 @@ public class Alkunaytto extends javax.swing.JFrame {
         JPanel pelipanel = k.luoRuudukko();
 
         //k.getContentPane().add(pelipanel);
-        Pistenaytto pistenaytto = new Pistenaytto();
+        PistenayttoPanel pistenaytto = new PistenayttoPanel();
         pistenaytto.setPelaaja(new Pelaaja(nimiKentta.getText(), 0));
         panel.add(pistenaytto);
         panel.add(pelipanel);
@@ -223,7 +223,7 @@ public class Alkunaytto extends javax.swing.JFrame {
 
         //k.getContentPane().add(pelipanel);
         k.createPistenaytto();
-        Pistenaytto pistenaytto = k.getPistenaytto();
+        PistenayttoPanel pistenaytto = k.getPistenaytto();
         pistenaytto.setPelaaja(new Pelaaja(nimiKentta.getText(), 0));
         panel.add(pistenaytto);
         pistenaytto.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));

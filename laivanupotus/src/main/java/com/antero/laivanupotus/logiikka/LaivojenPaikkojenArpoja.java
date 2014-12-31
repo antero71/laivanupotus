@@ -19,10 +19,19 @@ import java.util.Random;
  */
 public class LaivojenPaikkojenArpoja {
 
-    private Random random = new Random();
+    public static int MAX_ARVONTOJA = 100;
+
+    private Random random;
+
+    public LaivojenPaikkojenArpoja(Random random) {
+        this.random = random;
+    }
+    
+    
 
     /**
-     * luo ja sijoittaa laivat pelikentälle
+     * luo ja sijoittaa laivat pelikentälle jos MAX_ARVONTOJA kerralla ei
+     * onnistu asettaminen yhtä laivaa, aloitetaan alusta (rekursiivinen kutsu)
      *
      * @param peli
      */
@@ -32,18 +41,22 @@ public class LaivojenPaikkojenArpoja {
         Iterator<Laiva> iter = laivat.iterator();
         while (iter.hasNext()) {
             Laiva l = iter.next();
+            int i = 0;
             do {
+                i++;
                 arvoLaivanPaikka(peli, l);
-
+                if (i > MAX_ARVONTOJA) {
+                    alustaLaivat(peli);
+                }
             } while (peli.asetaLaiva(l) != true);
         }
     }
 
     private void arvoLaivanPaikka(Pelikentta peli, Laiva l) {
-        int x = Arpoja.arvoLuku(peli.getKenttaX());
-        int y = Arpoja.arvoLuku(peli.getKenttaY());
+        int x = random.nextInt(peli.getKenttaX());
+        int y = random.nextInt(peli.getKenttaY());
         //System.out.println("arvottu x="+x+":y="+y);
-        int s = Arpoja.arvoLuku(2);
+        int s = random.nextInt(2);
         if (s == 0) {
             l.asetaLaivanPaikka(x, y, Suunta.VAAKA);
         }

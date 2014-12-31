@@ -36,11 +36,21 @@ import javax.swing.JPanel;
 public class Kayttoliittyma extends JFrame {
 
     private PeliLogiikka pelilogiikka;
-    private Alkunaytto alkunaytto;
-    private Pelaaja pelaaja;
     private Ammuskuuntelija tahtain;
-    private Pistenaytto pistenaytto;
+    private PistenayttoPanel pistenaytto;
+    private Pelaaja pelaaja;
 
+    private JMenu aloitaMenu = new javax.swing.JMenu();
+    private JMenuItem uusiPeliItem = new javax.swing.JMenuItem();
+    private javax.swing.JMenuBar menuBar = new JMenuBar();
+
+    private JPanel panel = new JPanel();
+
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem lopetaItem;
+    private javax.swing.JLabel tervetuloaLabel;
+    private javax.swing.JMenuItem naytaPisteetItem;
+    
     public Kayttoliittyma() {
         this(10, 10, true);
     }
@@ -49,13 +59,13 @@ public class Kayttoliittyma extends JFrame {
         return pelilogiikka;
     }
 
-    public Pistenaytto getPistenaytto() {
+    public PistenayttoPanel getPistenaytto() {
         return pistenaytto;
     }
 
     public void createPistenaytto() {
         if (pistenaytto == null) {
-            pistenaytto = new Pistenaytto();
+            pistenaytto = new PistenayttoPanel();
         }
 
     }
@@ -68,16 +78,6 @@ public class Kayttoliittyma extends JFrame {
         initComponents(naytaTervetuloa);
     }
 
-    JMenu aloitaMenu = new javax.swing.JMenu();
-    JMenuItem uusiPeliItem = new javax.swing.JMenuItem();
-    private javax.swing.JMenuBar menuBar = new JMenuBar();
-
-    JPanel panel = new JPanel();
-
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem lopetaItem;
-    private javax.swing.JLabel tervetuloaLabel;
-    private javax.swing.JMenuItem naytaPisteetItem;
     // End of variables dec
 
     // private javax.swing.JLabel tervetuloaLabel = new JLabel();

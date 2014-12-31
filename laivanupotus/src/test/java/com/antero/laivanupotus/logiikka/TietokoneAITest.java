@@ -46,7 +46,7 @@ public class TietokoneAITest {
         pelikentta.asetaLaiva(laiva2);
         boolean osui = ai.ammu();
         Ruutu r = ai.viimeksiAmmuttu();
-        if (laiva1.annaLaivanRuudut().contains(r) || laiva2.annaLaivanRuudut().contains(r)) {
+        if (laiva1.getLaivanRuudut().contains(r) || laiva2.getLaivanRuudut().contains(r)) {
             assertTrue(osui);
         } else {
             assertFalse(osui);

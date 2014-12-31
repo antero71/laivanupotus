@@ -17,7 +17,7 @@ import javax.swing.JPanel;
  *
  * @author Antero Oikkonen
  */
-public class Pistenaytto extends JPanel {
+public class PistenayttoPanel extends JPanel {
 
     private JLabel pelaajanNimi = new JLabel();
     private JLabel pelaajanPisteet = new JLabel();
@@ -25,7 +25,7 @@ public class Pistenaytto extends JPanel {
 
     BoxLayout layout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 
-    public Pistenaytto() {
+    public PistenayttoPanel() {
         this.setLayout(layout);
         this.add(pelaajanNimi);
         this.add(Box.createRigidArea(new Dimension(0, 5)));

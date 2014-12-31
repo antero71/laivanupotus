@@ -8,6 +8,7 @@ package com.antero.laivanupotus.logiikka;
 import com.antero.laivanupotus.domain.Laiva;
 import com.antero.laivanupotus.domain.Ruutu;
 import com.antero.laivanupotus.domain.Suunta;
+import java.util.Random;
 import java.util.TreeSet;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -184,7 +185,7 @@ public class PelikenttaTest {
 
     @Test
     public void testaaToString() {
-        LaivojenPaikkojenArpoja arpoja = new LaivojenPaikkojenArpoja();
+        LaivojenPaikkojenArpoja arpoja = new LaivojenPaikkojenArpoja(new Random());
         arpoja.alustaLaivat(pelikentta);
 
         System.out.println("pelikentta " + pelikentta);

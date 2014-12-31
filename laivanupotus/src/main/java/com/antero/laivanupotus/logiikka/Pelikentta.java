@@ -79,7 +79,7 @@ public class Pelikentta {
      * @return
      */
     public boolean asetaLaiva(Laiva laiva) {
-        TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
+        TreeSet<Ruutu> laivanRuudut = laiva.getLaivanRuudut();
         // System.out.println(laivanRuudut);
 
         if (tarkistaMeneekoRuudukonUlkopuolelle(laiva)) {
@@ -224,7 +224,7 @@ public class Pelikentta {
 
     private boolean tarkistaMeneekoRuudukonUlkopuolelle(Laiva laiva) {
 
-        TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
+        TreeSet<Ruutu> laivanRuudut = laiva.getLaivanRuudut();
         int alkux = laivanRuudut.first().getX();
         int alkuy = laivanRuudut.first().getY();
 
@@ -274,7 +274,7 @@ public class Pelikentta {
             koordinaatit[3]++;
         }
 
-        TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
+        TreeSet<Ruutu> laivanRuudut = laiva.getLaivanRuudut();
         Ruutu ruutu = null;
         for (int i = koordinaatit[0]; i < koordinaatit[1]; i++) {
             for (int j = koordinaatit[2]; j < koordinaatit[3]; j++) {
@@ -313,7 +313,7 @@ public class Pelikentta {
      * 3:ssa loppuy
      */
     private int[] laskeAlkuXYJaLoppuXYymparoivalleAlueelle(Laiva laiva) {
-        TreeSet<Ruutu> laivanRuudut = laiva.annaLaivanRuudut();
+        TreeSet<Ruutu> laivanRuudut = laiva.getLaivanRuudut();
         Ruutu alku = laivanRuudut.first();
         int alkux = alku.getX();
         int alkuy = alku.getY();

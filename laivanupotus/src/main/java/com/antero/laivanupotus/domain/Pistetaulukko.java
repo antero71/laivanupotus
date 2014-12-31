@@ -35,17 +35,15 @@ public class Pistetaulukko {
      */
     public boolean lisaaPelaajaPistetaulukkoon(Pelaaja p) {
 
-        boolean lisattiinkoPelaaja = false;
-
         if (pelaajat.size() == 10 && p.getPisteet() > pelaajat.last().getPisteet()) {
             pelaajat.remove(pelaajat.last());
             pelaajat.add(p);
-            lisattiinkoPelaaja = true;
+            return true;
         } else if (pelaajat.size() < 10) {
             pelaajat.add(p);
-            lisattiinkoPelaaja = true;
+            return true;
         }
-        return lisattiinkoPelaaja;
+        return false;
 
     }
 

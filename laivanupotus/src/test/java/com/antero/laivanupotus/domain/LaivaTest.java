@@ -35,19 +35,19 @@ public class LaivaTest {
 
     @Test
     public void testaaLaivanPituusAlustuksenJalkeen() {
-        assertEquals(1, laiva.laivanPituus());
+        assertEquals(1, laiva.getLaivanPituus());
     }
 
     @Test
     public void testaaLaivanPituusKunLaiva2ruutuaPitka() {
         laiva = new Laiva(2);
-        assertEquals(2, laiva.laivanPituus());
+        assertEquals(2, laiva.getLaivanPituus());
     }
 
     @Test
     public void testaaLaivanPaikanAntoOnkoAlkupaaOikeassaPaikassa() {
         laiva.asetaLaivanPaikka(2, 3, Suunta.PYSTY);
-        TreeSet<Ruutu> ruudut = laiva.annaLaivanRuudut();
+        TreeSet<Ruutu> ruudut = laiva.getLaivanRuudut();
         Ruutu alku = ruudut.first();
         assertEquals("X-arvo väärin", 2, alku.getX());
         assertEquals("Y-arvo väärin", 3, alku.getY());
@@ -57,17 +57,17 @@ public class LaivaTest {
     @Test
     public void testaaYhdenPituisenLaivanPaikkaRuudussa9x9() {
         laiva.asetaLaivanPaikka(9, 9, Suunta.PYSTY);
-        assertEquals("Alkupään x-koordinaatti pitää olla 9", 9, laiva.annaLaivanRuudut().first().getX());
-        assertEquals("Alkupään x-koordinaatti pitää olla 9", 9, laiva.annaLaivanRuudut().first().getY());
+        assertEquals("Alkupään x-koordinaatti pitää olla 9", 9, laiva.getLaivanRuudut().first().getX());
+        assertEquals("Alkupään x-koordinaatti pitää olla 9", 9, laiva.getLaivanRuudut().first().getY());
 
-        assertEquals("Loppupään x-koordinaatti pitää olla 9", 9, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("Loppupään y-koordinaatti pitää olla 9", 9, laiva.annaLaivanRuudut().last().getY());
+        assertEquals("Loppupään x-koordinaatti pitää olla 9", 9, laiva.getLaivanRuudut().last().getX());
+        assertEquals("Loppupään y-koordinaatti pitää olla 9", 9, laiva.getLaivanRuudut().last().getY());
 
     }
 
     @Test
     public void testaaOnkoAlkuruutuSamaKuinLoppuruutu() {
-        assertTrue("alkuruutu pitää olla sama kuin loppuruutu", laiva.annaLaivanRuudut().first().equals(laiva.annaLaivanRuudut().last()));
+        assertTrue("alkuruutu pitää olla sama kuin loppuruutu", laiva.getLaivanRuudut().first().equals(laiva.getLaivanRuudut().last()));
 
     }
 
@@ -75,32 +75,32 @@ public class LaivaTest {
     public void testaaAlkupaanPaikkaKunLaivanPituus2() {
         laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
-        assertEquals("X-arvo väärin", 2, laiva.annaLaivanRuudut().first().getX());
-        assertEquals("Y-arvo väärin", 3, laiva.annaLaivanRuudut().first().getY());
+        assertEquals("X-arvo väärin", 2, laiva.getLaivanRuudut().first().getX());
+        assertEquals("Y-arvo väärin", 3, laiva.getLaivanRuudut().first().getY());
     }
 
     @Test
     public void testaaLaivanLoppupaanPaikkaKunLaivanPituus2() {
         laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
-        assertEquals("X-arvo väärin", 3, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("Y-arvo väärin", 3, laiva.annaLaivanRuudut().last().getY());
+        assertEquals("X-arvo väärin", 3, laiva.getLaivanRuudut().last().getX());
+        assertEquals("Y-arvo väärin", 3, laiva.getLaivanRuudut().last().getY());
     }
 
     @Test
     public void testaaLaivanLoppupaanPaikkaKunLaivanPituus2Pysty() {
         laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(2, 3, Suunta.PYSTY);
-        assertEquals("X-arvo väärin", 2, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("Y-arvo väärin", 4, laiva.annaLaivanRuudut().last().getY());
+        assertEquals("X-arvo väärin", 2, laiva.getLaivanRuudut().last().getX());
+        assertEquals("Y-arvo väärin", 4, laiva.getLaivanRuudut().last().getY());
     }
 
     @Test
     public void testaaLaivanLoppupaanPaikkaKunLaivanPituus4JaPystyssa() {
         laiva = new Laiva(4);
         laiva.asetaLaivanPaikka(2, 3, Suunta.PYSTY);
-        assertEquals("X-arvo väärin", 2, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("Y-arvo väärin", 6, laiva.annaLaivanRuudut().last().getY());
+        assertEquals("X-arvo väärin", 2, laiva.getLaivanRuudut().last().getX());
+        assertEquals("Y-arvo väärin", 6, laiva.getLaivanRuudut().last().getY());
     }
 
     @Test
@@ -109,12 +109,12 @@ public class LaivaTest {
         laiva.kaannaLaiva();
 
         // alkupää
-        assertEquals("X-arvo väärin", 4, laiva.annaLaivanRuudut().first().getX());
-        assertEquals("Y-arvo väärin", 5, laiva.annaLaivanRuudut().first().getY());
+        assertEquals("X-arvo väärin", 4, laiva.getLaivanRuudut().first().getX());
+        assertEquals("Y-arvo väärin", 5, laiva.getLaivanRuudut().first().getY());
 
         // loppupää
-        assertEquals("X-arvo väärin", 4, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("Y-arvo väärin", 5, laiva.annaLaivanRuudut().last().getY());
+        assertEquals("X-arvo väärin", 4, laiva.getLaivanRuudut().last().getX());
+        assertEquals("Y-arvo väärin", 5, laiva.getLaivanRuudut().last().getY());
 
     }
 
@@ -122,18 +122,18 @@ public class LaivaTest {
     public void kaannaLaivaPituus2JaPystyssa() {
         laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(4, 5, Suunta.PYSTY);
-        assertEquals("loppupään X-arvo väärin", 4, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("loppupään Y-arvo väärin", 6, laiva.annaLaivanRuudut().last().getY());
+        assertEquals("loppupään X-arvo väärin", 4, laiva.getLaivanRuudut().last().getX());
+        assertEquals("loppupään Y-arvo väärin", 6, laiva.getLaivanRuudut().last().getY());
 
         laiva.kaannaLaiva();
 
         // alkupää
-        assertEquals("alkupään X-arvo väärin", 4, laiva.annaLaivanRuudut().first().getX());
-        assertEquals("alkupään Y-arvo väärin", 5, laiva.annaLaivanRuudut().first().getY());
+        assertEquals("alkupään X-arvo väärin", 4, laiva.getLaivanRuudut().first().getX());
+        assertEquals("alkupään Y-arvo väärin", 5, laiva.getLaivanRuudut().first().getY());
 
         // loppupää
-        assertEquals("loppupään X-arvo väärin", 5, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("loppupään Y-arvo väärin", 5, laiva.annaLaivanRuudut().last().getY());
+        assertEquals("loppupään X-arvo väärin", 5, laiva.getLaivanRuudut().last().getX());
+        assertEquals("loppupään Y-arvo väärin", 5, laiva.getLaivanRuudut().last().getY());
 
     }
 
@@ -141,18 +141,18 @@ public class LaivaTest {
     public void kaannaLaivanPituus2JaVaakasuorassa() {
         laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(4, 5, Suunta.VAAKA);
-        assertEquals("loppupään X-arvo väärin", 5, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("loppupään Y-arvo väärin", 5, laiva.annaLaivanRuudut().last().getY());
+        assertEquals("loppupään X-arvo väärin", 5, laiva.getLaivanRuudut().last().getX());
+        assertEquals("loppupään Y-arvo väärin", 5, laiva.getLaivanRuudut().last().getY());
 
         laiva.kaannaLaiva();
 
         // alkupää
-        assertEquals("alkupään X-arvo väärin", 4, laiva.annaLaivanRuudut().first().getX());
-        assertEquals("alkupään Y-arvo väärin", 5, laiva.annaLaivanRuudut().first().getY());
+        assertEquals("alkupään X-arvo väärin", 4, laiva.getLaivanRuudut().first().getX());
+        assertEquals("alkupään Y-arvo väärin", 5, laiva.getLaivanRuudut().first().getY());
 
         // loppupää
-        assertEquals("loppupään X-arvo väärin", 4, laiva.annaLaivanRuudut().last().getX());
-        assertEquals("loppupään Y-arvo väärin", 6, laiva.annaLaivanRuudut().last().getY());
+        assertEquals("loppupään X-arvo väärin", 4, laiva.getLaivanRuudut().last().getX());
+        assertEquals("loppupään Y-arvo väärin", 6, laiva.getLaivanRuudut().last().getY());
 
     }
 
