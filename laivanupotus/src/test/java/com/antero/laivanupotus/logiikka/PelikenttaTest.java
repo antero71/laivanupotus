@@ -188,7 +188,7 @@ public class PelikenttaTest {
         LaivojenPaikkojenArpoja arpoja = new LaivojenPaikkojenArpoja(new Random());
         arpoja.alustaLaivat(pelikentta);
 
-        System.out.println("pelikentta " + pelikentta);
+        //System.out.println("pelikentta " + pelikentta);
     }
     
     @Test
@@ -213,7 +213,7 @@ public class PelikenttaTest {
         l.asetaLaivanPaikka(3, 3, Suunta.PYSTY);
         pelikentta.asetaLaiva(l);
 
-        System.out.println("kielletyt ruudut " + pelikentta.pelikenttaLaivatJaKielletytRuudutString());
+       // System.out.println("kielletyt ruudut " + pelikentta.pelikenttaLaivatJaKielletytRuudutString());
 
         Laiva l2 = new Laiva(1);
         l2.asetaLaivanPaikka(4,4,Suunta.PYSTY);
@@ -227,14 +227,14 @@ public class PelikenttaTest {
         
     }
     
-   // @Test
+   @Test
     public void testaaVasemmanReunaAlueenKiellettyAlue(){
         Laiva l = new Laiva(4);
-        l.asetaLaivanPaikka(0, 3, Suunta.PYSTY);
+        l.asetaLaivanPaikka(0, 4, Suunta.PYSTY);
         pelikentta.asetaLaiva(l);
         
         Laiva l2 = new Laiva(1);
-        l2.asetaLaivanPaikka(1, 4, Suunta.PYSTY);
+        l2.asetaLaivanPaikka(1, 3, Suunta.PYSTY);
         
         assertFalse(pelikentta.asetaLaiva(l2));
         

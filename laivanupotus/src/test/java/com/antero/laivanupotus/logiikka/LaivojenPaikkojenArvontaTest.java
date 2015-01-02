@@ -27,10 +27,10 @@ public class LaivojenPaikkojenArvontaTest {
     public void setUp() {
         // kolmas, 0 vaaka, 1 pysty
         
-        int [] laivojenPaikatInt = new int []{0,3,1,2,1,0,4,7,1,1,8,0,7,0,1,6,8,0,5,4,0,2,5,0,8,6,0,9,3,0,3,5,0};
-        
-        DeterministinenRandom random = new DeterministinenRandom(laivojenPaikatInt);
-        laivojenPaikatArpoja = new LaivojenPaikkojenArpoja(random);
+        //int [] laivojenPaikatInt = new int []{0,3,1,2,1,0,4,7,1,1,8,0,7,0,1,6,8,0,5,4,0,2,5,0,8,6,0,9,3,0};
+                                                                           // 4  ,  3  ,  3  ,  2  ,  2  ,  2  ,  1  ,  1  ,  1  ,  1  
+        //DeterministinenRandom random = new DeterministinenRandom(new int []{9,6,1,2,1,0,4,6,1,1,8,0,7,1,1,6,6,0,4,3,0,2,3,0,2,5,0,7,4,0});
+        laivojenPaikatArpoja = new LaivojenPaikkojenArpoja(new Random());
         peli = new Pelikentta(10, 10);
         laivojenPaikatArpoja.alustaLaivat(peli);
     }

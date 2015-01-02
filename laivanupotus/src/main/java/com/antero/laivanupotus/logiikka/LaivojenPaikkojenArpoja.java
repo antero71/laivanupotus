@@ -36,11 +36,14 @@ public class LaivojenPaikkojenArpoja {
      * @param peli
      */
     public void alustaLaivat(Pelikentta peli) {
+        System.out.println("alustaLaivat");
         peli.alustaRuudukko();
         Collection<Laiva> laivat = luoLaivat();
         Iterator<Laiva> iter = laivat.iterator();
         while (iter.hasNext()) {
             Laiva l = iter.next();
+            //System.out.println("laivan pituus "+l.getLaivanPituus());
+            
             int i = 0;
             do {
                 i++;
@@ -53,6 +56,7 @@ public class LaivojenPaikkojenArpoja {
     }
 
     private void arvoLaivanPaikka(Pelikentta peli, Laiva l) {
+    
         int x = random.nextInt(peli.getKenttaX());
         int y = random.nextInt(peli.getKenttaY());
         //System.out.println("arvottu x="+x+":y="+y);

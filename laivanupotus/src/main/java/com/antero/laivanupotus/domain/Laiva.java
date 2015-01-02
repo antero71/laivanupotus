@@ -36,6 +36,7 @@ public class Laiva {
             r.setX(1);
             r.setY(i + 1);
             r.setLaivanOsa(true);
+            r.setKielletty(true);
             ruudut.add(r);
         }
         suunta = Suunta.PYSTY;
