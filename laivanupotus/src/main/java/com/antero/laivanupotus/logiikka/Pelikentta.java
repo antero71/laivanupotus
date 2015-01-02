@@ -7,6 +7,7 @@ package com.antero.laivanupotus.logiikka;
 
 import com.antero.laivanupotus.domain.Laiva;
 import com.antero.laivanupotus.domain.Ruutu;
+import com.antero.laivanupotus.domain.Suunta;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -68,6 +69,32 @@ public class Pelikentta {
     }
 
     /**
+     * jos annettussa koordinaatissa on ruutu joka on kielletty palautuu true,
+     * muute false
+     *
+     * Jos ruutu olisi kentän ulkopuolella palautuu false
+     *
+     * @param x x-koordinaatti 0...(kenttaX-1)
+     * @param y y-koordinaatti 0...(kenttaY-1)
+     * @return true, jos kielletty ja kentän sisällä, muuten false
+     */
+    public boolean isKielletty(int x, int y) {
+        if (ruudut[x][y] != null && x > -1 && x < kenttaX && y > -1 && y < kenttaY) {
+            return ruudut[x][y].isKielletty();
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isLaiva(int x, int y) {
+        if (ruudut[x][y] != null && x > -1 && x < kenttaX && y > -1 && y < kenttaY) {
+            return ruudut[x][y].isLaivanOsa();
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * asetataan laiva laivan sisältämän koordinaatiston perusteella
      * pelialueelle. Jos menee pelialueen yli, palautuu false ja laivaa ei
      * aseteta pelialueelle
@@ -78,7 +105,7 @@ public class Pelikentta {
      * @param laiva
      * @return
      */
-    public boolean asetaLaiva(Laiva laiva) {
+    public boolean asetaLaiva(Laiva laiva, boolean printDebug) {
         TreeSet<Ruutu> laivanRuudut = laiva.getLaivanRuudut();
         // System.out.println(laivanRuudut);
 
@@ -86,7 +113,7 @@ public class Pelikentta {
             //System.out.println("tarkistaMeneekoRuudukonUlkopuolelle palauttaa true");
             return false;
         }
-        if (tarkistaOnkoKiellettyAsettaaLaivaa(laiva)) {
+        if (tarkistaOnkoKiellettyAsettaaLaivaa(laiva, false)) {
             //System.out.println("tarkistaOnkoKiellettyAsettaaLaivaa palauttaa true");
             return false;
         }
@@ -101,7 +128,7 @@ public class Pelikentta {
             //System.out.println("asetalaiva x=" + x + ",y=" + y);
             alustaRuutu(r, x, y, true, true, false);
         }
-        asetaLaivanKieltoalue(laiva);
+        asetaLaivanKieltoalue(laiva, false);
         laivojenLkm++;
         laivatCol.add(laiva);
         return true;
@@ -256,10 +283,10 @@ public class Pelikentta {
      *
      * @param laiva jonka ympäristä asetataan ruudut kielletyiksi
      */
-    public void asetaLaivanKieltoalue(Laiva laiva) {
+    public void asetaLaivanKieltoalue(Laiva laiva, boolean print) {
         // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
         // 1 ruudun päässä
-        int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva);
+        int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva, false);
 
         //  koordinaatit[0] = alkux;
         // koordinaatit[1] = loppux;
@@ -300,11 +327,11 @@ public class Pelikentta {
      * @param laiva
      * @return
      */
-    public boolean tarkistaOnkoKiellettyAsettaaLaivaa(Laiva laiva) {
-     // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
+    public boolean tarkistaOnkoKiellettyAsettaaLaivaa(Laiva laiva, boolean print) {
+        // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
         // 1 ruudun päässä
 
-        int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva);
+        int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva, print);
 
         for (int i = koordinaatit[0]; i < koordinaatit[1]; i++) {
             for (int j = koordinaatit[2]; j < koordinaatit[3]; j++) {
@@ -322,7 +349,7 @@ public class Pelikentta {
      * palauttaa int[] jossa alkiossa 0 on alkux, 1:ssa loppux 2:ssa alkuy ja
      * 3:ssa loppuy
      */
-    private int[] laskeAlkuXYJaLoppuXYymparoivalleAlueelle(Laiva laiva) {
+    private int[] laskeAlkuXYJaLoppuXYymparoivalleAlueelle(Laiva laiva, boolean print) {
         TreeSet<Ruutu> laivanRuudut = laiva.getLaivanRuudut();
         Ruutu alku = laivanRuudut.first();
         int alkux = alku.getX();
@@ -330,9 +357,8 @@ public class Pelikentta {
         Ruutu loppu = laivanRuudut.last();
         int loppux = loppu.getX();
         int loppuy = loppu.getY();
-        boolean print = false;
-        if (alkux == 0 && alkuy == 4) {
-            print = true;
+
+        if (print) {
             System.out.println("laiva alkux  " + alkux);
             System.out.println("laiva loppux " + loppux);
             System.out.println("laiva alkuy  " + alkuy);
@@ -461,4 +487,25 @@ public class Pelikentta {
         return paattynyt;
     }
 
+    public static void main(String[] args) {
+        Pelikentta kentta = new Pelikentta(10, 10);
+        Laiva l = new Laiva(4);
+
+        int x = 0;
+        int y = 4;
+
+        l.asetaLaivanPaikka(x, y, Suunta.PYSTY);
+
+        kentta.asetaLaiva(l, false);
+
+        System.out.println("isKielletty " + kentta.isKielletty(x, y));
+
+        Laiva l2 = new Laiva(1);
+        l2.asetaLaivanPaikka(x, y, Suunta.PYSTY);
+
+        System.out.println(kentta.asetaLaiva(l2, false));
+
+        System.out.println(kentta.isLaiva(x, y));
+
+    }
 }

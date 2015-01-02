@@ -51,7 +51,7 @@ public class LaivojenPaikkojenArpoja {
                 if (i > MAX_ARVONTOJA) {
                     alustaLaivat(peli);
                 }
-            } while (peli.asetaLaiva(l) != true);
+            } while (peli.asetaLaiva(l, false) != true);
         }
     }
 

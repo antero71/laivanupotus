@@ -59,7 +59,7 @@ public class PelikenttaTest {
     public void testaaLaivanAsetusJosMeneeYliRuudukon() {
         Laiva laiva = new Laiva(3);
         laiva.asetaLaivanPaikka(9, 9, Suunta.PYSTY);
-        assertFalse("Laivaa ei voi asettaa yli pelialueen", pelikentta.asetaLaiva(laiva));
+        assertFalse("Laivaa ei voi asettaa yli pelialueen", pelikentta.asetaLaiva(laiva, false));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class PelikenttaTest {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
         pelikentta.alustaRuudukko();
-        assertTrue("Laivan asetus epäonnistui", pelikentta.asetaLaiva(laiva));
+        assertTrue("Laivan asetus epäonnistui", pelikentta.asetaLaiva(laiva, false));
     }
 
     @Test
@@ -75,11 +75,11 @@ public class PelikenttaTest {
         Laiva laiva = new Laiva(3);
         laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
         pelikentta.alustaRuudukko();
-        pelikentta.asetaLaiva(laiva);
+        pelikentta.asetaLaiva(laiva, false);
 
         laiva = new Laiva(3);
         laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
-        assertFalse("Toista laivaa ei voi asettaa jo olemassaolevan laivan paikalle", pelikentta.asetaLaiva(laiva));
+        assertFalse("Toista laivaa ei voi asettaa jo olemassaolevan laivan paikalle", pelikentta.asetaLaiva(laiva, false));
 
     }
 
@@ -88,11 +88,11 @@ public class PelikenttaTest {
         Laiva laiva = new Laiva(3);
         laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
         pelikentta.alustaRuudukko();
-        pelikentta.asetaLaiva(laiva);
+        pelikentta.asetaLaiva(laiva, false);
 
         laiva = new Laiva(3);
         laiva.asetaLaivanPaikka(3, 5, Suunta.VAAKA);
-        assertFalse("Toista laivaa ei voi asettaa jo olemassaolevan laivan viereen", pelikentta.asetaLaiva(laiva));
+        assertFalse("Toista laivaa ei voi asettaa jo olemassaolevan laivan viereen", pelikentta.asetaLaiva(laiva, false));
 
     }
 
@@ -101,11 +101,11 @@ public class PelikenttaTest {
         Laiva laiva = new Laiva(3);
         laiva.asetaLaivanPaikka(2, 3, Suunta.VAAKA);
         pelikentta.alustaRuudukko();
-        pelikentta.asetaLaiva(laiva);
+        pelikentta.asetaLaiva(laiva, false);
 
         laiva = new Laiva(3);
         laiva.asetaLaivanPaikka(5, 4, Suunta.PYSTY);
-        assertFalse("Toinen laiva ei voi olla kulmittain toisessa laivassa kiinni.", pelikentta.asetaLaiva(laiva));
+        assertFalse("Toinen laiva ei voi olla kulmittain toisessa laivassa kiinni.", pelikentta.asetaLaiva(laiva, false));
 
     }
 
@@ -120,7 +120,7 @@ public class PelikenttaTest {
     public void testaaAmmuJosOsuu() {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
-        pelikentta.asetaLaiva(laiva);
+        pelikentta.asetaLaiva(laiva, false);
         assertTrue("laivaan ei osunut vaikka laiva oli paikalla", pelikentta.ammu(4, 4));
 
     }
@@ -129,7 +129,7 @@ public class PelikenttaTest {
     public void testaaAmmuJosHuti() {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(3, 4, Suunta.VAAKA);
-        pelikentta.asetaLaiva(laiva);
+        pelikentta.asetaLaiva(laiva, false);
         assertFalse("laivaan osui vaikka laivaa ei ollut paikalla", pelikentta.ammu(6, 7));
     }
 
@@ -137,7 +137,7 @@ public class PelikenttaTest {
     public void voikoPelikentanReunaanAsettaaLaivaa() {
         Laiva laiva = new Laiva(3);
         laiva.asetaLaivanPaikka(1, 1, Suunta.PYSTY);
-        assertTrue(pelikentta.asetaLaiva(laiva));
+        assertTrue(pelikentta.asetaLaiva(laiva, false));
 
     }
 
@@ -145,7 +145,7 @@ public class PelikenttaTest {
     public void voikoPelikentanOikeaanAlakulmaanAsettaaLaivaa() {
         Laiva laiva = new Laiva(1);
         laiva.asetaLaivanPaikka(9, 9, Suunta.PYSTY);
-        assertTrue(pelikentta.asetaLaiva(laiva));
+        assertTrue(pelikentta.asetaLaiva(laiva, false));
 
     }
 
@@ -153,7 +153,7 @@ public class PelikenttaTest {
     public void uppoaakoLaiva() {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(2, 3, Suunta.PYSTY);
-        pelikentta.asetaLaiva(laiva);
+        pelikentta.asetaLaiva(laiva, false);
         assertTrue("Pitäisi osua", pelikentta.ammu(2, 3));
         assertTrue("Pitäisi osua", pelikentta.ammu(2, 4));
 
@@ -167,7 +167,7 @@ public class PelikenttaTest {
     public void pysyykoPinnallaJosKokoLaivaanEiOleOsunut() {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(2, 3, Suunta.PYSTY);
-        pelikentta.asetaLaiva(laiva);
+        pelikentta.asetaLaiva(laiva, false);
         assertTrue("Pitäisi osua", pelikentta.ammu(2, 3));
         assertFalse(pelikentta.upposiko(2, 3));
         assertFalse("Ei pitäisi osua", pelikentta.ammu(2, 6));
@@ -180,15 +180,7 @@ public class PelikenttaTest {
     public void testaaVoikoMennaYliAlueen() {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(10, 10, Suunta.VAAKA);
-        assertFalse(pelikentta.asetaLaiva(laiva));
-    }
-
-    @Test
-    public void testaaToString() {
-        LaivojenPaikkojenArpoja arpoja = new LaivojenPaikkojenArpoja(new Random());
-        arpoja.alustaLaivat(pelikentta);
-
-        //System.out.println("pelikentta " + pelikentta);
+        assertFalse(pelikentta.asetaLaiva(laiva, false));
     }
     
     @Test
@@ -201,9 +193,9 @@ public class PelikenttaTest {
         
         lentotukialus.asetaLaivanPaikka(2, 4, Suunta.VAAKA);
         
-        assertTrue(pelikentta.asetaLaiva(lentotukialus));
+        assertTrue(pelikentta.asetaLaiva(lentotukialus, false));
         
-        assertFalse(pelikentta.asetaLaiva(sukellusvene));
+        assertFalse(pelikentta.asetaLaiva(sukellusvene, false));
     }
 
     @Test
@@ -211,32 +203,39 @@ public class PelikenttaTest {
         Laiva l = new Laiva(1);
 
         l.asetaLaivanPaikka(3, 3, Suunta.PYSTY);
-        pelikentta.asetaLaiva(l);
+        pelikentta.asetaLaiva(l, false);
 
        // System.out.println("kielletyt ruudut " + pelikentta.pelikenttaLaivatJaKielletytRuudutString());
 
         Laiva l2 = new Laiva(1);
         l2.asetaLaivanPaikka(4,4,Suunta.PYSTY);
         
-        assertFalse(pelikentta.asetaLaiva(l2));
+        assertFalse(pelikentta.asetaLaiva(l2, false));
         
         l2.asetaLaivanPaikka(2, 2, Suunta.VAAKA);
         
-        assertFalse(pelikentta.asetaLaiva(l2));
+        assertFalse(pelikentta.asetaLaiva(l2, false));
         
         
     }
     
-   @Test
+  // @Test
     public void testaaVasemmanReunaAlueenKiellettyAlue(){
         Laiva l = new Laiva(4);
         l.asetaLaivanPaikka(0, 4, Suunta.PYSTY);
-        pelikentta.asetaLaiva(l);
+        pelikentta.asetaLaiva(l, true);
         
         Laiva l2 = new Laiva(1);
         l2.asetaLaivanPaikka(1, 3, Suunta.PYSTY);
         
-        assertFalse(pelikentta.asetaLaiva(l2));
+        assertTrue(pelikentta.isKielletty(1, 3));
+        
+        assertFalse(pelikentta.asetaLaiva(l2, false));
+        
+        Laiva l3 = new Laiva(1);
+        l3.asetaLaivanPaikka(1, 4, Suunta.PYSTY);
+        
+        assertFalse(pelikentta.asetaLaiva(l3, false));
         
     }
 

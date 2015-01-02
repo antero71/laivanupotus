@@ -42,8 +42,8 @@ public class TietokoneAITest {
 
         Laiva laiva2 = new Laiva(4);
         laiva2.asetaLaivanPaikka(4, 5, Suunta.VAAKA);
-        pelikentta.asetaLaiva(laiva1);
-        pelikentta.asetaLaiva(laiva2);
+        pelikentta.asetaLaiva(laiva1, false);
+        pelikentta.asetaLaiva(laiva2, false);
         boolean osui = ai.ammu();
         Ruutu r = ai.viimeksiAmmuttu();
         if (laiva1.getLaivanRuudut().contains(r) || laiva2.getLaivanRuudut().contains(r)) {
@@ -57,7 +57,7 @@ public class TietokoneAITest {
     public void testaaAmmuKunEnsimmainenOsuu() {
         Laiva l = new Laiva(2);
         l.asetaLaivanPaikka(3, 3, Suunta.VAAKA);
-        pelikentta.asetaLaiva(l);
+        pelikentta.asetaLaiva(l, false);
         assertTrue(((TietokoneAI) ai).ammu(3, 3));
         boolean osui = ai.ammu();
         Ruutu r = ai.viimeksiAmmuttu();

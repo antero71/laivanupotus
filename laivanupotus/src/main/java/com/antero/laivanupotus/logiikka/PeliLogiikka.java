@@ -42,7 +42,7 @@ public class PeliLogiikka {
     }
 
     public boolean lisaaLaiva(Laiva laiva) {
-        return pelaajanPeli.asetaLaiva(laiva);
+        return pelaajanPeli.asetaLaiva(laiva, false);
     }
 
     public Pelikentta getTietokoneenPeli() {
