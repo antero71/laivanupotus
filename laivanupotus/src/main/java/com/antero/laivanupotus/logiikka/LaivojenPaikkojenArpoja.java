@@ -36,7 +36,6 @@ public class LaivojenPaikkojenArpoja {
      * @param peli
      */
     public void alustaLaivat(Pelikentta peli) {
-        System.out.println("alustaLaivat");
         peli.alustaRuudukko();
         Collection<Laiva> laivat = luoLaivat();
         Iterator<Laiva> iter = laivat.iterator();

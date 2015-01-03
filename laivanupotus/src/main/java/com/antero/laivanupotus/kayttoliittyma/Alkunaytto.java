@@ -14,6 +14,7 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -193,13 +194,13 @@ public class Alkunaytto extends javax.swing.JFrame {
 
         Kayttoliittyma k = new Kayttoliittyma(x, y, false);
         // k.setPelaaja(new Pelaaja(nimiKentta.getText(), 0));
-        muodostaKayttoliittyma2(k);
+        muodostaKayttoliittyma3(k);
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void muodostaKayttoliittyma1(Kayttoliittyma k) {
         JPanel panel = new JPanel(new GridLayout(3, 1));
 
-        JPanel pelipanel = k.luoRuudukko();
+        JPanel pelipanel = k.luoRuudukko(true);
 
         //k.getContentPane().add(pelipanel);
         PistenayttoPanel pistenaytto = new PistenayttoPanel();
@@ -218,7 +219,7 @@ public class Alkunaytto extends javax.swing.JFrame {
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
-        JPanel pelipanel = k.luoRuudukko();
+        JPanel pelipanel = k.luoRuudukko(true);
         pelipanel.setBorder(BorderFactory.createLineBorder(Color.yellow, 2));
 
         //k.getContentPane().add(pelipanel);
@@ -233,6 +234,72 @@ public class Alkunaytto extends javax.swing.JFrame {
         //k.getContentPane().add(pistenaytto);
         k.getContentPane().add(panel);
 
+        k.pack();
+        k.setVisible(true);
+    }
+
+    private void muodostaKayttoliittyma3(Kayttoliittyma k) {
+        JPanel panel = new JPanel();
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+
+        JPanel pelipanel = k.luoRuudukko(true);
+        pelipanel.setBorder(BorderFactory.createLineBorder(Color.yellow, 2));
+
+        //k.getContentPane().add(pelipanel);
+        k.createPistenaytto();
+        PistenayttoPanel pistenaytto = k.getPistenaytto();
+        pistenaytto.setPelaaja(new Pelaaja(nimiKentta.getText(), 0));
+        panel.add(pistenaytto);
+        pistenaytto.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        //pistenaytto.add(Box.createHorizontalGlue());
+        panel.add(Box.createRigidArea(new Dimension(0, 5)));
+        panel.add(pelipanel);
+        //k.getContentPane().add(pistenaytto);
+        
+
+        JPanel pelaajaPanel = k.luoRuudukko(false);
+
+        JPanel pelaajaButtonPanel = new JPanel();
+        pelaajaButtonPanel.setLayout(new BoxLayout(pelaajaButtonPanel, BoxLayout.LINE_AXIS));
+        
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
+
+        JButton lentotukialus = new JButton("XXXX");
+        JButton risteilija1 = new JButton("XXX");
+        JButton risteilija2 = new JButton("XXX");
+
+        JButton havittaja1 = new JButton("XX");
+        JButton havittaja2 = new JButton("XX");
+        JButton havittaja3 = new JButton("XX");
+
+        JButton sukellusvene1 = new JButton("X");
+        JButton sukellusvene2 = new JButton("X");
+        JButton sukellusvene3 = new JButton("X");
+        JButton sukellusvene4 = new JButton("X");
+
+        buttonPanel.add(lentotukialus);
+
+        buttonPanel.add(risteilija1);
+        buttonPanel.add(risteilija2);
+
+        buttonPanel.add(havittaja1);
+        buttonPanel.add(havittaja2);
+        buttonPanel.add(havittaja3);
+
+        buttonPanel.add(sukellusvene1);
+        buttonPanel.add(sukellusvene2);
+        buttonPanel.add(sukellusvene3);
+        buttonPanel.add(sukellusvene4);
+
+        buttonPanel.add(pelaajaPanel);
+        pelaajaButtonPanel.add(buttonPanel);
+        pelaajaButtonPanel.add(pelaajaPanel);
+        panel.add(pelaajaButtonPanel);
+
+        k.getContentPane().add(panel);
+        
         k.pack();
         k.setVisible(true);
     }

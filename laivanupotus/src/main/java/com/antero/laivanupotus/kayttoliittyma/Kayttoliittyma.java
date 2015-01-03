@@ -50,7 +50,7 @@ public class Kayttoliittyma extends JFrame {
     private javax.swing.JMenuItem lopetaItem;
     private javax.swing.JLabel tervetuloaLabel;
     private javax.swing.JMenuItem naytaPisteetItem;
-    
+
     public Kayttoliittyma() {
         this(10, 10, true);
     }
@@ -79,7 +79,6 @@ public class Kayttoliittyma extends JFrame {
     }
 
     // End of variables dec
-
     // private javax.swing.JLabel tervetuloaLabel = new JLabel();
     private void initComponents(boolean naytaTervetuloaNaytto) {
 
@@ -178,11 +177,13 @@ public class Kayttoliittyma extends JFrame {
         tervetuloaLabel.setText("Tervetuloa: " + pelaaja.getNimi());
     }
 
-    public JPanel luoRuudukko() {
+    public JPanel luoRuudukko(boolean alustaLaivat) {
         GridLayout layout = new GridLayout(pelilogiikka.getPelaajanPeli().getKenttaX(), pelilogiikka.getPelaajanPeli().getKenttaY());
         JPanel pelipanel = new JPanel(layout);
         //this.peli.valmisteleAlusta();
-        pelilogiikka.alustaLaivat();
+        if (alustaLaivat) {
+            pelilogiikka.alustaLaivat();
+        }
 
         for (int i = 0; i < pelilogiikka.getPelaajanPeli().getKenttaX(); i++) {
             for (int j = 0; j < pelilogiikka.getPelaajanPeli().getKenttaY(); j++) {
@@ -190,8 +191,12 @@ public class Kayttoliittyma extends JFrame {
                 NaytonRuutu naytonRuutu = new NaytonRuutu(ruutu);
                 naytonRuutu.setPreferredSize(new Dimension(30, 30));
 
-                tahtain = new Ammuskuuntelija(this, i, j, naytonRuutu);
-                naytonRuutu.addActionListener(tahtain);
+                if (alustaLaivat) {
+                    tahtain = new Ammuskuuntelija(this, i, j, naytonRuutu);
+                    naytonRuutu.addActionListener(tahtain);
+                } else {
+
+                }
                 pelipanel.add(naytonRuutu);
             }
 
