@@ -264,7 +264,7 @@ public class Pelikentta {
             int i = 0;
         }
 
-        if (alkux < 1 || alkuy < 0) {
+        if (alkux < 0 || alkuy < 0) {
             return true;
         }
         if (alkux > xpituus || alkuy > ypituus) {

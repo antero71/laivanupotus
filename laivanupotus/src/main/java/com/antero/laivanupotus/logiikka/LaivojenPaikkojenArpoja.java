@@ -19,7 +19,7 @@ import java.util.Random;
  */
 public class LaivojenPaikkojenArpoja {
 
-    public static int MAX_ARVONTOJA = 100;
+    public static int MAX_ARVONTOJA = 50;
 
     private Random random;
 

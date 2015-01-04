@@ -6,6 +6,7 @@
 package com.antero.laivanupotus.kayttoliittyma;
 
 import com.antero.laivanupotus.domain.Pelaaja;
+import com.antero.laivanupotus.kayttoliittyma.kuuntelijat.ValitseLaivaKuuntelija;
 import com.antero.laivanupotus.logiikka.Pelikentta;
 import java.awt.Color;
 import java.awt.Container;
@@ -243,8 +244,8 @@ public class Alkunaytto extends javax.swing.JFrame {
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
-        JPanel pelipanel = k.luoRuudukko(true);
-        pelipanel.setBorder(BorderFactory.createLineBorder(Color.yellow, 2));
+        JPanel tietokoneenRuudukkoPanel = k.luoRuudukko(true);
+        tietokoneenRuudukkoPanel.setBorder(BorderFactory.createLineBorder(Color.yellow, 2));
 
         //k.getContentPane().add(pelipanel);
         k.createPistenaytto();
@@ -254,11 +255,11 @@ public class Alkunaytto extends javax.swing.JFrame {
         pistenaytto.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         //pistenaytto.add(Box.createHorizontalGlue());
         panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(pelipanel);
+        panel.add(tietokoneenRuudukkoPanel);
         //k.getContentPane().add(pistenaytto);
         
 
-        JPanel pelaajaPanel = k.luoRuudukko(false);
+        JPanel pelaajanRuudukkoPanel = k.luoRuudukko(false);
 
         JPanel pelaajaButtonPanel = new JPanel();
         pelaajaButtonPanel.setLayout(new BoxLayout(pelaajaButtonPanel, BoxLayout.LINE_AXIS));
@@ -279,6 +280,24 @@ public class Alkunaytto extends javax.swing.JFrame {
         JButton sukellusvene3 = new JButton("X");
         JButton sukellusvene4 = new JButton("X");
 
+        ValitseLaivaKuuntelija valitseKuuntelija = new ValitseLaivaKuuntelija(k);
+        lentotukialus.addActionListener(valitseKuuntelija);
+        risteilija1.addActionListener(valitseKuuntelija);
+        risteilija2.addActionListener(valitseKuuntelija);
+        
+        havittaja1.addActionListener(valitseKuuntelija);
+        havittaja2.addActionListener(valitseKuuntelija);
+        havittaja3.addActionListener(valitseKuuntelija);
+        
+        sukellusvene1.addActionListener(valitseKuuntelija);
+        sukellusvene2.addActionListener(valitseKuuntelija);
+        sukellusvene3.addActionListener(valitseKuuntelija);
+        sukellusvene4.addActionListener(valitseKuuntelija);
+        
+        
+        
+        
+        
         buttonPanel.add(lentotukialus);
 
         buttonPanel.add(risteilija1);
@@ -293,9 +312,9 @@ public class Alkunaytto extends javax.swing.JFrame {
         buttonPanel.add(sukellusvene3);
         buttonPanel.add(sukellusvene4);
 
-        buttonPanel.add(pelaajaPanel);
+        buttonPanel.add(pelaajanRuudukkoPanel);
         pelaajaButtonPanel.add(buttonPanel);
-        pelaajaButtonPanel.add(pelaajaPanel);
+        pelaajaButtonPanel.add(pelaajanRuudukkoPanel);
         panel.add(pelaajaButtonPanel);
 
         k.getContentPane().add(panel);
