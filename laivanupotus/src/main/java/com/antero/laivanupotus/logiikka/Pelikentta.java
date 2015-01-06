@@ -113,7 +113,7 @@ public class Pelikentta {
             //System.out.println("tarkistaMeneekoRuudukonUlkopuolelle palauttaa true");
             return false;
         }
-        if (tarkistaOnkoKiellettyAsettaaLaivaa(laiva, false)) {
+        if (tarkistaOnkoKiellettyAsettaaLaivaa(laiva, printDebug)) {
             //System.out.println("tarkistaOnkoKiellettyAsettaaLaivaa palauttaa true");
             return false;
         }
@@ -128,7 +128,7 @@ public class Pelikentta {
             //System.out.println("asetalaiva x=" + x + ",y=" + y);
             alustaRuutu(r, x, y, true, true, false);
         }
-        asetaLaivanKieltoalue(laiva, false);
+        //asetaLaivanKieltoalue(laiva, printDebug);
         laivojenLkm++;
         laivatCol.add(laiva);
         return true;
@@ -228,9 +228,9 @@ public class Pelikentta {
      * tämä jostain syystä ei toimi, poistettu käytöstä toistaiseksi
      */
     public void alustaRuudukko() {
-        if (1 == 1) {
-            return;
-        }
+        //if (1 == 1) {
+        //    return;
+        //}
         Ruutu r = null;
         int xraja = 10;
         int yraja = 10;
@@ -313,6 +313,9 @@ public class Pelikentta {
                 ruutu = new Ruutu(i, j);
                 if (!laivanRuudut.contains(ruutu)) {
                     alustaRuutu(ruutu, i, j, false, true, false);
+                    if (print) {
+                        System.out.println("kieltoon x,y " + i + "," + j);
+                    }
                 }
 
             }
@@ -327,18 +330,32 @@ public class Pelikentta {
      * @param laiva
      * @return
      */
-    public boolean tarkistaOnkoKiellettyAsettaaLaivaa(Laiva laiva, boolean print) {
+    public boolean tarkistaOnkoKiellettyAsettaaLaivaa(Laiva laiva, boolean printDebug) {
         // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
         // 1 ruudun päässä
 
-        int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva, print);
+        int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva, printDebug);
+
+        if(koordinaatit[1] < kenttaX -1 )
+            koordinaatit[1]++;
+            
+        if (koordinaatit[3] < kenttaY - 1) {
+            koordinaatit[3]++;
+        }
 
         for (int i = koordinaatit[0]; i < koordinaatit[1]; i++) {
             for (int j = koordinaatit[2]; j < koordinaatit[3]; j++) {
 
-                if (ruudut[i][j] != null && ruudut[i][j].isKielletty()) {
+                if (ruudut[i][j] != null && ruudut[i][j].isLaivanOsa()) {
+                    if (printDebug) {
+                        System.out.println(i + "," + j + "" + ruudut[i][j].isLaivanOsa());
+                    }
                     return true;
                 }
+                if (printDebug) {
+                    System.out.println(i + "," + j + "" + ruudut[i][j].isLaivanOsa());
+                }
+
             }
         }
 
@@ -350,50 +367,38 @@ public class Pelikentta {
      * 3:ssa loppuy
      */
     private int[] laskeAlkuXYJaLoppuXYymparoivalleAlueelle(Laiva laiva, boolean print) {
-        TreeSet<Ruutu> laivanRuudut = laiva.getLaivanRuudut();
-        Ruutu alku = laivanRuudut.first();
-        int alkux = alku.getX();
-        int alkuy = alku.getY();
-        Ruutu loppu = laivanRuudut.last();
-        int loppux = loppu.getX();
-        int loppuy = loppu.getY();
+
+        int[] koor = annaLaivanKoordinaatit(laiva);
 
         if (print) {
-            System.out.println("laiva alkux  " + alkux);
-            System.out.println("laiva loppux " + loppux);
-            System.out.println("laiva alkuy  " + alkuy);
-            System.out.println("laiva loppuy " + loppuy);
+            System.out.println("laiva alkux  " + koor[0]);
+            System.out.println("laiva loppux " + koor[1]);
+            System.out.println("laiva alkuy  " + koor[2]);
+            System.out.println("laiva loppuy " + koor[3]);
         }
-        if (alkux > 0) {
-            alkux--;
+        if (koor[0] > 0) {
+            koor[0]--;
         }
-        if (alkuy > 0) {
-            alkuy--;
-        }
-
-        if ((kenttaX - 1) > loppux) {
-            loppux++;
-        }
-        if ((kenttaY - 1) > loppuy) {
-            loppuy++;
+        if (koor[2] > 0) {
+            koor[2]--;
         }
 
-        int[] koordinaatit = new int[4];
-
-        koordinaatit[0] = alkux;
-        koordinaatit[1] = loppux;
-        koordinaatit[2] = alkuy;
-        koordinaatit[3] = loppuy;
+        if ((kenttaX - 1) > koor[1]) {
+            koor[1]++;
+        }
+        if ((kenttaY - 1) > koor[3]) {
+            koor[3]++;
+        }
 
         if (print) {
 
-            System.out.println("alkux  " + alkux);
-            System.out.println("loppux " + loppux);
-            System.out.println("alkuy  " + alkuy);
-            System.out.println("loppuy " + loppuy);
+            System.out.println("ymp alkux  " + koor[0]);
+            System.out.println("ymp loppux " + koor[1]);
+            System.out.println("ymp alkuy  " + koor[2]);
+            System.out.println("ymp loppuy " + koor[3]);
 
         }
-        return koordinaatit;
+        return koor;
 
     }
 
@@ -507,5 +512,24 @@ public class Pelikentta {
 
         System.out.println(kentta.isLaiva(x, y));
 
+    }
+
+    private int[] annaLaivanKoordinaatit(Laiva laiva) {
+        TreeSet<Ruutu> laivanRuudut = laiva.getLaivanRuudut();
+        Ruutu alku = laivanRuudut.first();
+        int alkux = alku.getX();
+        int alkuy = alku.getY();
+        Ruutu loppu = laivanRuudut.last();
+        int loppux = loppu.getX();
+        int loppuy = loppu.getY();
+
+        int[] koordinaatit = new int[4];
+
+        koordinaatit[0] = alkux;
+        koordinaatit[1] = loppux;
+        koordinaatit[2] = alkuy;
+        koordinaatit[3] = loppuy;
+
+        return koordinaatit;
     }
 }

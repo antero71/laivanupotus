@@ -165,4 +165,14 @@ public class LaivaTest {
     public void konstruktoriHeittaaPoikkeuksenJosPituusLiianSuuri() {
         laiva = new Laiva(10);
     }
+    
+    @Test
+    public void laivanRuudutLaivanOsia(){
+        laiva = new Laiva(4);
+        TreeSet<Ruutu> ruudut = laiva.getLaivanRuudut();
+        
+        for(Ruutu r:ruudut){
+            assertTrue(r.isLaivanOsa());
+        }
+    }
 }

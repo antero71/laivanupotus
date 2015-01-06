@@ -15,10 +15,10 @@ public class Ruutu implements Comparable<Ruutu> {
     private int x;
     private int y;
 
-    private boolean kielletty;
-    private boolean laivanOsa;
-    private boolean osui;
-    private boolean ammuttu;
+    private boolean kielletty = false;
+    private boolean laivanOsa = false;
+    private boolean osui = false;
+    private boolean ammuttu = false;
 
     public Ruutu(int x, int y) {
         this.x = x;

@@ -40,7 +40,7 @@ public class PelikenttaTest {
     public void tearDown() {
     }
 
-    //@Test
+    @Test
     public void testaaRuudukonAlustus() {
         Ruutu[][] ruudut = pelikentta.getRuudut();
 
@@ -182,19 +182,20 @@ public class PelikenttaTest {
         laiva.asetaLaivanPaikka(10, 10, Suunta.VAAKA);
         assertFalse(pelikentta.asetaLaiva(laiva, false));
     }
-    
+
     @Test
-    public void testaaVoikoAsettaaSukellusvenettaLentotukialuksenViereen(){
-        Laiva sukellusvene = new Laiva(1);
-        
-        sukellusvene.asetaLaivanPaikka(4,3,Suunta.PYSTY);
-        
+    public void testaaVoikoAsettaaSukellusvenettaLentotukialuksenViereen() {
+
+        Laiva sukellusvene = new Laiva(Laiva.SUKELLUSVENE_PITUUS);
+
+        sukellusvene.asetaLaivanPaikka(4, 3, Suunta.PYSTY);
+
         Laiva lentotukialus = new Laiva(Laiva.LENTOTUKIALUS_PITUUS);
-        
+
         lentotukialus.asetaLaivanPaikka(2, 4, Suunta.VAAKA);
-        
+
         assertTrue(pelikentta.asetaLaiva(lentotukialus, false));
-        
+
         assertFalse(pelikentta.asetaLaiva(sukellusvene, false));
     }
 
@@ -205,38 +206,84 @@ public class PelikenttaTest {
         l.asetaLaivanPaikka(3, 3, Suunta.PYSTY);
         pelikentta.asetaLaiva(l, false);
 
-       // System.out.println("kielletyt ruudut " + pelikentta.pelikenttaLaivatJaKielletytRuudutString());
-
+        // System.out.println("kielletyt ruudut " + pelikentta.pelikenttaLaivatJaKielletytRuudutString());
         Laiva l2 = new Laiva(1);
-        l2.asetaLaivanPaikka(4,4,Suunta.PYSTY);
-        
+        l2.asetaLaivanPaikka(4, 4, Suunta.PYSTY);
+
         assertFalse(pelikentta.asetaLaiva(l2, false));
-        
+
+        l2 = new Laiva(1);
         l2.asetaLaivanPaikka(2, 2, Suunta.VAAKA);
-        
+
         assertFalse(pelikentta.asetaLaiva(l2, false));
-        
-        
+
     }
-    
-  // @Test
-    public void testaaVasemmanReunaAlueenKiellettyAlue(){
+
+    @Test
+    public void testaaVasemmanReunaAlueenKiellettyAlue() {
         Laiva l = new Laiva(4);
         l.asetaLaivanPaikka(0, 4, Suunta.PYSTY);
         pelikentta.asetaLaiva(l, true);
-        
+
         Laiva l2 = new Laiva(1);
         l2.asetaLaivanPaikka(1, 3, Suunta.PYSTY);
-        
-        assertTrue(pelikentta.isKielletty(1, 3));
-        
+
+       // assertTrue(pelikentta.isKielletty(1, 3));
         assertFalse(pelikentta.asetaLaiva(l2, false));
-        
+
         Laiva l3 = new Laiva(1);
         l3.asetaLaivanPaikka(1, 4, Suunta.PYSTY);
-        
+
         assertFalse(pelikentta.asetaLaiva(l3, false));
+
+    }
+
+    @Test
+    public void testaaVoikoLaittaaKahtaLaivaaPerakkain() {
+        Laiva l1 = new Laiva(3);
+        Laiva l2 = new Laiva(3);
+
+        l1.asetaLaivanPaikka(1, 4, Suunta.VAAKA);
+
+        l2.asetaLaivanPaikka(5, 4, Suunta.VAAKA);
+
+        pelikentta.asetaLaiva(l1, true);
+
+        assertTrue(pelikentta.asetaLaiva(l2, true));
+
+        Laiva l3 = new Laiva(1);
+
+        l3.asetaLaivanPaikka(4, 4, Suunta.PYSTY);
+
+        assertFalse(pelikentta.asetaLaiva(l3, false));
+
+    }
+    
+    @Test
+    public void voikoLaittaaLaivatVierekkain(){
+        Laiva l1 = new Laiva(1);
+        l1.asetaLaivanPaikka(0, 5, Suunta.PYSTY);
         
+        Laiva l2 = new Laiva(2);
+        l2.asetaLaivanPaikka(1, 5, Suunta.VAAKA);
+        
+        pelikentta.asetaLaiva(l1, false);
+        
+        assertFalse(pelikentta.asetaLaiva(l2, false));
+    }
+
+    @Test
+    public void onkoLaivanOsa() {
+        Laiva l = new Laiva(4);
+        l.asetaLaivanPaikka(0, 0, Suunta.VAAKA);
+        pelikentta.asetaLaiva(l, false);
+
+        assertTrue(pelikentta.isLaiva(0, 0));
+        assertTrue(pelikentta.isLaiva(1, 0));
+        assertTrue(pelikentta.isLaiva(2, 0));
+        assertTrue(pelikentta.isLaiva(3, 0));
+        assertFalse(pelikentta.isLaiva(4, 0));
+
     }
 
 }
