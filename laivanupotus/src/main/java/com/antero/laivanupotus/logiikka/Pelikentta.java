@@ -68,7 +68,6 @@ public class Pelikentta {
         return laivojenLkm;
     }
 
-
     public boolean isLaiva(int x, int y) {
         if (ruudut[x][y] != null && x > -1 && x < kenttaX && y > -1 && y < kenttaY) {
             return ruudut[x][y].isLaivanOsa();
@@ -183,7 +182,10 @@ public class Pelikentta {
     public boolean upposiko(int x, int y) {
         Ruutu r = ruudut[x][y];
         if (r != null) {
-            return laivat.get(r).upposiko();
+            if (laivat.get(r) != null) {
+                return laivat.get(r).upposiko();
+            }
+            return false;
         }
         return false;
     }
@@ -242,10 +244,6 @@ public class Pelikentta {
         int ypituus = kenttaY;
         int xpituus = kenttaX;
 
-        if (loppux == 10 || loppuy == 10) {
-            int i = 0;
-        }
-
         if (alkux < 0 || alkuy < 0) {
             return true;
         }
@@ -260,51 +258,7 @@ public class Pelikentta {
         return false;
     }
 
-    /**
-     * laivan ympärillä olevat ruudut merkitään kielletyiksi
-     *
-     * @param laiva jonka ympäristä asetataan ruudut kielletyiksi
-     */
-    public void asetaLaivanKieltoalue(Laiva laiva, boolean print) {
-        // laiva voidaan asettaa jos toista laivaa ei ole lähempänä kuin 
-        // 1 ruudun päässä
-        int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva, false);
-
-        //  koordinaatit[0] = alkux;
-        // koordinaatit[1] = loppux;
-        // koordinaatit[2] = alkuy;
-        // koordinaatit[3] = loppuy;
-        // Lisätään loppukoordinaatteihin yksi jotta voidaan 
-        // käyttäää < vertailua
-        int vertailux = kenttaX - 1;
-        int vertailuy = kenttaY - 1;
-
-        if (koordinaatit[1] < vertailux) {
-            koordinaatit[1]++;
-        }
-
-        if (koordinaatit[1] < vertailuy) {
-            koordinaatit[3]++;
-        }
-
-        TreeSet<Ruutu> laivanRuudut = laiva.getLaivanRuudut();
-        Ruutu ruutu = null;
-        for (int i = koordinaatit[0]; i < koordinaatit[1]; i++) {
-            for (int j = koordinaatit[2]; j < koordinaatit[3]; j++) {
-                //System.out.println("x = " + i + " y = " + j);
-                ruutu = new Ruutu(i, j);
-                if (!laivanRuudut.contains(ruutu)) {
-                    alustaRuutu(ruutu, i, j, false, true, false);
-                    if (print) {
-                        System.out.println("kieltoon x,y " + i + "," + j);
-                    }
-                }
-
-            }
-        }
-
-    }
-
+ 
     /**
      * laivan asetuksessa laitateen kielletty alue, joten tässä metodissa
      * tarkastetaan vain tulevan laivan ruutujen alue.
@@ -318,9 +272,10 @@ public class Pelikentta {
 
         int[] koordinaatit = laskeAlkuXYJaLoppuXYymparoivalleAlueelle(laiva, printDebug);
 
-        if(koordinaatit[1] < kenttaX -1 )
+        if (koordinaatit[1] < kenttaX - 1) {
             koordinaatit[1]++;
-            
+        }
+
         if (koordinaatit[3] < kenttaY - 1) {
             koordinaatit[3]++;
         }
@@ -447,7 +402,7 @@ public class Pelikentta {
                     b.append(" ");
                 } else if (ruudut[x][y].isLaivanOsa()) {
                     b.append("X");
-                } 
+                }
 
             }
             b.append("\n");
@@ -482,7 +437,6 @@ public class Pelikentta {
 
         kentta.asetaLaiva(l, false);
 
-       
         Laiva l2 = new Laiva(1);
         l2.asetaLaivanPaikka(x, y, Suunta.PYSTY);
 

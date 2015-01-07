@@ -257,13 +257,12 @@ public class Alkunaytto extends javax.swing.JFrame {
         panel.add(Box.createRigidArea(new Dimension(0, 5)));
         panel.add(tietokoneenRuudukkoPanel);
         //k.getContentPane().add(pistenaytto);
-        
 
         JPanel pelaajanRuudukkoPanel = k.luoRuudukko(false);
 
         JPanel pelaajaButtonPanel = new JPanel();
         pelaajaButtonPanel.setLayout(new BoxLayout(pelaajaButtonPanel, BoxLayout.LINE_AXIS));
-        
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 
@@ -284,20 +283,16 @@ public class Alkunaytto extends javax.swing.JFrame {
         lentotukialus.addActionListener(valitseKuuntelija);
         risteilija1.addActionListener(valitseKuuntelija);
         risteilija2.addActionListener(valitseKuuntelija);
-        
+
         havittaja1.addActionListener(valitseKuuntelija);
         havittaja2.addActionListener(valitseKuuntelija);
         havittaja3.addActionListener(valitseKuuntelija);
-        
+
         sukellusvene1.addActionListener(valitseKuuntelija);
         sukellusvene2.addActionListener(valitseKuuntelija);
         sukellusvene3.addActionListener(valitseKuuntelija);
         sukellusvene4.addActionListener(valitseKuuntelija);
-        
-        
-        
-        
-        
+
         buttonPanel.add(lentotukialus);
 
         buttonPanel.add(risteilija1);
@@ -318,7 +313,7 @@ public class Alkunaytto extends javax.swing.JFrame {
         panel.add(pelaajaButtonPanel);
 
         k.getContentPane().add(panel);
-        
+
         k.pack();
         k.setVisible(true);
     }

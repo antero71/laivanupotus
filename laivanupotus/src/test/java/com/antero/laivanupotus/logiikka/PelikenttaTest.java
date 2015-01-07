@@ -322,5 +322,46 @@ public class PelikenttaTest {
         
         
     }
+    
+    @Test
+    public void testaaAmmuJosMeneeAlustamattomaanRuutuun(){
+        assertFalse(pelikentta.ammu(1, 1));
+    }
+    
+    @Test
+    public void testaaOnkoAmmuttuAlustamattomaanRuutuun(){
+        assertFalse(pelikentta.onkoAmmuttu(1, 1));
+        
+    }
+    
+    @Test
+    public void testaaOnkoLaivaAlustamattomaanRuutuun(){
+        assertFalse(pelikentta.isLaiva(1, 1));
+        
+    }
+    
+    @Test
+    public void testaaOnkoAmmuttuJosRuutuAlustettu(){
+        Laiva l = new Laiva(1);
+        l.asetaLaivanPaikka(1, 1, Suunta.PYSTY);
+        
+        pelikentta.asetaLaiva(l, false);
+        
+        assertFalse(pelikentta.onkoAmmuttu(1, 1));
+    }
+    
+    @Test
+    public void testaaUpposikoAlustamattomaanRuutuun(){
+        assertFalse(pelikentta.upposiko(1,1));
+        
+    }
+    
+    @Test
+    public void testaaUpposikoRuutuParametrilla(){
+        Ruutu r = new Ruutu(1,1);
+        
+        assertFalse(pelikentta.upposiko(r));
+        
+    }
 
 }
