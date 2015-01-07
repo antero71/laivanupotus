@@ -68,23 +68,6 @@ public class Pelikentta {
         return laivojenLkm;
     }
 
-    /**
-     * jos annettussa koordinaatissa on ruutu joka on kielletty palautuu true,
-     * muute false
-     *
-     * Jos ruutu olisi kentän ulkopuolella palautuu false
-     *
-     * @param x x-koordinaatti 0...(kenttaX-1)
-     * @param y y-koordinaatti 0...(kenttaY-1)
-     * @return true, jos kielletty ja kentän sisällä, muuten false
-     */
-    public boolean isKielletty(int x, int y) {
-        if (ruudut[x][y] != null && x > -1 && x < kenttaX && y > -1 && y < kenttaY) {
-            return ruudut[x][y].isKielletty();
-        } else {
-            return false;
-        }
-    }
 
     public boolean isLaiva(int x, int y) {
         if (ruudut[x][y] != null && x > -1 && x < kenttaX && y > -1 && y < kenttaY) {
@@ -352,7 +335,7 @@ public class Pelikentta {
                     }
                     return true;
                 }
-                if (printDebug) {
+                if (ruudut[i][j] != null && printDebug) {
                     System.out.println(i + "," + j + "" + ruudut[i][j].isLaivanOsa());
                 }
 
@@ -503,8 +486,7 @@ public class Pelikentta {
 
         kentta.asetaLaiva(l, false);
 
-        System.out.println("isKielletty " + kentta.isKielletty(x, y));
-
+       
         Laiva l2 = new Laiva(1);
         l2.asetaLaivanPaikka(x, y, Suunta.PYSTY);
 

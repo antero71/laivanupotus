@@ -285,5 +285,42 @@ public class PelikenttaTest {
         assertFalse(pelikentta.isLaiva(4, 0));
 
     }
+    
+    @Test
+    public void testaaVoikoLaivaaAsettaaLimittain(){
+        Laiva l1 = new Laiva(Laiva.LENTOTUKIALUS_PITUUS);
+        
+        l1.asetaLaivanPaikka(2, 6, Suunta.VAAKA);
+        
+        pelikentta.asetaLaiva(l1, false);
+        
+        Laiva l2 = new Laiva(3);
+        
+        l2.asetaLaivanPaikka(0, 5, Suunta.VAAKA);
+        
+        assertFalse(pelikentta.asetaLaiva(l2, false));
+        
+        
+        
+    }
+    
+      
+    @Test
+    public void testaaVoikoLaivaaAsettaaLimittain2(){
+        Laiva l1 = new Laiva(Laiva.LENTOTUKIALUS_PITUUS);
+        
+        l1.asetaLaivanPaikka(2, 6, Suunta.VAAKA);
+        
+        pelikentta.asetaLaiva(l1, false);
+        
+        Laiva l2 = new Laiva(3);
+        
+        l2.asetaLaivanPaikka(5, 7, Suunta.VAAKA);
+        
+        assertFalse(pelikentta.asetaLaiva(l2, false));
+        
+        
+        
+    }
 
 }

@@ -15,7 +15,7 @@ public class Ruutu implements Comparable<Ruutu> {
     private int x;
     private int y;
 
-    private boolean kielletty = false;
+
     private boolean laivanOsa = false;
     private boolean osui = false;
     private boolean ammuttu = false;
@@ -43,14 +43,6 @@ public class Ruutu implements Comparable<Ruutu> {
 
     public void setY(int y) {
         this.y = y;
-    }
-
-    public boolean isKielletty() {
-        return kielletty;
-    }
-
-    public void setKielletty(boolean kielletty) {
-        this.kielletty = kielletty;
     }
 
     public boolean isLaivanOsa() {
@@ -119,7 +111,7 @@ public class Ruutu implements Comparable<Ruutu> {
 
     @Override
     public String toString() {
-        return "x= " + x + ": y=" + y + ": isLaiva = " + laivanOsa + ", kielletty = " + kielletty + ", ammuttu = " + ammuttu + ", osui = " + osui;
+        return "x= " + x + ": y=" + y + ": isLaiva = " + laivanOsa + ", ammuttu = " + ammuttu + ", osui = " + osui;
     }
 
     /**
