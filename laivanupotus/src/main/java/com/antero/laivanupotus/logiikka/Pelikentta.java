@@ -222,7 +222,6 @@ public class Pelikentta {
                 r = new Ruutu();
                 r.setX(x);
                 r.setY(y);
-                r.setKielletty(false);
                 r.setLaivanOsa(false);
                 //System.out.println("x = " + x + ", y = " + y);
                 ruudut[x][y] = r;
@@ -393,7 +392,6 @@ public class Pelikentta {
         r.setY(y);
         r.setAmmuttu(ammuttu);
         r.setLaivanOsa(laivanOsa);
-        r.setKielletty(kielletty);
         ruudut[x][y] = r;
     }
 
@@ -445,13 +443,11 @@ public class Pelikentta {
         StringBuffer b = new StringBuffer();
         for (int x = 0; x < kenttaX; x++) {
             for (int y = 0; y < kenttaY; y++) {
-                if (ruudut[x][y] == null || (!ruudut[x][y].isLaivanOsa() && !ruudut[x][y].isKielletty())) {
+                if (ruudut[x][y] == null || (!ruudut[x][y].isLaivanOsa())) {
                     b.append(" ");
                 } else if (ruudut[x][y].isLaivanOsa()) {
                     b.append("X");
-                } else if (ruudut[x][y].isKielletty() && !ruudut[x][y].isLaivanOsa()) {
-                    b.append("K");
-                }
+                } 
 
             }
             b.append("\n");
