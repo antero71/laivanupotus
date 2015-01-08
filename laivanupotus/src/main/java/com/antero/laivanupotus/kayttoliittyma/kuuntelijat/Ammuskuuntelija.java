@@ -13,6 +13,8 @@ import com.antero.laivanupotus.tiedostot.Tiedosto;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
@@ -24,6 +26,7 @@ public class Ammuskuuntelija implements ActionListener {
     private int y;
     private Kayttoliittyma kali;
     private final NaytonRuutu naytonRuutu;
+    private static Collection <NaytonRuutu>osutut = new ArrayList();
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -32,10 +35,14 @@ public class Ammuskuuntelija implements ActionListener {
             naytonRuutu.setText("X");
             naytonRuutu.setBackground(Color.RED);
             naytonRuutu.setBorder(null);
+            osutut.add(naytonRuutu);
+            
 
             muutaPisteita(100);
             if (kali.getPelilogiikka().getTietokoneenPeli().upposiko(naytonRuutu.getRuutu())) {
                 muutaPisteita(1000);
+                muutaOsututMustiksi();
+                osutut.clear();
             }
             if (kali.getPelilogiikka().getTietokoneenPeli().isPeliPaattynyt()) {
                 kali.getPistenaytto().getIlmoitus().setText("Peli päättyi!");
@@ -72,6 +79,12 @@ public class Ammuskuuntelija implements ActionListener {
         pistaul.lisaaPelaajaPistetaulukkoon(p);
         return pistaul;
 
+    }
+
+    private void muutaOsututMustiksi() {
+        for(NaytonRuutu r:osutut){
+            r.setBackground(Color.BLACK);
+        }
     }
 
 }
