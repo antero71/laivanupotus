@@ -98,11 +98,10 @@ public class Tiedosto {
             // Create the empty file with default permissions, etc.
             Files.createFile(file);
         } catch (FileAlreadyExistsException x) {
-            System.err.format("file named %s"
-                    + " already exists%n", file);
+            // tarkoituksella tyhjä
         } catch (IOException x) {
             // Some other sort of failure, such as permissions.
-            System.err.format("createFile error: %s%n", x);
+            //System.err.format("createFile error: %s%n", x);
             Path dir = Paths.get(System.getProperty("user.home"), "laivanupotus");
 
             try {
