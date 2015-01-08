@@ -278,6 +278,8 @@ public class Alkunaytto extends javax.swing.JFrame {
         JButton sukellusvene2 = new JButton("X");
         JButton sukellusvene3 = new JButton("X");
         JButton sukellusvene4 = new JButton("X");
+        
+        JButton kaannaNappi = new JButton("Käännä laiva");
 
         ValitseLaivaKuuntelija valitseKuuntelija = new ValitseLaivaKuuntelija(k);
         lentotukialus.addActionListener(valitseKuuntelija);
@@ -306,6 +308,7 @@ public class Alkunaytto extends javax.swing.JFrame {
         buttonPanel.add(sukellusvene2);
         buttonPanel.add(sukellusvene3);
         buttonPanel.add(sukellusvene4);
+        buttonPanel.add(kaannaNappi);
 
         buttonPanel.add(pelaajanRuudukkoPanel);
         pelaajaButtonPanel.add(buttonPanel);

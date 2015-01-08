@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  *
  * @author Antero Oikkonen
  */
-public class AsetaLaivaKuuntelija implements ActionListener, KeyListener {
+public class AsetaLaivaKuuntelija implements ActionListener {
 
     private int x;
     private int y;
@@ -64,24 +64,6 @@ public class AsetaLaivaKuuntelija implements ActionListener, KeyListener {
         }
         ///Laiva l = new Laiva();
         ///kali.getPelilogiikka().getPelaajanPeli().asetaLaiva(null, true)
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-
-        char c = e.getKeyChar();
-        System.out.println("key " + c);
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
