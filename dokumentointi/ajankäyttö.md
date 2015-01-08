@@ -16,4 +16,4 @@
 * 2.1.2015   pelialueen kielletyn alueen korjausta, sekvenssikaaviot ja raportit 4 h
 * 4.1.2014   laivojen asettamisen toteuttamista, 2 h
 * 7.1.2014   raportteja ja testejä, 2 h
-* 8.1.2014   demotilaisuus ja pientä koodausta 2 h
+* 8.1.2014   demotilaisuus ja pientä koodausta 2 h, koodikatselmointi 0,5 h
