@@ -15,4 +15,4 @@
 * 29.12.2014 pistetilaston näyttö ja tilaston haku tiedostosta, luokkakaavio, pit-raportti ja checkstyle raportti 3 h
 * 2.1.2015   pelialueen kielletyn alueen korjausta, sekvenssikaaviot ja raportit 4 h
 * 4.1.2014   laivojen asettamisen toteuttamista, 2 h
-
+* 7.1.2014   raportteja ja testejä, 2 h
