@@ -263,55 +263,6 @@ public class Alkunaytto extends javax.swing.JFrame {
 
         JPanel pelaajaButtonPanel = new JPanel();
         pelaajaButtonPanel.setLayout(new BoxLayout(pelaajaButtonPanel, BoxLayout.LINE_AXIS));
-
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
-
-        JButton lentotukialus = new JButton("XXXX");
-        JButton risteilija1 = new JButton("XXX");
-        JButton risteilija2 = new JButton("XXX");
-
-        JButton havittaja1 = new JButton("XX");
-        JButton havittaja2 = new JButton("XX");
-        JButton havittaja3 = new JButton("XX");
-
-        JButton sukellusvene1 = new JButton("X");
-        JButton sukellusvene2 = new JButton("X");
-        JButton sukellusvene3 = new JButton("X");
-        JButton sukellusvene4 = new JButton("X");
-        
-        JButton kaannaNappi = new JButton("Käännä laiva");
-
-        ValitseLaivaKuuntelija valitseKuuntelija = new ValitseLaivaKuuntelija(k);
-        lentotukialus.addActionListener(valitseKuuntelija);
-        risteilija1.addActionListener(valitseKuuntelija);
-        risteilija2.addActionListener(valitseKuuntelija);
-
-        havittaja1.addActionListener(valitseKuuntelija);
-        havittaja2.addActionListener(valitseKuuntelija);
-        havittaja3.addActionListener(valitseKuuntelija);
-
-        sukellusvene1.addActionListener(valitseKuuntelija);
-        sukellusvene2.addActionListener(valitseKuuntelija);
-        sukellusvene3.addActionListener(valitseKuuntelija);
-        sukellusvene4.addActionListener(valitseKuuntelija);
-
-        buttonPanel.add(lentotukialus);
-
-        buttonPanel.add(risteilija1);
-        buttonPanel.add(risteilija2);
-
-        buttonPanel.add(havittaja1);
-        buttonPanel.add(havittaja2);
-        buttonPanel.add(havittaja3);
-
-        buttonPanel.add(sukellusvene1);
-        buttonPanel.add(sukellusvene2);
-        buttonPanel.add(sukellusvene3);
-        buttonPanel.add(sukellusvene4);
-        buttonPanel.add(kaannaNappi);
-
-        buttonPanel.add(pelaajanRuudukkoPanel);
         //pelaajaButtonPanel.add(buttonPanel);
         pelaajaButtonPanel.add(pelaajanRuudukkoPanel);
         panel.add(pelaajaButtonPanel);

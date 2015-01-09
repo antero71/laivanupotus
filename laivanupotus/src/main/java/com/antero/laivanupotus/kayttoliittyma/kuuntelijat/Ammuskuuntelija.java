@@ -116,11 +116,38 @@ public class Ammuskuuntelija implements ActionListener {
 
         Ruutu r = logiikka.getAi().viimeksiAmmuttu();
         JPanel panel = kali.getPelaajanRuudukkoPanel();
-        System.out.println(""+panel.getComponentAt(r.getX(), r.getY()).getName());
-        NaytonRuutu nt = (NaytonRuutu) panel.getComponentAt(r.getX(), r.getY());
+        
+        System.out.println("ammuttu "+r.getX()+","+r.getY());
+        
+        int x = 0;
+        int y = 0;
+        
+        if(r.getX()==0){
+            x = 1;
+        }else{
+            x = r.getX();
+        }
+        
+        if(r.getY()==0){
+            y = 1;
+        }else{
+            y = r.getY();
+        }
+            
+        
+        System.out.println(""+panel.getComponentAt(x*30, y*30).getName());
+        System.out.println("dimension "+panel.getBounds());
+        
+        x*=30;
+        y*=30;
+        
+        System.out.println("haettava komponentti "+x+","+y);
+        
+        NaytonRuutu nt = (NaytonRuutu) panel.getComponentAt(x, y);
         if (osui) {
             nt.setBorder(null);
             nt.setText("X");
+            nt.setBackground(Color.red);
         } else {
             nt.setText("o");
         }

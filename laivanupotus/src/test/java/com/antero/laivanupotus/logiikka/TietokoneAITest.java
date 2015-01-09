@@ -31,9 +31,6 @@ public class TietokoneAITest {
         ai = new TietokoneAI(pelikentta);
     }
 
-    @Test
-    public void testGetPelikentta() {
-    }
 
     @Test
     public void testaaAmmu() {
