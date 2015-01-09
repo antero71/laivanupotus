@@ -51,6 +51,7 @@ public class Kayttoliittyma extends JFrame {
     private javax.swing.JMenuItem lopetaItem;
     private javax.swing.JLabel tervetuloaLabel;
     private javax.swing.JMenuItem naytaPisteetItem;
+    private JPanel pelaajanRuudukkoPanel;
     private Laiva valittuLaiva;
     
     public Kayttoliittyma() {
@@ -90,6 +91,31 @@ public class Kayttoliittyma extends JFrame {
         
         lopetaItem = new javax.swing.JMenuItem();
         tervetuloaLabel = new javax.swing.JLabel();
+        luoAloitaMenu();
+        
+        menuBar.add(aloitaMenu);
+        
+        
+        jMenuBar2.add(aloitaMenu);
+        
+        setJMenuBar(jMenuBar2);
+        this.setTitle("Laivanupotus");
+        
+        if (naytaTervetuloaNaytto) {
+            JPanel tervetuloaPanel = new JPanel();
+            JLabel tervetuloaLabel = new JLabel();
+            tervetuloaLabel.setText("Tervetuloa laivanupotuspeliin!");
+            tervetuloaPanel.add(tervetuloaLabel);
+            this.getContentPane().add(tervetuloaPanel);
+        }
+        // setPreferredSize(new Dimension(300,300));
+        pack();
+        
+        setVisible(true);
+        
+    }
+
+    private void luoAloitaMenu() {
         jMenuBar2 = new javax.swing.JMenuBar();
         aloitaMenu = new javax.swing.JMenu();
         uusiPeliItem = new javax.swing.JMenuItem();
@@ -136,28 +162,6 @@ public class Kayttoliittyma extends JFrame {
         aloitaMenu.add(uusiPeliItem);
         aloitaMenu.add(naytaPisteetItem);
         aloitaMenu.add(lopetaItem);
-        
-        menuBar.add(aloitaMenu);
-        
-        setJMenuBar(menuBar);
-        
-        jMenuBar2.add(aloitaMenu);
-        
-        setJMenuBar(jMenuBar2);
-        this.setTitle("Laivanupotus");
-        
-        if (naytaTervetuloaNaytto) {
-            JPanel tervetuloaPanel = new JPanel();
-            JLabel tervetuloaLabel = new JLabel();
-            tervetuloaLabel.setText("Tervetuloa laivanupotuspeliin!");
-            tervetuloaPanel.add(tervetuloaLabel);
-            this.getContentPane().add(tervetuloaPanel);
-        }
-        // setPreferredSize(new Dimension(300,300));
-        pack();
-        
-        setVisible(true);
-        
     }
     
     private void uusiPeliItemActionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +202,7 @@ public class Kayttoliittyma extends JFrame {
                 Ruutu ruutu = new Ruutu(i, j);
                 NaytonRuutu naytonRuutu = new NaytonRuutu(ruutu);
                 naytonRuutu.setPreferredSize(new Dimension(30, 30));
+                naytonRuutu.setName(i+","+j);
                 
                 if(!tietokoneenPeli){
                     if(pelilogiikka.getPelaajanPeli().isLaiva(i, j)){
@@ -206,7 +211,7 @@ public class Kayttoliittyma extends JFrame {
                 }
                 
                 if (tietokoneenPeli) {
-                    naytonRuutu.addActionListener(new Ammuskuuntelija(this, i, j, naytonRuutu));
+                    naytonRuutu.addActionListener(new Ammuskuuntelija(this, i, j, naytonRuutu, pelilogiikka));
                 } 
                 pelipanel.add(naytonRuutu);
             }
@@ -219,5 +224,15 @@ public class Kayttoliittyma extends JFrame {
     public void setValittuLaiva(Laiva l) {
         this.valittuLaiva = l;
     }
+
+    public void setPelaajanRuudukko(JPanel pelaajanRuudukkoPanel) {
+        this.pelaajanRuudukkoPanel = pelaajanRuudukkoPanel;
+    }
+
+    public JPanel getPelaajanRuudukkoPanel() {
+        return pelaajanRuudukkoPanel;
+    }
+    
+    
     
 }

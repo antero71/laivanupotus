@@ -259,6 +259,7 @@ public class Alkunaytto extends javax.swing.JFrame {
         //k.getContentPane().add(pistenaytto);
 
         JPanel pelaajanRuudukkoPanel = k.luoRuudukko(false);
+        k.setPelaajanRuudukko(pelaajanRuudukkoPanel);
 
         JPanel pelaajaButtonPanel = new JPanel();
         pelaajaButtonPanel.setLayout(new BoxLayout(pelaajaButtonPanel, BoxLayout.LINE_AXIS));
@@ -311,7 +312,7 @@ public class Alkunaytto extends javax.swing.JFrame {
         buttonPanel.add(kaannaNappi);
 
         buttonPanel.add(pelaajanRuudukkoPanel);
-        pelaajaButtonPanel.add(buttonPanel);
+        //pelaajaButtonPanel.add(buttonPanel);
         pelaajaButtonPanel.add(pelaajanRuudukkoPanel);
         panel.add(pelaajaButtonPanel);
 
