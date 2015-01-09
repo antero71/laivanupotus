@@ -183,12 +183,14 @@ public class Kayttoliittyma extends JFrame {
         tervetuloaLabel.setText("Tervetuloa: " + pelaaja.getNimi());
     }
     
-    public JPanel luoRuudukko(boolean alustaLaivat) {
+    public JPanel luoRuudukko(boolean tietokoneenPeli) {
         GridLayout layout = new GridLayout(pelilogiikka.getPelaajanPeli().getKenttaX(), pelilogiikka.getPelaajanPeli().getKenttaY());
         JPanel pelipanel = new JPanel(layout);
         //this.peli.valmisteleAlusta();
-        if (alustaLaivat) {
-            pelilogiikka.alustaLaivat();
+        if (tietokoneenPeli) {
+            pelilogiikka.alustaTietokoneenLaivat();
+        }else{
+            pelilogiikka.alustaPelaajanLaivat();
         }
         
         for (int i = 0; i < pelilogiikka.getPelaajanPeli().getKenttaX(); i++) {
@@ -197,11 +199,15 @@ public class Kayttoliittyma extends JFrame {
                 NaytonRuutu naytonRuutu = new NaytonRuutu(ruutu);
                 naytonRuutu.setPreferredSize(new Dimension(30, 30));
                 
-                if (alustaLaivat) {
-                    naytonRuutu.addActionListener(new Ammuskuuntelija(this, i, j, naytonRuutu));
-                } else {
-                    naytonRuutu.addActionListener(new AsetaLaivaKuuntelija(i, j, this, naytonRuutu, pelipanel));
+                if(!tietokoneenPeli){
+                    if(pelilogiikka.getPelaajanPeli().isLaiva(i, j)){
+                        naytonRuutu.setText("X");
+                    }
                 }
+                
+                if (tietokoneenPeli) {
+                    naytonRuutu.addActionListener(new Ammuskuuntelija(this, i, j, naytonRuutu));
+                } 
                 pelipanel.add(naytonRuutu);
             }
             

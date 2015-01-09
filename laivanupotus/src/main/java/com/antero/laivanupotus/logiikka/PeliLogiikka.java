@@ -37,7 +37,7 @@ public class PeliLogiikka {
         this.ai = ai;
     }
 
-    public void alustaLaivat() {
+    public void alustaTietokoneenLaivat() {
         arpoja.alustaLaivat(tietokoneenPeli);
     }
 
@@ -55,6 +55,10 @@ public class PeliLogiikka {
 
     public Pistetaulukko getPisteet() {
         return pisteet;
+    }
+
+    public void alustaPelaajanLaivat() {
+        arpoja.alustaLaivat(pelaajanPeli);
     }
 
 }

@@ -25,6 +25,7 @@ public class KaannaLaivaListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         kali.getValittuLaiva().kaannaLaiva();
+        
     }
 
 }
