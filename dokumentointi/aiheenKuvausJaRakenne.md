@@ -24,9 +24,11 @@ ruudukkoa oletuksen 10 x 10 ruudukosta maksimissaan 15 x 15 ruudukkoon.
 
 Kun peli aloitetaan pelaaja valitsee ruudun johon hän "ampuu". (Klikkaa hiirellä jotain
 pelialuueen ruutua). Peli joko ilmoittaa
-että ohi meni tai osui. Jos osoi, ruutuun ilmaantuu laiva/laivanosa. Ja pelaaja saa 
-jatkaa kunnes tulee huti.
-Jos osuu niin pelaajan pistesaldoa päivitetään. Pelaajan ampumisen jälkeen tietokone
+että ohi meni tai osui. Jos osoi, ruutuun ilmaantuu laiva/laivanosa, ruutu jossa X-kirjain ja 
+taustaväri punainen. Jos menee ohi, ruutuun tulee o-kirjain. Osuman jälkeen pelaaja saa 
+jatkaa kunnes tulee huti. Ampumisen jälkeen pistesaldoa päivitetään, osumasta saa 100 pistettä ja ohiammutusta menettää 50 pistettä. Jos laiva uppoaa siitä saa 1000 pistettä. 
+
+Pelaajan ampumisen jälkeen tietokone
 ampuu, jos se osuu, se ampuu uudelleen kunnes menee ohi.
 
 Peli päivittää pelaajan ja tietokoneen pisteitä näytön yläreunan pistenäytölle.
