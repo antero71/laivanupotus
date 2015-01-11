@@ -42,6 +42,10 @@ public class Ammuskuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        if(kali.getPelilogiikka().getTietokoneenPeli().onkoAmmuttu(naytonRuutu.getRuutu())){
+            return;
+        }
+        
         if (kali.getPelilogiikka().getTietokoneenPeli().ammu(naytonRuutu.getRuutu())) {
             naytonRuutu.setText("X");
             naytonRuutu.setBackground(Color.RED);
@@ -54,7 +58,8 @@ public class Ammuskuuntelija implements ActionListener {
                 muutaOsututMustiksi();
                 osutut.clear();
             }
-            if (kali.getPelilogiikka().getTietokoneenPeli().isPeliPaattynyt()) {
+            if (kali.getPelilogiikka().getTietokoneenPeli().isPeliPaattynyt()
+                    || kali.getPelilogiikka().getPelaajanPeli().isPeliPaattynyt()) {
                 kali.getPistenaytto().getIlmoitus().setText("Peli päättyi!");
                 Pistetaulukko pisteet = luoPistetaulukko();
                 Tiedosto.tallennaTiedosto(pisteet);
@@ -68,10 +73,14 @@ public class Ammuskuuntelija implements ActionListener {
 
                 merkkaaAmmunta(true);
                 merkattu = true;
-
+                muutaTietokoneenPisteita(100);
+                if (kali.getPelilogiikka().getPelaajanPeli().upposiko(logiikka.getAi().viimeksiAmmuttu())) {
+                    muutaTietokoneenPisteita(1000);
+                }
             }
             if (!merkattu) {
                 merkkaaAmmunta(false);
+                muutaTietokoneenPisteita(-50);
             }
 
         }
@@ -89,11 +98,11 @@ public class Ammuskuuntelija implements ActionListener {
         kali.getPistenaytto().getPelaajanPisteet().setText("" + pisteet);
 
     }
-    
-       private void muutaTietokoneenPisteita(int muutos) {
-        int pisteet = Integer.parseInt(kali.getPistenaytto().getPelaajanPisteet().getText());
+
+    private void muutaTietokoneenPisteita(int muutos) {
+        int pisteet = Integer.parseInt(kali.getTietokoneenPistenaytto().getPelaajanPisteet().getText());
         pisteet += muutos;
-        kali.getPistenaytto().getPelaajanPisteet().setText("" + pisteet);
+        kali.getTietokoneenPistenaytto().getPelaajanPisteet().setText("" + pisteet);
 
     }
 
@@ -128,7 +137,7 @@ public class Ammuskuuntelija implements ActionListener {
         Ruutu r = logiikka.getAi().viimeksiAmmuttu();
         JPanel panel = kali.getPelaajanRuudukkoPanel();
 
-        System.out.println("ammuttu " + r.getX() + "," + r.getY());
+        //System.out.println("ammuttu " + r.getX() + "," + r.getY());
 
         int x = 0;
         int y = 0;
@@ -136,23 +145,24 @@ public class Ammuskuuntelija implements ActionListener {
         x = r.getX();
         y = r.getY();
 
-        System.out.println("name " + panel.getComponentAt((x * 30)+15, y * 30).getName());
-        
+        //System.out.println("name " + panel.getComponentAt((x * 30) + 15, y * 30).getName());
+
         x *= 30;
         y *= 30;
-        
-        x+=15;
 
-        System.out.println("haettava komponentti " + x + "," + y);
+        x += 15;
+
+        //System.out.println("haettava komponentti " + x + "," + y);
 
         NaytonRuutu nt = (NaytonRuutu) panel.getComponentAt(x, y);
         if (osui) {
             nt.setBorder(null);
             //nt.setText("X");
             nt.setBackground(Color.red);
-            System.out.println("osui "+r.getX()+","+r.getY());
+            //System.out.println("osui " + r.getX() + "," + r.getY());
         } else {
             nt.setText("o");
+           // System.out.println("set o "+nt +","+ x +","+y);
         }
 
     }

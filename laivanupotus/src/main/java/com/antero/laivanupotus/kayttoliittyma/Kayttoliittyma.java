@@ -33,7 +33,8 @@ import javax.swing.JPanel;
 
 /**
  * Alussa luokka näyttää valikon ja tervetuloaviestin. Kun peli aloitetaan,
- * näyttöön piirretään tietokoneen pelialue sekä pelaajan pelialue.
+ * näyttöön piirretään tietokoneen pelialue sekä pelaajan pelialue sekä
+ * pistenäytöt.
  *
  * Alkunäyttö -luokka muodostaa Käyttöliittymän kun pelaaja on antanut nimensä
  * ja valinnut pelialueen koon.
@@ -80,8 +81,6 @@ public class Kayttoliittyma extends JFrame {
         return tietokoneenPistenaytto;
     }
 
-    
-    
     public void createPistenaytto() {
         if (pistenaytto == null) {
             pistenaytto = new PistenayttoPanel();
@@ -223,7 +222,7 @@ public class Kayttoliittyma extends JFrame {
 
                 if (!tietokoneenPeli) {
                     if (pelilogiikka.getPelaajanPeli().isLaiva(j, i)) {
-                        System.out.println("laiva " + j + "," + i);
+                        //System.out.println("laiva " + j + "," + i);
                         naytonRuutu.setText("X");
                     }
                 }

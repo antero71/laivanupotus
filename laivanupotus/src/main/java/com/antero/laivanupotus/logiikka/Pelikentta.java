@@ -18,6 +18,9 @@ import java.util.TreeSet;
 /**
  * Luokka joka huolehtii Pelikentän käsittelystä
  *
+ * Pelikenttä luodaan käyttäjän antaman kokoiseksi, oletuksena on 10 x 10
+ * ruudukko.
+ *
  * @author Antero Oikkonen
  */
 public class Pelikentta {
@@ -168,6 +171,16 @@ public class Pelikentta {
     }
 
     /**
+     * onko ruutuun ammuttu vai ei
+     * @param ruutu
+     * @return 
+     */
+    
+    public boolean onkoAmmuttu(Ruutu ruutu) {
+        return onkoAmmuttu(ruutu.getX(), ruutu.getY());
+    }
+
+    /**
      * Palauttaa upposiko laiva jonka jokin osa on koordinaateissa x,y
      *
      * Jos ko. koordinaateissa ei ole laivaa palautuu false
@@ -258,7 +271,6 @@ public class Pelikentta {
         return false;
     }
 
- 
     /**
      * laivan asetuksessa laitateen kielletty alue, joten tässä metodissa
      * tarkastetaan vain tulevan laivan ruutujen alue.

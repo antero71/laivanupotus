@@ -22,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Pistetaulukon tallennus tiedostoon ja lukeminen sieltä.
  *
  * @author Antero Oikkonen
  */

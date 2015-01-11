@@ -6,7 +6,8 @@
 package com.antero.laivanupotus.domain;
 
 /**
- * Pelin ruudut,
+ * Pelin ruudut,<code>Ruutu</code> pitää kirjaa myös siitä
+ * että onko ruutuun ammuttu ja onko se laivan osa
  *
  * @author Antero Oikkonen
  */
@@ -45,6 +46,9 @@ public class Ruutu implements Comparable<Ruutu> {
         this.y = y;
     }
 
+    /**
+     * onko ruutu laivan osa vai ei 
+    */
     public boolean isLaivanOsa() {
         return laivanOsa;
     }
@@ -53,10 +57,20 @@ public class Ruutu implements Comparable<Ruutu> {
         this.laivanOsa = laivanOsa;
     }
 
+    /**
+     * osuiko ruutuun
+     * @return 
+     */
+    
     public boolean isOsui() {
         return osui;
     }
 
+    /**
+     * onko ruutuun ammuttu
+     * @return 
+     */
+    
     public boolean isAmmuttu() {
         return ammuttu;
     }

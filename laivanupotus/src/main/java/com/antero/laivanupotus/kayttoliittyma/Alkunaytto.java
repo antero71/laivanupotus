@@ -151,8 +151,8 @@ public class Alkunaytto extends javax.swing.JFrame {
 
     private boolean onkoKokoOikein(Integer x, Integer y) {
 
-        System.out.println("x " + x);
-        System.out.println("y " + y);
+        //System.out.println("x " + x);
+        //System.out.println("y " + y);
         try {
 
             x = Integer.valueOf(textX.getText());
@@ -161,8 +161,8 @@ public class Alkunaytto extends javax.swing.JFrame {
             return false;
         }
 
-        System.out.println("x " + x);
-        System.out.println("y " + y);
+        //System.out.println("x " + x);
+        //System.out.println("y " + y);
 
         Integer i10 = new Integer(10);
         Integer i15 = new Integer(15);
@@ -201,46 +201,7 @@ public class Alkunaytto extends javax.swing.JFrame {
         muodostaKayttoliittyma3(k);
     }//GEN-LAST:event_okButtonActionPerformed
 
-    private void muodostaKayttoliittyma1(Kayttoliittyma k) {
-        JPanel panel = new JPanel(new GridLayout(3, 1));
-
-        JPanel pelipanel = k.luoRuudukko(true);
-
-        //k.getContentPane().add(pelipanel);
-        PistenayttoPanel pistenaytto = new PistenayttoPanel();
-        pistenaytto.setPelaaja(new Pelaaja(nimiKentta.getText(), 0));
-        panel.add(pistenaytto);
-        panel.add(pelipanel);
-        //k.getContentPane().add(pistenaytto);
-        k.getContentPane().add(panel);
-
-        k.pack();
-        k.setVisible(true);
-    }
-
-    private void muodostaKayttoliittyma2(Kayttoliittyma k) {
-        JPanel panel = new JPanel();
-
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-
-        JPanel pelipanel = k.luoRuudukko(true);
-        pelipanel.setBorder(BorderFactory.createLineBorder(Color.yellow, 2));
-
-        //k.getContentPane().add(pelipanel);
-        k.createPistenaytto();
-        PistenayttoPanel pistenaytto = k.getPistenaytto();
-        pistenaytto.setPelaaja(new Pelaaja(nimiKentta.getText(), 0));
-        panel.add(pistenaytto);
-        pistenaytto.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        //pistenaytto.add(Box.createHorizontalGlue());
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        panel.add(pelipanel);
-        //k.getContentPane().add(pistenaytto);
-        k.getContentPane().add(panel);
-
-        k.pack();
-        k.setVisible(true);
-    }
+    
 
     private void muodostaKayttoliittyma3(Kayttoliittyma k) {
         JPanel panel = new JPanel();

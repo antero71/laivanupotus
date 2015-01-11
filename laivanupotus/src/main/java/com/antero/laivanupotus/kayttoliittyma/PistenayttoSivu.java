@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * Näytä pisteet toiminto avaa tämän sivun. Sivulle muodostetaan pistetilanne
+ * "Näytä pisteet" -toiminto avaa tämän sivun. Sivulle muodostetaan pistetilanne
  * parametrina annettavan <code>Pistetaulukko</code> mukaan
  *
  * @author Antero Oikkonen

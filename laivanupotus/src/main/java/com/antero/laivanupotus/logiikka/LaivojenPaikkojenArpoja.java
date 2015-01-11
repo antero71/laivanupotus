@@ -23,6 +23,10 @@ public class LaivojenPaikkojenArpoja {
 
     private Random random;
 
+    /**
+     * jos halutaan testeissa käyttää omaa random toteutusta
+     * se on mahdollista antaa tässä.
+    */
     public LaivojenPaikkojenArpoja(Random random) {
         this.random = random;
     }

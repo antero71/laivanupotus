@@ -8,6 +8,8 @@ package com.antero.laivanupotus.logiikka;
 import com.antero.laivanupotus.domain.Ruutu;
 
 /**
+ * Yksinkertinen tekoäly joka yrittää osua viimeksi osutun <code>Ruutu</code>
+ * viereen
  *
  * @author Antero Oikkonen
  */
@@ -17,9 +19,8 @@ public class TietokoneAI implements AI {
     private Ruutu viimeksiOsuttu;
     private Ruutu viimeksiAmmuttu;
 
-    private int ammuntaLaskuri = 0;
-    
-    
+    private static int ammuntaLaskuri = 0;
+
     public TietokoneAI(Pelikentta pelikentta) {
         this.pelikentta = pelikentta;
     }
@@ -48,6 +49,12 @@ public class TietokoneAI implements AI {
 
     }
 
+    /**
+     * ammuntalogiikka, yrittää ampua viimeksi osutun viereen muuten arpoo
+     * satunnaisen ruudun johon ammutaan
+     *
+     * @return palauttaa true jos osuu, muuten false
+     */
     @Override
     public boolean ammu() {
         Ruutu ammuttava = null;
@@ -64,9 +71,9 @@ public class TietokoneAI implements AI {
         if (osuiko) {
             viimeksiOsuttu = ammuttava;
         } else {
-            if (pelikentta.upposiko(ammuttava)) {
-                viimeksiOsuttu = null;
-            }
+
+            viimeksiOsuttu = null;
+
         }
         viimeksiAmmuttu = ammuttava;
         return osuiko;
@@ -87,14 +94,7 @@ public class TietokoneAI implements AI {
         } else if (!suunta) {
             y--;
         }
-        if(pelikentta.onkoAmmuttu(x, y) && ammuntaLaskuri<4){
-            ammuViimeksiOsutunViereen();
-            ammuntaLaskuri++;
-            
-        }else{
-            viimeksiOsuttu=null;
-            return arvoAmmuttavaRuutu();
-        }
+
         return new Ruutu(x, y);
     }
 
@@ -111,11 +111,16 @@ public class TietokoneAI implements AI {
             x = Arpoja.arvoLuku(pelikentta.getKenttaX());
             y = Arpoja.arvoLuku(pelikentta.getKenttaY());
         } while (pelikentta.onkoAmmuttu(x, y));
-        System.out.println("Arvottu ammuttava " + y + "," + x);
+        //System.out.println("Arvottu ammuttava " + y + "," + x);
         return new Ruutu(y, x);
 
     }
 
+    /**
+     * palauttaa <code>Ruutu</code> olion johon on viimeksi ammuttu.
+     *
+     * @return
+     */
     @Override
     public Ruutu viimeksiAmmuttu() {
         return viimeksiAmmuttu;

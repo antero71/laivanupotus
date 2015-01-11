@@ -10,6 +10,8 @@ import com.antero.laivanupotus.domain.Pistetaulukko;
 import java.util.Random;
 
 /**
+ * Luokka yhdistää tietokoneen ja pelaajan pelin, laivojen arvonnan sekä
+ * tekoälyn ja pistelaskennan yhteen luokkaan.
  *
  * @author Antero Oikkonen
  */
