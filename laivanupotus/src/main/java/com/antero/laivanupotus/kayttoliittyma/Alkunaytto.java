@@ -20,7 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- *
+ * Näyttö joka avataan kun valikosta valitaan "uusi peli"
+ * Näytöllä annetaan pelaajan nimi ja valitaan pelialueen koko.
  * @author Antero Oikkonen
  */
 public class Alkunaytto extends javax.swing.JFrame {

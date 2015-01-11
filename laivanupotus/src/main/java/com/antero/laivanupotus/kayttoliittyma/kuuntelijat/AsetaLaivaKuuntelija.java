@@ -17,6 +17,10 @@ import javax.swing.JPanel;
 
 /**
  *
+ * Luokka on tällä hetkellä käyttämättä (11.1.2015)
+ * laivat asetetaan tietokoneen arvonnalla sekä pelaajalle että
+ * tietokoneelle koska en saanut tätä laivan asetusta toimimaan.
+ * 
  * @author Antero Oikkonen
  */
 public class AsetaLaivaKuuntelija implements ActionListener {

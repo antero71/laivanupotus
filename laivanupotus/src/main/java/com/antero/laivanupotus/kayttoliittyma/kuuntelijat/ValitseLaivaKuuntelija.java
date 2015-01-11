@@ -13,7 +13,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- *
+ * Luokka ei ole käytössä (11.1.2014) koska laivat arvotaan
+ * pelaajalle.
+ * 
  * @author Antero Oikkonen
  */
 public class ValitseLaivaKuuntelija implements ActionListener {
