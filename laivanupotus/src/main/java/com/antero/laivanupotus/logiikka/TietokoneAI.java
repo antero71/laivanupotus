@@ -112,7 +112,7 @@ public class TietokoneAI implements AI {
             y = Arpoja.arvoLuku(pelikentta.getKenttaY());
         } while (pelikentta.onkoAmmuttu(x, y));
         //System.out.println("Arvottu ammuttava " + y + "," + x);
-        return new Ruutu(y, x);
+        return new Ruutu(x, y);
 
     }
 

@@ -138,7 +138,7 @@ public class Pelikentta {
      * @return boolena true jos osuu, muuten false
      */
     public boolean ammu(int x, int y) {
-        Ruutu r = ruudut[x][y];
+        Ruutu r = ruudut[y][x];
         boolean osui = false;
         if (r != null) {
             if (r.isLaivanOsa()) {
@@ -147,7 +147,7 @@ public class Pelikentta {
             }
         } else {
             r = new Ruutu();
-            alustaRuutu(r, x, y, false, true);
+            alustaRuutu(r, y, x, false, true);
         }
         r.setAmmuttu(true);
         return osui;
@@ -177,7 +177,7 @@ public class Pelikentta {
      */
     
     public boolean onkoAmmuttu(Ruutu ruutu) {
-        return onkoAmmuttu(ruutu.getX(), ruutu.getY());
+        return onkoAmmuttu(ruutu.getY(), ruutu.getX());
     }
 
     /**

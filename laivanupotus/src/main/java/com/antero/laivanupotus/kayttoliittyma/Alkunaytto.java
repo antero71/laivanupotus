@@ -171,7 +171,7 @@ public class Alkunaytto extends javax.swing.JFrame {
             return false;
         }
 
-        if (y < i10 || y > i15) {
+        if (y != x) {
             return false;
         }
         return true;
@@ -185,7 +185,7 @@ public class Alkunaytto extends javax.swing.JFrame {
 
         boolean kokoOk = onkoKokoOikein(x, y);
         if (!kokoOk) {
-            virheilmoitusLabel.setText("Kenttiin tulee syöttää numerot 10...15");
+            virheilmoitusLabel.setText("Kenttiin tulee syöttää numerot 10...15, molempiin samat");
             return;
         }
         if (nimiKentta.getText().isEmpty()) {
