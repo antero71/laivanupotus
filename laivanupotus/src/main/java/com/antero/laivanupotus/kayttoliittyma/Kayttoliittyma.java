@@ -44,6 +44,7 @@ public class Kayttoliittyma extends JFrame {
 
     private PeliLogiikka pelilogiikka;
     private PistenayttoPanel pistenaytto;
+    private PistenayttoPanel tietokoneenPistenaytto;
     private Pelaaja pelaaja;
 
     private JMenu aloitaMenu = new javax.swing.JMenu();
@@ -75,11 +76,23 @@ public class Kayttoliittyma extends JFrame {
         return pistenaytto;
     }
 
+    public PistenayttoPanel getTietokoneenPistenaytto() {
+        return tietokoneenPistenaytto;
+    }
+
+    
+    
     public void createPistenaytto() {
         if (pistenaytto == null) {
             pistenaytto = new PistenayttoPanel();
         }
 
+    }
+
+    public void createTietokoneenPistenaytto() {
+        if (tietokoneenPistenaytto == null) {
+            tietokoneenPistenaytto = new PistenayttoPanel();
+        }
     }
 
     public Kayttoliittyma(int x, int y, boolean naytaTervetuloa) {
@@ -210,7 +223,7 @@ public class Kayttoliittyma extends JFrame {
 
                 if (!tietokoneenPeli) {
                     if (pelilogiikka.getPelaajanPeli().isLaiva(j, i)) {
-                        System.out.println("laiva "+j+","+i);
+                        System.out.println("laiva " + j + "," + i);
                         naytonRuutu.setText("X");
                     }
                 }

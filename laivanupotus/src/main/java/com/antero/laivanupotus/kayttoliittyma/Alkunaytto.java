@@ -11,6 +11,7 @@ import com.antero.laivanupotus.logiikka.Pelikentta;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -20,8 +21,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * Näyttö joka avataan kun valikosta valitaan "uusi peli"
- * Näytöllä annetaan pelaajan nimi ja valitaan pelialueen koko.
+ * Näyttö joka avataan kun valikosta valitaan "uusi peli" Näytöllä annetaan
+ * pelaajan nimi ja valitaan pelialueen koko.
+ *
  * @author Antero Oikkonen
  */
 public class Alkunaytto extends javax.swing.JFrame {
@@ -250,11 +252,27 @@ public class Alkunaytto extends javax.swing.JFrame {
 
         //k.getContentPane().add(pelipanel);
         k.createPistenaytto();
+
         PistenayttoPanel pistenaytto = k.getPistenaytto();
         pistenaytto.setPelaaja(new Pelaaja(nimiKentta.getText(), 0));
-        panel.add(pistenaytto);
+        //panel.add(pistenaytto);
+
+        JPanel pisteetPanel = new JPanel();
+        pisteetPanel.setLayout(new GridLayout(0, 2));
+
         pistenaytto.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        //pistenaytto.add(Box.createHorizontalGlue());
+        pisteetPanel.add(pistenaytto);
+
+        k.createTietokoneenPistenaytto();
+
+        PistenayttoPanel tietokoneenPisteet = k.getTietokoneenPistenaytto();
+        tietokoneenPisteet.setPelaaja(new Pelaaja("tietokone", 0));
+
+        pisteetPanel.add(tietokoneenPisteet);
+
+        panel.add(pisteetPanel);
+
+//pistenaytto.add(Box.createHorizontalGlue());
         panel.add(Box.createRigidArea(new Dimension(0, 5)));
         panel.add(tietokoneenRuudukkoPanel);
         //k.getContentPane().add(pistenaytto);
@@ -262,11 +280,7 @@ public class Alkunaytto extends javax.swing.JFrame {
         JPanel pelaajanRuudukkoPanel = k.luoRuudukko(false);
         k.setPelaajanRuudukko(pelaajanRuudukkoPanel);
 
-        JPanel pelaajaButtonPanel = new JPanel();
-        pelaajaButtonPanel.setLayout(new BoxLayout(pelaajaButtonPanel, BoxLayout.LINE_AXIS));
-        //pelaajaButtonPanel.add(buttonPanel);
-        pelaajaButtonPanel.add(pelaajanRuudukkoPanel);
-        panel.add(pelaajaButtonPanel);
+        panel.add(pelaajanRuudukkoPanel);
 
         k.getContentPane().add(panel);
 

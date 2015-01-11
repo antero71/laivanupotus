@@ -89,6 +89,13 @@ public class Ammuskuuntelija implements ActionListener {
         kali.getPistenaytto().getPelaajanPisteet().setText("" + pisteet);
 
     }
+    
+       private void muutaTietokoneenPisteita(int muutos) {
+        int pisteet = Integer.parseInt(kali.getPistenaytto().getPelaajanPisteet().getText());
+        pisteet += muutos;
+        kali.getPistenaytto().getPelaajanPisteet().setText("" + pisteet);
+
+    }
 
     public Ammuskuuntelija(Kayttoliittyma kl2, int x, int y, NaytonRuutu naytonRuutu, PeliLogiikka logiikka) {
         this.kali = kl2;
