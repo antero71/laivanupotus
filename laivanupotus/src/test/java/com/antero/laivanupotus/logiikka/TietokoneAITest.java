@@ -61,19 +61,19 @@ public class TietokoneAITest {
         int ammuttuX = r.getX();
         int ammuttuY = r.getY();
 
-        if (ammuttuX == 3) {
-            assertEquals(4, ammuttuY);
-        }
         if (ammuttuX == 4) {
             assertEquals(3, ammuttuY);
         }
+        if (ammuttuX == 3) {
+            assertEquals(4, ammuttuY);
+        }
 
-        if (ammuttuY == 3) {
+        if (ammuttuY == 4) {
             assertTrue(pelikentta.upposiko(3, 3));
             assertTrue(osui);
         }
-        if(ammuttuY == 4){
-            assertFalse(pelikentta.upposiko(3, 3));
+        if(ammuttuY == 3){
+            assertFalse(pelikentta.upposiko(4, 4));
             assertFalse(osui);
         }
 

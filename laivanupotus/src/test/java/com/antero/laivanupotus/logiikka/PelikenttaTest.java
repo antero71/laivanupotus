@@ -154,8 +154,8 @@ public class PelikenttaTest {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(2, 3, Suunta.PYSTY);
         pelikentta.asetaLaiva(laiva, false);
-        assertTrue("Pitäisi osua", pelikentta.ammu(2, 3));
-        assertTrue("Pitäisi osua", pelikentta.ammu(2, 4));
+        assertTrue("Pitäisi osua", pelikentta.ammu(3, 2));
+        assertTrue("Pitäisi osua", pelikentta.ammu(4, 2));
 
         assertTrue(laiva.upposiko());
 
@@ -168,7 +168,7 @@ public class PelikenttaTest {
         Laiva laiva = new Laiva(2);
         laiva.asetaLaivanPaikka(2, 3, Suunta.PYSTY);
         pelikentta.asetaLaiva(laiva, false);
-        assertTrue("Pitäisi osua", pelikentta.ammu(2, 3));
+        assertTrue("Pitäisi osua", pelikentta.ammu(3, 2));
         assertFalse(pelikentta.upposiko(2, 3));
         assertFalse("Ei pitäisi osua", pelikentta.ammu(2, 6));
 
