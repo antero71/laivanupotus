@@ -23,6 +23,14 @@ public class PeliLogiikka {
     private Pistetaulukko pisteet;
     private AI ai;
 
+    /**
+     * alustetaan pelialueen koko ja käytettävä tekoäly
+     * 
+     * @param x
+     * @param y
+     * @param ai 
+     */
+    
     public PeliLogiikka(int x, int y, AI ai) {
         tietokoneenPeli = new Pelikentta(x, y);
         pelaajanPeli = new Pelikentta(x, y);
@@ -39,6 +47,10 @@ public class PeliLogiikka {
         this.ai = ai;
     }
 
+    /**
+     * alustaa tietokoneen pelialueen laivat
+     */
+    
     public void alustaTietokoneenLaivat() {
         arpoja.alustaLaivat(tietokoneenPeli);
     }
@@ -59,6 +71,10 @@ public class PeliLogiikka {
         return pisteet;
     }
 
+    /**
+     * alustaa pelaajan pelialueen laivat
+     */
+    
     public void alustaPelaajanLaivat() {
         arpoja.alustaLaivat(pelaajanPeli);
     }

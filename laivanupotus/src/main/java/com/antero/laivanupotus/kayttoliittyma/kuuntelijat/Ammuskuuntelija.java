@@ -39,13 +39,20 @@ public class Ammuskuuntelija implements ActionListener {
     private final NaytonRuutu naytonRuutu;
     private static Collection<NaytonRuutu> osutut = new ArrayList();
 
+    /**
+     * kun pelaaja klikkaa ruutua, päivitetään ruutuun X jos osui, o jos meni
+     * ohi. Jos meni ohi, kutsutaan tekoalyä ampumaan pelaajan pelikenttään ja
+     * päivitetään tulos.
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if(kali.getPelilogiikka().getTietokoneenPeli().onkoAmmuttu(naytonRuutu.getRuutu())){
+        if (kali.getPelilogiikka().getTietokoneenPeli().onkoAmmuttu(naytonRuutu.getRuutu())) {
             return;
         }
-        
+
         if (kali.getPelilogiikka().getTietokoneenPeli().ammu(naytonRuutu.getRuutu())) {
             naytonRuutu.setText("X");
             naytonRuutu.setBackground(Color.RED);
@@ -138,7 +145,6 @@ public class Ammuskuuntelija implements ActionListener {
         JPanel panel = kali.getPelaajanRuudukkoPanel();
 
         //System.out.println("ammuttu " + r.getX() + "," + r.getY());
-
         int x = 0;
         int y = 0;
 
@@ -146,14 +152,12 @@ public class Ammuskuuntelija implements ActionListener {
         y = r.getY();
 
         //System.out.println("name " + panel.getComponentAt((x * 30) + 15, y * 30).getName());
-
         x *= 30;
         y *= 30;
 
         x += 15;
 
         //System.out.println("haettava komponentti " + x + "," + y);
-
         NaytonRuutu nt = (NaytonRuutu) panel.getComponentAt(x, y);
         if (osui) {
             nt.setBorder(null);
@@ -162,7 +166,7 @@ public class Ammuskuuntelija implements ActionListener {
             //System.out.println("osui " + r.getX() + "," + r.getY());
         } else {
             nt.setText("o");
-           // System.out.println("set o "+nt +","+ x +","+y);
+            // System.out.println("set o "+nt +","+ x +","+y);
         }
 
     }

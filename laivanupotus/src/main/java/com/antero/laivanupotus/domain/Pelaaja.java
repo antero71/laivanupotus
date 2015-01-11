@@ -15,6 +15,12 @@ public class Pelaaja implements Comparable<Pelaaja> {
     private int pisteet;
     private String nimi;
 
+    /**
+     * pelaajan nimi ja pisteet
+     * @param nimi
+     * @param pisteet 
+     */
+    
     public Pelaaja(String nimi, int pisteet) {
         this.pisteet = pisteet;
         this.nimi = nimi;

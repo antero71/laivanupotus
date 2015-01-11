@@ -21,6 +21,12 @@ public class Ruutu implements Comparable<Ruutu> {
     private boolean osui = false;
     private boolean ammuttu = false;
 
+    /**
+     * ruutu ja sen x- ja y- koordinaatit
+     * @param x
+     * @param y 
+     */
+    
     public Ruutu(int x, int y) {
         this.x = x;
         this.y = y;
