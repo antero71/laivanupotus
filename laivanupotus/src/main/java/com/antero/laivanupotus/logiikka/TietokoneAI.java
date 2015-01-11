@@ -17,6 +17,9 @@ public class TietokoneAI implements AI {
     private Ruutu viimeksiOsuttu;
     private Ruutu viimeksiAmmuttu;
 
+    private int ammuntaLaskuri = 0;
+    
+    
     public TietokoneAI(Pelikentta pelikentta) {
         this.pelikentta = pelikentta;
     }
@@ -61,7 +64,9 @@ public class TietokoneAI implements AI {
         if (osuiko) {
             viimeksiOsuttu = ammuttava;
         } else {
-            viimeksiOsuttu = null;
+            if (pelikentta.upposiko(ammuttava)) {
+                viimeksiOsuttu = null;
+            }
         }
         viimeksiAmmuttu = ammuttava;
         return osuiko;
@@ -82,6 +87,14 @@ public class TietokoneAI implements AI {
         } else if (!suunta) {
             y--;
         }
+        if(pelikentta.onkoAmmuttu(x, y) && ammuntaLaskuri<4){
+            ammuViimeksiOsutunViereen();
+            ammuntaLaskuri++;
+            
+        }else{
+            viimeksiOsuttu=null;
+            return arvoAmmuttavaRuutu();
+        }
         return new Ruutu(x, y);
     }
 
@@ -98,8 +111,8 @@ public class TietokoneAI implements AI {
             x = Arpoja.arvoLuku(pelikentta.getKenttaX());
             y = Arpoja.arvoLuku(pelikentta.getKenttaY());
         } while (pelikentta.onkoAmmuttu(x, y));
-        System.out.println("Arvottu ammuttava "+x+","+y);
-        return new Ruutu(x, y);
+        System.out.println("Arvottu ammuttava " + y + "," + x);
+        return new Ruutu(y, x);
 
     }
 

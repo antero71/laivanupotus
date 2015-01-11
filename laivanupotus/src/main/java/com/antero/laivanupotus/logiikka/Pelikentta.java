@@ -108,7 +108,7 @@ public class Pelikentta {
             int x = r.getX();
             int y = r.getY();
             //System.out.println("asetalaiva x=" + x + ",y=" + y);
-            alustaRuutu(r, x, y, true, true, false);
+            alustaRuutu(r, x, y, true, false);
         }
         //asetaLaivanKieltoalue(laiva, printDebug);
         laivojenLkm++;
@@ -144,7 +144,7 @@ public class Pelikentta {
             }
         } else {
             r = new Ruutu();
-            alustaRuutu(r, x, y, false, false, false);
+            alustaRuutu(r, x, y, false, true);
         }
         r.setAmmuttu(true);
         return osui;
@@ -339,7 +339,7 @@ public class Pelikentta {
 
     }
 
-    private void alustaRuutu(Ruutu r, int x, int y, boolean laivanOsa, boolean kielletty, boolean ammuttu) {
+    private void alustaRuutu(Ruutu r, int x, int y, boolean laivanOsa, boolean ammuttu) {
         if (r == null) {
             r = new Ruutu();
         }

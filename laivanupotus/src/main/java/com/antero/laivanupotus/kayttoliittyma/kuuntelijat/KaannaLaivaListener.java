@@ -11,8 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * Luokka ei ole käytössä, luokan tarkoitus on kääntää laiva kun se on ensin
+ * asetettu pelaajan pelialuueelle.
  *
- * @author anoi
+ * @author Antero Oikkonen
  */
 public class KaannaLaivaListener implements ActionListener {
 
@@ -25,7 +27,7 @@ public class KaannaLaivaListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         kali.getValittuLaiva().kaannaLaiva();
-        
+
     }
 
 }

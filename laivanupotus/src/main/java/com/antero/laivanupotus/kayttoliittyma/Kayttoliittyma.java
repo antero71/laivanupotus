@@ -84,7 +84,7 @@ public class Kayttoliittyma extends JFrame {
 
     public Kayttoliittyma(int x, int y, boolean naytaTervetuloa) {
         pelilogiikka = new PeliLogiikka(x, y, null);
-        Pelikentta p = pelilogiikka.getTietokoneenPeli();
+        Pelikentta p = pelilogiikka.getPelaajanPeli();
         AI ai = new TietokoneAI(p);
         pelilogiikka.setAi(ai);
         initComponents(naytaTervetuloa);
@@ -201,15 +201,16 @@ public class Kayttoliittyma extends JFrame {
             pelilogiikka.alustaPelaajanLaivat();
         }
 
-        for (int i = 0; i < pelilogiikka.getPelaajanPeli().getKenttaX(); i++) {
-            for (int j = 0; j < pelilogiikka.getPelaajanPeli().getKenttaY(); j++) {
+        for (int i = 0; i < pelilogiikka.getPelaajanPeli().getKenttaY(); i++) {
+            for (int j = 0; j < pelilogiikka.getPelaajanPeli().getKenttaX(); j++) {
                 Ruutu ruutu = new Ruutu(i, j);
                 NaytonRuutu naytonRuutu = new NaytonRuutu(ruutu);
                 naytonRuutu.setPreferredSize(new Dimension(30, 30));
-                naytonRuutu.setName(i + "," + j);
+                naytonRuutu.setName(j + "," + i);
 
                 if (!tietokoneenPeli) {
-                    if (pelilogiikka.getPelaajanPeli().isLaiva(i, j)) {
+                    if (pelilogiikka.getPelaajanPeli().isLaiva(j, i)) {
+                        System.out.println("laiva "+j+","+i);
                         naytonRuutu.setText("X");
                     }
                 }

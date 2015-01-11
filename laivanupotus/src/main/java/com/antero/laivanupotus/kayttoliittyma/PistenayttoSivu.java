@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
+ * Näytä pisteet toiminto avaa tämän sivun. Sivulle muodostetaan pistetilanne
+ * parametrina annettavan <code>Pistetaulukko</code> mukaan
  *
  * @author Antero Oikkonen
  */
@@ -21,6 +23,11 @@ public class PistenayttoSivu extends JFrame {
 
     Pistetaulukko pisteet;
 
+    /**
+     * Paramerina Pistetaulukko jonka mukaan pisteet tulostetaan näytölle.
+     *
+     * @param pisteet
+     */
     public PistenayttoSivu(Pistetaulukko pisteet) {
         this.pisteet = pisteet;
         initComponents();

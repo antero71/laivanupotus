@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
+ * Paneli pisteiden näyttämiseen pelissä. Asetetaan Käyttöliittymän yläreunaan.
  *
  * @author Antero Oikkonen
  */
