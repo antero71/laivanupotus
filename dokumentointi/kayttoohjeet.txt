@@ -1,0 +1,31 @@
+Sinulla pitää olla java 7 asennettuna koneelle
+
+Käynnistä ohjelma komennolla java -jar laivanupotus-1.0-SNAPSHOT.jar
+
+Valitse "Laivanupotus" valikosta "Uusi peli"
+
+Sinulla avautuu näkymä jossa on nimikenttä ja pelikentän koko.
+Anna nimesi nimikenttään ja muuta halutessasi kentän kokoa. Sallitut arvot
+ovat 10...15 molemmissa kentissä. Ensimmäinen kenttä on pystykoko ja 
+toinen vaaka.
+
+Kun olet valmis paina ok. Nyt peli generoi 
+tietokoneen pelialueen ja pelaajan pelialueen. Tietokone arvopoo laivat
+molempiin pelialueisiin. Alempi on pelaajan pelialue, johon laivat piirretään
+näkyviin X-kirjaimilla.
+
+Aloita peli "ampumalla" yläruudukon tyhjiin kenttiin. Eli klikkaa jotain ruutua
+hiirellä. Jos tulee osuma, ilmaantuu X kyseiseen ruutuun, muuten o. Jos ammuit ohi,
+tietokone ampuu alempaan ruudukkoon. Jos osoit, voit ampua toistamiseen ennen 
+tietokoneen ammuntaa.
+
+Tätä jatketaan kunnes jommankumman laivat ovat uponneet ja peli ilmoittaa 
+"peli päättyi!"
+
+Tallennetun pistetilanteen voi tarkistaa valikosta "Laivanupotus" valisemalla 
+"Pelin pisteet". Avautuvassa näytössä on lueteltuna pelaajien nimet ja pisteet 
+paremmusjärjestyksessä.
+
+Pelin lopetus tapahtuu valitsemma "Laivanupotus" ja "Lopeta"
+
+Katso myös bugilista "bugeja"
